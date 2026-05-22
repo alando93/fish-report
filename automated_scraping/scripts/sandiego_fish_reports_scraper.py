@@ -71,9 +71,10 @@ HEADERS = {
     "Upgrade-Insecure-Requests": "1",
 }
 
-# Regex: matches patterns like "107 Rockfish" or "2 Sheephead Released"
-# Handles optional leading comma/whitespace between entries.
-CATCH_PATTERN = re.compile(r"(\d+)\s+([A-Za-z][A-Za-z\s]*?)(?:\s+(Released))?(?=\s*,\s*\d|\s*$)")
+# Regex: matches patterns like "107 Rockfish", "2 Sheephead Released",
+# or "96 Bluefin Tuna (up to 60 pounds)". The optional parenthetical group
+# consumes weight/size notes before the lookahead so they don't break matching.
+CATCH_PATTERN = re.compile(r"(\d+)\s+([A-Za-z][A-Za-z\s]*?)(?:\s+(Released))?(?:\s*\([^)]*\))?(?=\s*,\s*\d|\s*$)")
 
 
 # ---------------------------------------------------------------------------
