@@ -184,7 +184,7 @@
         });
         return _tr.allSpecies
             .map(sp => ({ value: sp, label: sp, meta: (totals[sp] || 0).toLocaleString() }))
-            .sort((a, b) => parseInt(b.meta.replace(/,/g, '')) - parseInt(a.meta.replace(/,/g, '')));
+            .sort((a, b) => a.label.localeCompare(b.label));
     }
 
     function boatItems() {
@@ -195,7 +195,7 @@
         });
         return _tr.allBoats
             .map(b => ({ value: b, label: b, meta: (totals[b] || 0).toLocaleString() }))
-            .sort((a, b) => parseInt(b.meta.replace(/,/g, '')) - parseInt(a.meta.replace(/,/g, '')));
+            .sort((a, b) => a.label.localeCompare(b.label));
     }
 
     function defaultSpeciesSelection() {
