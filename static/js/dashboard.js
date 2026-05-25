@@ -18,6 +18,7 @@ async function initializeDashboard() {
             `Data from ${dateRange} | Last updated: ${data.last_updated || 'Unknown'}`;
 
         initReportsTable(allReports);
+        _rtCheckDelayedData(data.last_updated);
         if (typeof initTrendsSection === 'function') {
             initTrendsSection(allReports);
         }
@@ -203,6 +204,34 @@ function initReportsTable(reports) {
     });
 
     _rtChangeDate(_rt.currentDate);
+}
+
+function _rtCheckDelayedData(lastUpdated) {
+    if (!lastUpdated || !_rt.maxDate) return;
+    const scrapeDateStr = lastUpdated.slice(0, 10);
+    if (scrapeDateStr <= _rt.maxDate) return;
+
+    const dismissKey = `delayed-banner-${scrapeDateStr}`;
+    if (sessionStorage.getItem(dismissKey)) return;
+
+    const maxDt = new Date(_rt.maxDate + 'T12:00:00Z');
+    const fmtMax = maxDt.toLocaleDateString('en-US',
+        { weekday: 'long', month: 'long', day: 'numeric' });
+
+    const banner = document.createElement('div');
+    banner.className = 'rt-delayed-banner';
+    banner.innerHTML =
+        `<span><strong>Today’s reports aren’t posted yet</strong> — ` +
+        `sandiegofishreports.com hasn’t published data for ${scrapeDateStr}. ` +
+        `Showing the most recent available data (${fmtMax}).</span>` +
+        `<button class="rt-delayed-banner__close" aria-label="Dismiss">×</button>`;
+    banner.querySelector('button').addEventListener('click', () => {
+        banner.remove();
+        sessionStorage.setItem(dismissKey, '1');
+    });
+
+    const section = document.querySelector('#reportsSection .app-section');
+    if (section) section.prepend(banner);
 }
 
 function _rtGetTripsForDate(date) {
