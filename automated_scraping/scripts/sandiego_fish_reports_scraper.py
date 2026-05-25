@@ -142,6 +142,11 @@ class FishReportsScraper:
         existing = self._load_existing()
         existing_reports: List[Dict[str, Any]] = existing.get("reports", [])
 
+        # Drop any dates whose content is identical to the previous day — this happens when
+        # sandiegofishreports.com hasn't posted a date's data yet and serves the prior day's
+        # page instead. last_updated still advances, which triggers the frontend warning banner.
+        new_reports = self._filter_duplicate_dates(new_reports, existing_reports)
+
         # Replace all records for dates present in the new batch
         new_dates = {r["date"] for r in new_reports}
         kept = [r for r in existing_reports if r["date"] not in new_dates]
@@ -337,6 +342,47 @@ class FishReportsScraper:
     # ------------------------------------------------------------------
     # Persistence helpers
     # ------------------------------------------------------------------
+
+    @staticmethod
+    def _canonical_rows(reports: List[Dict[str, Any]]) -> frozenset:
+        return frozenset(
+            (r.get("landing"), r.get("boat"), r.get("trip"),
+             r.get("anglers"), r.get("species"), r.get("count"))
+            for r in reports
+        )
+
+    def _filter_duplicate_dates(
+        self,
+        new_reports: List[Dict[str, Any]],
+        existing_reports: List[Dict[str, Any]],
+    ) -> List[Dict[str, Any]]:
+        """Remove dates from new_reports whose records match the prior day exactly."""
+        from collections import defaultdict
+
+        existing_by_date: Dict[str, List] = defaultdict(list)
+        for r in existing_reports:
+            existing_by_date[r["date"]].append(r)
+
+        new_by_date: Dict[str, List] = defaultdict(list)
+        for r in new_reports:
+            new_by_date[r["date"]].append(r)
+
+        kept: List[Dict[str, Any]] = []
+        for date in sorted(new_by_date):
+            records = new_by_date[date]
+            prev_date = (
+                datetime.strptime(date, "%Y-%m-%d") - timedelta(days=1)
+            ).strftime("%Y-%m-%d")
+            prev_records = existing_by_date.get(prev_date, [])
+            if prev_records and self._canonical_rows(records) == self._canonical_rows(prev_records):
+                logger.warning(
+                    "Skipping %s — %d records are identical to %s; "
+                    "sandiegofishreports.com likely hasn't posted this date yet",
+                    date, len(records), prev_date,
+                )
+            else:
+                kept.extend(records)
+        return kept
 
     @staticmethod
     def _load_existing() -> Dict[str, Any]:
