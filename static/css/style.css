@@ -936,7 +936,7 @@
 
     .rt-col-boat  { grid-area: boat;  width: auto; padding-bottom: var(--space-1); }
     .rt-col-trip  { grid-area: trip;  width: auto; text-align: right; padding-bottom: var(--space-1); }
-    .rt-col-catch { grid-area: catch; width: auto; padding-top: 0; }
+    .rt-col-catch { grid-area: catch; width: auto; padding-top: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 }
 
 @media screen and (max-width: 480px) {
