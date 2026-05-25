@@ -426,8 +426,8 @@ Examples:
     parser.add_argument("--date", help="Scrape a single date (YYYY-MM-DD)")
     parser.add_argument("--start_date", help="Range start date (YYYY-MM-DD)")
     parser.add_argument("--end_date", help="Range end date (YYYY-MM-DD)")
-    parser.add_argument("--days", type=int, default=14,
-                        help="Default lookback window in days when no date args are given (default: 14)")
+    parser.add_argument("--days", type=int, default=2,
+                        help="Default lookback window in days when no date args are given (default: 2)")
     parser.add_argument("--dry_run", action="store_true", help="Parse without writing to disk")
     parser.add_argument("--verbose", action="store_true", help="Enable DEBUG logging")
     return parser
@@ -455,7 +455,6 @@ def main() -> None:
 
         else:
             # Default: scrape today and the previous N days (Pacific Time — boats are SoCal-based).
-            # 14-day window catches boats that post their catch data up to two weeks late.
             today = datetime.now(tz=ZoneInfo("America/Los_Angeles"))
             end = today.strftime("%Y-%m-%d")
             start = (today - timedelta(days=args.days)).strftime("%Y-%m-%d")
