@@ -6,15 +6,18 @@ A static web dashboard that automatically scrapes daily fish count data from San
 
 ## What It Does
 
-The scraper fetches fish count pages from [sandiegofishreports.com](https://www.sandiegofishreports.com/dock_totals/boats.php) once per day for each landing in San Diego. Each page lists every boat that went out, the trip type, how many anglers were on board, and a breakdown of every species caught. That data is parsed into structured JSON and committed back to the repository. The dashboard reads the JSON and renders it as a filterable, date-browsable table — no backend required.
+The scraper fetches fish count pages from [sandiegofishreports.com](https://www.sandiegofishreports.com/dock_totals/boats.php) for each landing in San Diego. Each page lists every boat that went out, the trip type, how many anglers were on board, and a breakdown of every species caught. That data is parsed into structured JSON and committed back to the repository. The dashboard reads the JSON and renders it as a filterable, date-browsable table — no backend required.
 
-GitHub Actions runs the scraper every 12 hours and pushes updated data automatically.
+GitHub Actions runs the scraper every 4 hours and pushes updated data automatically.
 
 ---
 
 ## Dashboard
 
-The single view is **Fish Count by Day** — a table of all trips for a selected date, grouped by landing.
+The dashboard has three tabs:
+
+### Daily Reports
+A table of all trips for a selected date, grouped by landing.
 
 - Navigate dates with the prev/next arrows or the date picker
 - Jump to the most recent data with the **Latest** button
@@ -24,7 +27,23 @@ The single view is **Fish Count by Day** — a table of all trips for a selected
 - A small health bar on each pill shows catch as a percentage of the legal daily bag limit per angler; a 🏆 appears when the limit is reached
 - Click the source link to open the original report page on sandiegofishreports.com
 
-A **Trends** section below the daily table shows time-series charts (fish count or per-angler rate) with optional smoothing and moon-phase overlays. Hovering a data point shows a breakdown: by-boat mode lists species caught on that boat; by-fish mode lists which boats contributed to that species count.
+### Trends
+Time-series charts of catch over time with configurable controls:
+
+- **Mode** — by species (one line per species) or by boat (one line per vessel)
+- **Metric** — total fish count, per-angler average, or total trip count
+- **Smoothing** — none, 7-day, or 14-day rolling average
+- **Range** — last 30 days, 90 days, 1 year, or all time
+- **Attribution** — catch credited to the return date (as-reported) or spread evenly across the days the trip spanned
+- Moon phase bands are drawn on the chart background; click any data point to jump to that date in Daily Reports
+
+### Moon Calendar
+A monthly grid view showing catch totals and moon phases day by day.
+
+- Select a boat and optionally filter by species
+- Each cell shows the total catch and top species for that day
+- New moon and full moon days are highlighted
+- Click any populated cell for a detailed species breakdown and a link to the Daily Report
 
 The dashboard is a plain `index.html` file. Serve it from any static host or locally:
 
@@ -38,7 +57,7 @@ python -m http.server 8000
 ## Project Structure
 
 ```
-fishing-report-app/
+fish-report/
 ├── index.html                              # Dashboard
 ├── requirements.txt                        # Python dependencies
 ├── automated_scraping/
@@ -49,11 +68,12 @@ fishing-report-app/
 ├── static/
 │   ├── css/style.css
 │   └── js/
-│       ├── dashboard.js    # Daily Reports view
-│       ├── trends.js       # Trends chart (Chart.js)
-│       ├── tripDuration.js # Trip string parser + multi-day allocation
-│       ├── moon.js         # Moon phase utilities
-│       └── ui.js           # Shared widgets (multi-select, segmented control)
+│       ├── dashboard.js      # Daily Reports view
+│       ├── trends.js         # Trends chart (Chart.js)
+│       ├── moonCalendar.js   # Moon Calendar view
+│       ├── tripDuration.js   # Trip string parser + multi-day allocation
+│       ├── moon.js           # Moon phase utilities
+│       └── ui.js             # Shared widgets (multi-select, segmented control)
 └── .github/
     └── workflows/
         └── scrape.yml                     # GitHub Actions automation
@@ -117,7 +137,7 @@ Records are deduplicated by `date + location + boat + species + count`. The file
 # Install dependencies
 pip install -r requirements.txt
 
-# Scrape the last 7 days (default)
+# Scrape the last 2 days (today + yesterday, default)
 python automated_scraping/scripts/sandiego_fish_reports_scraper.py
 
 # Scrape a specific date
@@ -149,16 +169,16 @@ Logs are written to `scraper_v3.log` in the working directory.
 
 ## Automation
 
-`.github/workflows/scrape.yml` runs on a schedule every 12 hours and can also be triggered manually from the Actions tab.
+`.github/workflows/scrape.yml` runs on a schedule every 4 hours and can also be triggered manually from the Actions tab.
 
 ```
 on:
   schedule:
-    - cron: '0 */12 * * *'
+    - cron: '0 */4 * * *'
   workflow_dispatch:
 ```
 
-The workflow checks out the repo, installs dependencies, runs the scraper (last 7 days by default), and commits any changes to `data/` back to the repository. If nothing changed, it exits cleanly.
+The workflow checks out the repo, installs dependencies, runs the scraper (last 2 days by default), and commits any changes to `data/` back to the repository. If nothing changed, it exits cleanly.
 
 **Required:** GitHub Actions needs write access to the repo. For private repos, confirm `Settings → Actions → Workflow permissions` is set to **Read and write permissions**.
 
