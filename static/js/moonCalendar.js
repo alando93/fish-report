@@ -61,7 +61,7 @@
                         <div id="mc-species-ms"></div>
                     </div>
 
-                    <div id="mc-grid" class="cal-grid"></div>
+                    <div class="cal-grid-wrap"><div id="mc-grid" class="cal-grid"></div></div>
 
                     <div class="cal-legend-note">
                         <span><span class="trends-legend-swatch new"></span>new moon (±1 day)</span>
