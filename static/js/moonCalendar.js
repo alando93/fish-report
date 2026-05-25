@@ -66,7 +66,7 @@
                     <div class="cal-legend-note">
                         <span><span class="trends-legend-swatch new"></span>new moon (±1 day)</span>
                         <span><span class="trends-legend-swatch full"></span>full moon (±1 day)</span>
-                        <span style="margin-left:auto;font-style:italic;">Tip: click a populated cell to open the Daily Report.</span>
+                        <span style="margin-left:auto;font-style:italic;">Tip: click a populated cell to see catch details.</span>
                     </div>
                 </div>
             </div>
@@ -186,15 +186,95 @@
 
         grid.innerHTML = cells.join('');
 
-        // Wire click-through on populated cells.
+        // Wire click on populated cells — opens day modal.
         grid.querySelectorAll('.cal-cell.has-data').forEach(el => {
             el.addEventListener('click', () => {
                 const d = el.dataset.date;
-                if (d && typeof window._rtJumpToDate === 'function') {
-                    window._rtJumpToDate(d);
-                }
+                if (d) showDayModal(d, _mc.boat);
             });
         });
+    }
+
+    // --- Day detail modal -----------------------------------------------------
+
+    function showDayModal(iso, boat) {
+        const speciesFilter = _mc.speciesMS ? _mc.speciesMS.getSelected() : new Set();
+        const speciesMode = speciesFilter.size > 0;
+
+        const rows = (_mc.byDate[iso] && _mc.byDate[iso][boat]) || [];
+        let totalCount = 0;
+        const speciesTotals = {};
+        rows.forEach(r => {
+            if (speciesMode && !speciesFilter.has(r.species)) return;
+            const c = r.count || 0;
+            totalCount += c;
+            speciesTotals[r.species] = (speciesTotals[r.species] || 0) + c;
+        });
+
+        const phase = (typeof moonPhase === 'function') ? moonPhase(iso) : null;
+
+        const [y, m, d] = iso.split('-');
+        const dateObj = new Date(Date.UTC(+y, +m - 1, +d));
+        const dateLabel = dateObj.toLocaleDateString('en-US', {
+            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC'
+        });
+        const shortDate = dateObj.toLocaleDateString('en-US', {
+            month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC'
+        });
+
+        const moonHtml = phase
+            ? `<div class="cal-modal-moon">${phase.emoji} ${escapeHtml(phase.name)} &mdash; ${phase.illumination}% illuminated</div>`
+            : '';
+
+        const speciesRows = Object.entries(speciesTotals)
+            .sort((a, b) => b[1] - a[1])
+            .map(([sp, c]) =>
+                `<div class="cal-modal-species-row">
+                    <span class="cal-modal-species-name">${escapeHtml(sp)}</span>
+                    <span class="cal-modal-species-count">${c.toLocaleString()}</span>
+                </div>`
+            ).join('');
+
+        const overlay = document.createElement('div');
+        overlay.className = 'cal-modal-overlay';
+        overlay.innerHTML = `
+            <div class="cal-modal" role="dialog" aria-modal="true">
+                <div class="cal-modal-header">
+                    <div>
+                        <div class="cal-modal-title">${escapeHtml(boat)}</div>
+                        <div class="cal-modal-date">${escapeHtml(dateLabel)}</div>
+                    </div>
+                    <button class="cal-modal-close" aria-label="Close">&times;</button>
+                </div>
+                ${moonHtml}
+                <div class="cal-modal-total">${totalCount.toLocaleString()} fish total</div>
+                <div class="cal-modal-species-list">
+                    ${speciesRows || '<div class="cal-modal-empty">No catch data for selected species.</div>'}
+                </div>
+                <div class="cal-modal-footer">
+                    <button class="cal-modal-link-btn">View Daily Report for ${escapeHtml(shortDate)} &rarr;</button>
+                </div>
+            </div>
+        `;
+
+        const onKeyDown = e => { if (e.key === 'Escape') close(); };
+        const close = () => {
+            overlay.remove();
+            document.removeEventListener('keydown', onKeyDown);
+        };
+
+        overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+        overlay.querySelector('.cal-modal-close').addEventListener('click', close);
+        document.addEventListener('keydown', onKeyDown);
+
+        overlay.querySelector('.cal-modal-link-btn').addEventListener('click', () => {
+            close();
+            if (typeof window._rtJumpToDate === 'function') {
+                window._rtJumpToDate(iso);
+            }
+        });
+
+        document.body.appendChild(overlay);
     }
 
     function escapeHtml(s) {
