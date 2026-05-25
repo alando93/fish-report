@@ -16,7 +16,7 @@ on:
       days:
         description: 'Rolling lookback window in days (used only when start/end dates are blank).'
         required: false
-        default: '14'
+        default: '2'
 
 jobs:
   scrape:
@@ -41,7 +41,7 @@ jobs:
         START="${{ github.event.inputs.start_date }}"
         END="${{ github.event.inputs.end_date }}"
         DAYS="${{ github.event.inputs.days }}"
-        DAYS="${DAYS:-14}"
+        DAYS="${DAYS:-2}"
 
         if [ -n "$START" ] && [ -n "$END" ]; then
           echo "Backfill mode: $START → $END"
