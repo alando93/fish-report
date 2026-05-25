@@ -373,7 +373,10 @@ class FishReportsScraper:
             prev_date = (
                 datetime.strptime(date, "%Y-%m-%d") - timedelta(days=1)
             ).strftime("%Y-%m-%d")
-            prev_records = existing_by_date.get(prev_date, [])
+            # Prefer freshly-scraped prev-day data (same run = guaranteed same content
+            # when the site is serving stale data). Fall back to stored data if the
+            # previous day wasn't included in this scrape batch.
+            prev_records = new_by_date.get(prev_date) or existing_by_date.get(prev_date, [])
             if prev_records and self._canonical_rows(records) == self._canonical_rows(prev_records):
                 logger.warning(
                     "Skipping %s — %d records are identical to %s; "
