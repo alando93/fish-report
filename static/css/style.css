@@ -643,6 +643,10 @@
     min-height: 32px;
 }
 
+.cal-grid-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
 .cal-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -903,6 +907,7 @@
     select { font-size: 16px; }
 
     .tab-btn { padding: 10px var(--space-3); }
+    .cal-grid { min-width: 480px; }
     .cal-cell { min-height: 70px; padding: 4px 5px; }
     .cal-moon-name { display: none; }
     .cal-species-line { font-size: 9px; }
