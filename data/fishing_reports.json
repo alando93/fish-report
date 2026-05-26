@@ -3,6 +3,45 @@
     {
       "location": "San Diego, CA",
       "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Constitution",
+      "trip": "3 Day",
+      "anglers": "21 Anglers",
+      "species": "Bluefin Tuna",
+      "count": 16,
+      "released": false,
+      "date": "2026-05-25",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-05-25"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Constitution",
+      "trip": "3 Day",
+      "anglers": "21 Anglers",
+      "species": "Yellowtail",
+      "count": 1,
+      "released": false,
+      "date": "2026-05-25",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-05-25"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Constitution",
+      "trip": "3 Day",
+      "anglers": "21 Anglers",
+      "species": "Vermilion Rockfish",
+      "count": 120,
+      "released": false,
+      "date": "2026-05-25",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-05-25"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
       "boat": "Dolphin",
       "trip": "1/2 Day AM",
       "anglers": "44 Anglers",
@@ -393797,7 +393836,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-05-26 11:17:40 PDT",
+  "last_updated": "2026-05-26 14:28:54 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
