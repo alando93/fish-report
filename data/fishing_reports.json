@@ -288,6 +288,58 @@
     },
     {
       "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Mission Belle",
+      "trip": "Full Day Coronado Islands",
+      "anglers": "19 Anglers",
+      "species": "Sheephead",
+      "count": 6,
+      "released": false,
+      "date": "2026-05-27",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-05-27"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Mission Belle",
+      "trip": "Full Day Coronado Islands",
+      "anglers": "19 Anglers",
+      "species": "Yellowtail",
+      "count": 1,
+      "released": false,
+      "date": "2026-05-27",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-05-27"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Mission Belle",
+      "trip": "Full Day Coronado Islands",
+      "anglers": "19 Anglers",
+      "species": "Whitefish",
+      "count": 75,
+      "released": false,
+      "date": "2026-05-27",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-05-27"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Mission Belle",
+      "trip": "Full Day Coronado Islands",
+      "anglers": "19 Anglers",
+      "species": "Red Rockfish",
+      "count": 14,
+      "released": false,
+      "date": "2026-05-27",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-05-27"
+    },
+    {
+      "location": "San Diego, CA",
       "landing": "Seaforth Sportfishing Fish Counts",
       "boat": "New Seaforth",
       "trip": "1/2 Day AM",
@@ -395149,7 +395201,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-05-27 19:09:27 PDT",
+  "last_updated": "2026-05-28 00:48:53 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
