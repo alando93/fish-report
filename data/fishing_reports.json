@@ -172,6 +172,45 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Nautilus",
+      "trip": "1/2 Day Twilight",
+      "anglers": "6 Anglers",
+      "species": "Barracuda",
+      "count": 2,
+      "released": false,
+      "date": "2026-05-29",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-05-29"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Nautilus",
+      "trip": "1/2 Day Twilight",
+      "anglers": "6 Anglers",
+      "species": "Calico Bass",
+      "count": 2,
+      "released": false,
+      "date": "2026-05-29",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-05-29"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Nautilus",
+      "trip": "1/2 Day Twilight",
+      "anglers": "6 Anglers",
+      "species": "Calico Bass",
+      "count": 53,
+      "released": true,
+      "date": "2026-05-29",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-05-29"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Premier",
       "trip": "1/2 Day AM",
       "anglers": "19 Anglers",
@@ -396527,7 +396566,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-05-30 06:04:25 PDT",
+  "last_updated": "2026-05-30 09:52:17 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
