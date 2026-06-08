@@ -432,6 +432,32 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Nautilus",
+      "trip": "1/2 Day AM",
+      "anglers": "6 Anglers",
+      "species": "Rockfish",
+      "count": 5,
+      "released": false,
+      "date": "2026-06-07",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-07"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Nautilus",
+      "trip": "1/2 Day AM",
+      "anglers": "6 Anglers",
+      "species": "Red Rockfish",
+      "count": 12,
+      "released": false,
+      "date": "2026-06-07",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-07"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Old Glory",
       "trip": "1.5 Day",
       "anglers": "19 Anglers",
@@ -404340,7 +404366,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-06-08 01:46:04 PDT",
+  "last_updated": "2026-06-08 08:30:33 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
