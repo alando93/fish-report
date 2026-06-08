@@ -852,7 +852,20 @@
       "trip": "1/2 Day PM",
       "anglers": "20 Anglers",
       "species": "Calico Bass",
-      "count": 44,
+      "count": 59,
+      "released": false,
+      "date": "2026-06-07",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-07"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "20 Anglers",
+      "species": "Rockfish",
+      "count": 2,
       "released": false,
       "date": "2026-06-07",
       "source": "San Diego Fish Reports",
@@ -404327,7 +404340,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-06-07 19:42:17 PDT",
+  "last_updated": "2026-06-08 01:46:04 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
