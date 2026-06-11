@@ -302,6 +302,97 @@
     {
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Pronto",
+      "trip": "1/2 Day Twilight",
+      "anglers": "12 Anglers",
+      "species": "Sand Bass",
+      "count": 6,
+      "released": false,
+      "date": "2026-06-10",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-10"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Pronto",
+      "trip": "1/2 Day Twilight",
+      "anglers": "12 Anglers",
+      "species": "Cabezon",
+      "count": 1,
+      "released": false,
+      "date": "2026-06-10",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-10"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Pronto",
+      "trip": "1/2 Day Twilight",
+      "anglers": "12 Anglers",
+      "species": "Sheephead",
+      "count": 1,
+      "released": false,
+      "date": "2026-06-10",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-10"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Pronto",
+      "trip": "1/2 Day Twilight",
+      "anglers": "12 Anglers",
+      "species": "Calico Bass",
+      "count": 7,
+      "released": false,
+      "date": "2026-06-10",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-10"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Pronto",
+      "trip": "1/2 Day Twilight",
+      "anglers": "12 Anglers",
+      "species": "Whitefish",
+      "count": 3,
+      "released": false,
+      "date": "2026-06-10",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-10"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Pronto",
+      "trip": "1/2 Day Twilight",
+      "anglers": "12 Anglers",
+      "species": "Rockfish",
+      "count": 3,
+      "released": false,
+      "date": "2026-06-10",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-10"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Pronto",
+      "trip": "1/2 Day Twilight",
+      "anglers": "12 Anglers",
+      "species": "Calico Bass",
+      "count": 20,
+      "released": true,
+      "date": "2026-06-10",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-10"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Southern Cal",
       "trip": "1/2 Day AM",
       "anglers": "14 Anglers",
@@ -406394,7 +406485,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-06-11 01:28:18 PDT",
+  "last_updated": "2026-06-11 08:36:03 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
