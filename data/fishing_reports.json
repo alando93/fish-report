@@ -510,6 +510,84 @@
     {
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "29 Anglers",
+      "species": "Sand Bass",
+      "count": 10,
+      "released": false,
+      "date": "2026-06-12",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-12"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "29 Anglers",
+      "species": "Barracuda",
+      "count": 5,
+      "released": false,
+      "date": "2026-06-12",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-12"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "29 Anglers",
+      "species": "Calico Bass",
+      "count": 25,
+      "released": false,
+      "date": "2026-06-12",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-12"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "29 Anglers",
+      "species": "Sand Bass",
+      "count": 30,
+      "released": true,
+      "date": "2026-06-12",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-12"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "29 Anglers",
+      "species": "Barracuda",
+      "count": 70,
+      "released": true,
+      "date": "2026-06-12",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-12"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "29 Anglers",
+      "species": "Calico Bass",
+      "count": 150,
+      "released": true,
+      "date": "2026-06-12",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-12"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Effishency",
       "trip": "1/2 Day AM",
       "anglers": "5 Anglers",
@@ -408422,7 +408500,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-06-13 03:21:47 PDT",
+  "last_updated": "2026-06-13 10:11:57 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
