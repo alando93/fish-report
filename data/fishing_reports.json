@@ -731,6 +731,58 @@
     {
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day PM",
+      "anglers": "20 Anglers",
+      "species": "Triggerfish",
+      "count": 1,
+      "released": false,
+      "date": "2026-06-13",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-13"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day PM",
+      "anglers": "20 Anglers",
+      "species": "Calico Bass",
+      "count": 28,
+      "released": false,
+      "date": "2026-06-13",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-13"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day PM",
+      "anglers": "20 Anglers",
+      "species": "Sand Bass",
+      "count": 8,
+      "released": true,
+      "date": "2026-06-13",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-13"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day PM",
+      "anglers": "20 Anglers",
+      "species": "Calico Bass",
+      "count": 110,
+      "released": true,
+      "date": "2026-06-13",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-13"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Chubasco II",
       "trip": "3/4 Day",
       "anglers": "24 Anglers",
@@ -409878,7 +409930,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-06-14 06:29:22 PDT",
+  "last_updated": "2026-06-14 10:09:22 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
