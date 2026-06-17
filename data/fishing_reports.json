@@ -457,6 +457,19 @@
     },
     {
       "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Mission Belle",
+      "trip": "Full Day Coronado Islands",
+      "anglers": "30 Anglers",
+      "species": "Yellowtail",
+      "count": 18,
+      "released": false,
+      "date": "2026-06-16",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-16"
+    },
+    {
+      "location": "San Diego, CA",
       "landing": "Seaforth Sportfishing Fish Counts",
       "boat": "Highliner",
       "trip": "1.5 Day",
@@ -413076,7 +413089,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-06-16 19:45:58 PDT",
+  "last_updated": "2026-06-17 01:53:52 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
