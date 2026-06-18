@@ -391,6 +391,71 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-17"
     },
     {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day PM",
+      "anglers": "18 Anglers",
+      "species": "Sand Bass",
+      "count": 3,
+      "released": false,
+      "date": "2026-06-17",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-17"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day PM",
+      "anglers": "18 Anglers",
+      "species": "Cabezon",
+      "count": 1,
+      "released": false,
+      "date": "2026-06-17",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-17"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day PM",
+      "anglers": "18 Anglers",
+      "species": "Barracuda",
+      "count": 3,
+      "released": false,
+      "date": "2026-06-17",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-17"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day PM",
+      "anglers": "18 Anglers",
+      "species": "Calico Bass",
+      "count": 5,
+      "released": false,
+      "date": "2026-06-17",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-17"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day PM",
+      "anglers": "18 Anglers",
+      "species": "Bonito",
+      "count": 5,
+      "released": false,
+      "date": "2026-06-17",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-17"
+    },
+    {
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Southern Cal",
@@ -413921,7 +413986,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-06-17 19:42:21 PDT",
+  "last_updated": "2026-06-18 01:37:50 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
