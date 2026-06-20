@@ -380,6 +380,58 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Nautilus",
+      "trip": "Full Day",
+      "anglers": "6 Anglers",
+      "species": "Barracuda",
+      "count": 1,
+      "released": false,
+      "date": "2026-06-19",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-19"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Nautilus",
+      "trip": "Full Day",
+      "anglers": "6 Anglers",
+      "species": "Yellowtail",
+      "count": 3,
+      "released": false,
+      "date": "2026-06-19",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-19"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Nautilus",
+      "trip": "Full Day",
+      "anglers": "6 Anglers",
+      "species": "Calico Bass",
+      "count": 4,
+      "released": false,
+      "date": "2026-06-19",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-19"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Nautilus",
+      "trip": "Full Day",
+      "anglers": "6 Anglers",
+      "species": "Rockfish",
+      "count": 10,
+      "released": false,
+      "date": "2026-06-19",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-19"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Premier",
       "trip": "1/2 Day AM",
       "anglers": "55 Anglers",
@@ -416222,7 +416274,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-06-19 19:31:14 PDT",
+  "last_updated": "2026-06-20 00:43:02 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
