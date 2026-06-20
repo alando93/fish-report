@@ -523,6 +523,84 @@
     {
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day Twilight",
+      "anglers": "8 Anglers",
+      "species": "Sand Bass",
+      "count": 1,
+      "released": false,
+      "date": "2026-06-19",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-19"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day Twilight",
+      "anglers": "8 Anglers",
+      "species": "Halibut",
+      "count": 2,
+      "released": false,
+      "date": "2026-06-19",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-19"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day Twilight",
+      "anglers": "8 Anglers",
+      "species": "Sheephead",
+      "count": 1,
+      "released": false,
+      "date": "2026-06-19",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-19"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day Twilight",
+      "anglers": "8 Anglers",
+      "species": "Calico Bass",
+      "count": 18,
+      "released": false,
+      "date": "2026-06-19",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-19"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day Twilight",
+      "anglers": "8 Anglers",
+      "species": "Calico Bass",
+      "count": 60,
+      "released": true,
+      "date": "2026-06-19",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-19"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day Twilight",
+      "anglers": "8 Anglers",
+      "species": "Leopard Shark",
+      "count": 3,
+      "released": true,
+      "date": "2026-06-19",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-19"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Chubasco II",
       "trip": "3/4 Day",
       "anglers": "18 Anglers",
@@ -416274,7 +416352,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-06-20 10:15:41 PDT",
+  "last_updated": "2026-06-20 14:04:36 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
