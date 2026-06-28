@@ -55,6 +55,32 @@
     {
       "location": "San Diego, CA",
       "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Dolphin",
+      "trip": "1/2 Day Twilight",
+      "anglers": "21 Anglers",
+      "species": "Sand Bass",
+      "count": 80,
+      "released": false,
+      "date": "2026-06-27",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-27"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Dolphin",
+      "trip": "1/2 Day Twilight",
+      "anglers": "21 Anglers",
+      "species": "Sculpin",
+      "count": 5,
+      "released": false,
+      "date": "2026-06-27",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-06-27"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
       "boat": "Liberty",
       "trip": "Overnight",
       "anglers": "29 Anglers",
@@ -424763,7 +424789,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-06-28 03:20:37 PDT",
+  "last_updated": "2026-06-28 06:17:15 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
