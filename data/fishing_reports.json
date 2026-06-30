@@ -20,7 +20,7 @@
       "trip": "1/2 Day AM",
       "anglers": "16 Anglers",
       "species": "Halibut",
-      "count": 8,
+      "count": 1,
       "released": false,
       "date": "2026-06-29",
       "source": "San Diego Fish Reports",
@@ -150,7 +150,7 @@
       "trip": "1/2 Day PM",
       "anglers": "22 Anglers",
       "species": "Calico Bass",
-      "count": 152,
+      "count": 52,
       "released": false,
       "date": "2026-06-29",
       "source": "San Diego Fish Reports",
@@ -426986,7 +426986,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-06-30 03:48:39 PDT",
+  "last_updated": "2026-06-30 06:56:31 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
