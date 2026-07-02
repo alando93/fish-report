@@ -575,6 +575,45 @@
     {
       "location": "San Diego, CA",
       "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "11 Anglers",
+      "species": "Barred Sand Bass",
+      "count": 4,
+      "released": false,
+      "date": "2026-07-01",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-01"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "11 Anglers",
+      "species": "Calico Bass",
+      "count": 10,
+      "released": false,
+      "date": "2026-07-01",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-01"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "11 Anglers",
+      "species": "Calico Bass",
+      "count": 50,
+      "released": true,
+      "date": "2026-07-01",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-01"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
       "boat": "Mission Belle",
       "trip": "Full Day Coronado Islands",
       "anglers": "17 Anglers",
@@ -428754,7 +428793,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-01 19:25:39 PDT",
+  "last_updated": "2026-07-02 00:00:07 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
