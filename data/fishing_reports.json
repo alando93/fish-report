@@ -198,6 +198,45 @@
     {
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day PM",
+      "anglers": "4 Anglers",
+      "species": "Calico Bass",
+      "count": 12,
+      "released": false,
+      "date": "2026-07-02",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-02"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day PM",
+      "anglers": "4 Anglers",
+      "species": "Whitefish",
+      "count": 14,
+      "released": false,
+      "date": "2026-07-02",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-02"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day PM",
+      "anglers": "4 Anglers",
+      "species": "Calico Bass",
+      "count": 40,
+      "released": true,
+      "date": "2026-07-02",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-02"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Chubasco II",
       "trip": "3/4 Day",
       "anglers": "26 Anglers",
@@ -429768,7 +429807,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-03 06:43:11 PDT",
+  "last_updated": "2026-07-03 10:13:34 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
