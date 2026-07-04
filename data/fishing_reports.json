@@ -612,6 +612,32 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-03"
     },
     {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Producer",
+      "trip": "Overnight",
+      "anglers": "21 Anglers",
+      "species": "Yellowtail",
+      "count": 23,
+      "released": false,
+      "date": "2026-07-03",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-03"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Producer",
+      "trip": "Overnight",
+      "anglers": "21 Anglers",
+      "species": "Dorado",
+      "count": 1,
+      "released": false,
+      "date": "2026-07-03",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-03"
+    },
+    {
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Blue Horizon",
@@ -431224,7 +431250,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-03 18:58:44 PDT",
+  "last_updated": "2026-07-03 23:39:44 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
