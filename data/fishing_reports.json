@@ -509,6 +509,19 @@
     },
     {
       "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Got Bait",
+      "trip": "Full Day",
+      "anglers": "5 Anglers",
+      "species": "Bluefin Tuna",
+      "count": 4,
+      "released": false,
+      "date": "2026-07-04",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-04"
+    },
+    {
+      "location": "San Diego, CA",
       "landing": "Seaforth Sportfishing Fish Counts",
       "boat": "New Seaforth",
       "trip": "1/2 Day AM",
@@ -432394,7 +432407,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-05 09:56:06 PDT",
+  "last_updated": "2026-07-05 13:47:17 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
