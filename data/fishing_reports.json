@@ -6,6 +6,19 @@
       "boat": "Dolphin",
       "trip": "1/2 Day AM",
       "anglers": "34 Anglers",
+      "species": "Barracuda",
+      "count": 1,
+      "released": false,
+      "date": "2026-07-08",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-08"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Dolphin",
+      "trip": "1/2 Day AM",
+      "anglers": "34 Anglers",
       "species": "Sheephead",
       "count": 4,
       "released": false,
@@ -437191,7 +437204,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-08 19:00:13 PDT",
+  "last_updated": "2026-07-09 00:29:20 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
