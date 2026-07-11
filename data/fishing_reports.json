@@ -731,6 +731,84 @@
     {
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "32 Anglers",
+      "species": "Sand Bass",
+      "count": 9,
+      "released": false,
+      "date": "2026-07-10",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-10"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "32 Anglers",
+      "species": "Sculpin",
+      "count": 12,
+      "released": false,
+      "date": "2026-07-10",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-10"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "32 Anglers",
+      "species": "Calico Bass",
+      "count": 11,
+      "released": false,
+      "date": "2026-07-10",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-10"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "32 Anglers",
+      "species": "Bonito",
+      "count": 10,
+      "released": false,
+      "date": "2026-07-10",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-10"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "32 Anglers",
+      "species": "Calico Bass",
+      "count": 40,
+      "released": true,
+      "date": "2026-07-10",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-10"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Effishency",
+      "trip": "Full Day",
+      "anglers": "5 Anglers",
+      "species": "Yellowtail",
+      "count": 8,
+      "released": false,
+      "date": "2026-07-10",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-10"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Effishency",
       "trip": "Full Day",
       "anglers": "5 Anglers",
@@ -760,8 +838,8 @@
       "boat": "Effishency",
       "trip": "Full Day",
       "anglers": "5 Anglers",
-      "species": "Yellowfin Tuna",
-      "count": 3,
+      "species": "Bonito",
+      "count": 2,
       "released": false,
       "date": "2026-07-10",
       "source": "San Diego Fish Reports",
@@ -439557,7 +439635,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-11 05:56:07 PDT",
+  "last_updated": "2026-07-11 09:43:15 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
