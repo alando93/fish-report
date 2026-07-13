@@ -1289,6 +1289,58 @@
     },
     {
       "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Point Loma",
+      "trip": "1/2 Day PM",
+      "anglers": "15 Anglers",
+      "species": "Barred Sand Bass",
+      "count": 3,
+      "released": false,
+      "date": "2026-07-12",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-12"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Point Loma",
+      "trip": "1/2 Day PM",
+      "anglers": "15 Anglers",
+      "species": "Barracuda",
+      "count": 3,
+      "released": false,
+      "date": "2026-07-12",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-12"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Point Loma",
+      "trip": "1/2 Day PM",
+      "anglers": "15 Anglers",
+      "species": "Sheephead",
+      "count": 4,
+      "released": false,
+      "date": "2026-07-12",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-12"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Point Loma",
+      "trip": "1/2 Day PM",
+      "anglers": "15 Anglers",
+      "species": "Whitefish",
+      "count": 3,
+      "released": false,
+      "date": "2026-07-12",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-12"
+    },
+    {
+      "location": "San Diego, CA",
       "landing": "Seaforth Sportfishing Fish Counts",
       "boat": "Aztec",
       "trip": "3 Day",
@@ -443184,7 +443236,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-12 18:51:30 PDT",
+  "last_updated": "2026-07-12 23:45:04 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
