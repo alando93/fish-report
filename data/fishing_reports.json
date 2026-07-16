@@ -757,32 +757,6 @@
     {
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
-      "boat": "Blue Horizon",
-      "trip": "1/2 Day Twilight",
-      "anglers": "8 Anglers",
-      "species": "Yellowtail",
-      "count": 2,
-      "released": false,
-      "date": "2026-07-15",
-      "source": "San Diego Fish Reports",
-      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-15"
-    },
-    {
-      "location": "Oceanside, CA",
-      "landing": "Oceanside Sea Center Fish Counts",
-      "boat": "Blue Horizon",
-      "trip": "1/2 Day Twilight",
-      "anglers": "8 Anglers",
-      "species": "Calico Bass",
-      "count": 40,
-      "released": true,
-      "date": "2026-07-15",
-      "source": "San Diego Fish Reports",
-      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-15"
-    },
-    {
-      "location": "Oceanside, CA",
-      "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Chubasco II",
       "trip": "1/2 Day AM",
       "anglers": "13 Anglers",
@@ -2245,6 +2219,32 @@
       "species": "Dorado",
       "count": 18,
       "released": false,
+      "date": "2026-07-14",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-14"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day Twilight",
+      "anglers": "8 Anglers",
+      "species": "Yellowtail",
+      "count": 2,
+      "released": false,
+      "date": "2026-07-14",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-14"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day Twilight",
+      "anglers": "8 Anglers",
+      "species": "Calico Bass",
+      "count": 40,
+      "released": true,
       "date": "2026-07-14",
       "source": "San Diego Fish Reports",
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-14"
@@ -447487,7 +447487,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-16 02:57:13 PDT",
+  "last_updated": "2026-07-16 06:21:00 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
