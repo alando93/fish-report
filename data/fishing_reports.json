@@ -666,6 +666,58 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day Twilight",
+      "anglers": "33 Anglers",
+      "species": "Sand Bass",
+      "count": 41,
+      "released": false,
+      "date": "2026-07-17",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-17"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day Twilight",
+      "anglers": "33 Anglers",
+      "species": "Sculpin",
+      "count": 19,
+      "released": false,
+      "date": "2026-07-17",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-17"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day Twilight",
+      "anglers": "33 Anglers",
+      "species": "Whitefish",
+      "count": 3,
+      "released": false,
+      "date": "2026-07-17",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-17"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day Twilight",
+      "anglers": "33 Anglers",
+      "species": "White Seabass",
+      "count": 1,
+      "released": false,
+      "date": "2026-07-17",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-17"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Producer",
       "trip": "Overnight",
       "anglers": "29 Anglers",
@@ -450607,7 +450659,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-18 05:52:38 PDT",
+  "last_updated": "2026-07-18 09:43:58 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
