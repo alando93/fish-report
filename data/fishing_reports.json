@@ -744,6 +744,58 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day Twilight",
+      "anglers": "35 Anglers",
+      "species": "Sand Bass",
+      "count": 53,
+      "released": false,
+      "date": "2026-07-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-18"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day Twilight",
+      "anglers": "35 Anglers",
+      "species": "Barracuda",
+      "count": 1,
+      "released": false,
+      "date": "2026-07-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-18"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day Twilight",
+      "anglers": "35 Anglers",
+      "species": "Sculpin",
+      "count": 14,
+      "released": false,
+      "date": "2026-07-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-18"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day Twilight",
+      "anglers": "35 Anglers",
+      "species": "Whitefish",
+      "count": 5,
+      "released": false,
+      "date": "2026-07-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-18"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Producer",
       "trip": "Overnight",
       "anglers": "29 Anglers",
@@ -1101,6 +1153,19 @@
       "species": "Calico Bass",
       "count": 20,
       "released": true,
+      "date": "2026-07-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-18"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Effishency",
+      "trip": "3/4 Day",
+      "anglers": "5 Anglers",
+      "species": "White Seabass",
+      "count": 3,
+      "released": false,
       "date": "2026-07-18",
       "source": "San Diego Fish Reports",
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-18"
@@ -452635,7 +452700,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-19 09:44:41 PDT",
+  "last_updated": "2026-07-19 13:37:52 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
