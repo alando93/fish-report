@@ -458,6 +458,45 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Horizon",
+      "trip": "1.5 Day",
+      "anglers": "24 Anglers",
+      "species": "Bluefin Tuna",
+      "count": 5,
+      "released": false,
+      "date": "2026-07-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-18"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Horizon",
+      "trip": "1.5 Day",
+      "anglers": "24 Anglers",
+      "species": "Yellowtail",
+      "count": 2,
+      "released": false,
+      "date": "2026-07-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-18"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Horizon",
+      "trip": "1.5 Day",
+      "anglers": "24 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 2,
+      "released": false,
+      "date": "2026-07-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-18"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Malihini",
       "trip": "3/4 Day",
       "anglers": "34 Anglers",
@@ -452557,7 +452596,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-18 18:46:55 PDT",
+  "last_updated": "2026-07-18 23:22:43 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
