@@ -2564,19 +2564,6 @@
     {
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
-      "boat": "Effishency",
-      "trip": "3/4 Day",
-      "anglers": "2 Anglers",
-      "species": "White Seabass",
-      "count": 6,
-      "released": false,
-      "date": "2026-07-19",
-      "source": "San Diego Fish Reports",
-      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-19"
-    },
-    {
-      "location": "Oceanside, CA",
-      "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Southern Cal",
       "trip": "1/2 Day AM",
       "anglers": "28 Anglers",
@@ -456210,7 +456197,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-21 10:06:36 PDT",
+  "last_updated": "2026-07-21 13:57:56 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
