@@ -653,6 +653,45 @@
     {
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Pronto",
+      "trip": "Full Day",
+      "anglers": "5 Anglers",
+      "species": "Sand Bass",
+      "count": 6,
+      "released": false,
+      "date": "2026-07-23",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-23"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Pronto",
+      "trip": "Full Day",
+      "anglers": "5 Anglers",
+      "species": "Bonito",
+      "count": 25,
+      "released": false,
+      "date": "2026-07-23",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-23"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Pronto",
+      "trip": "Full Day",
+      "anglers": "5 Anglers",
+      "species": "Sand Bass",
+      "count": 2,
+      "released": true,
+      "date": "2026-07-23",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-23"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Sea Star",
       "trip": "3/4 Day",
       "anglers": "15 Anglers",
@@ -460240,7 +460279,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-24 10:20:23 PDT",
+  "last_updated": "2026-07-24 13:55:16 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
