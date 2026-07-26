@@ -33,7 +33,7 @@
       "trip": "Overnight",
       "anglers": "22 Anglers",
       "species": "Yellowfin Tuna",
-      "count": 3,
+      "count": 4,
       "released": false,
       "date": "2026-07-25",
       "source": "San Diego Fish Reports",
@@ -515,6 +515,58 @@
       "anglers": "34 Anglers",
       "species": "Rockfish",
       "count": 6,
+      "released": false,
+      "date": "2026-07-25",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-25"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "40 Anglers",
+      "species": "Barred Sand Bass",
+      "count": 25,
+      "released": false,
+      "date": "2026-07-25",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-25"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "40 Anglers",
+      "species": "Sheephead",
+      "count": 4,
+      "released": false,
+      "date": "2026-07-25",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-25"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "40 Anglers",
+      "species": "Calico Bass",
+      "count": 39,
+      "released": false,
+      "date": "2026-07-25",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-25"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "40 Anglers",
+      "species": "Rockfish",
+      "count": 10,
       "released": false,
       "date": "2026-07-25",
       "source": "San Diego Fish Reports",
@@ -463100,7 +463152,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-25 18:51:54 PDT",
+  "last_updated": "2026-07-25 23:28:51 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
