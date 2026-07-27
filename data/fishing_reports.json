@@ -301,6 +301,45 @@
     },
     {
       "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Tomahawk",
+      "trip": "1.5 Day",
+      "anglers": "28 Anglers",
+      "species": "Yellowtail",
+      "count": 19,
+      "released": false,
+      "date": "2026-07-26",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-26"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Tomahawk",
+      "trip": "1.5 Day",
+      "anglers": "28 Anglers",
+      "species": "Dorado",
+      "count": 4,
+      "released": false,
+      "date": "2026-07-26",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-26"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Tomahawk",
+      "trip": "1.5 Day",
+      "anglers": "28 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 4,
+      "released": false,
+      "date": "2026-07-26",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-26"
+    },
+    {
+      "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
       "boat": "Excalibur",
       "trip": "2.5 Day",
@@ -465362,7 +465401,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-27 04:10:13 PDT",
+  "last_updated": "2026-07-27 07:10:58 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
