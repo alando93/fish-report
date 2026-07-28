@@ -3,19 +3,6 @@
     {
       "location": "San Diego, CA",
       "landing": "Fisherman's Landing Fish Counts",
-      "boat": "Constitution",
-      "trip": "3 Day",
-      "anglers": "21 Anglers",
-      "species": "Bluefin Tuna",
-      "count": 25,
-      "released": false,
-      "date": "2026-07-27",
-      "source": "San Diego Fish Reports",
-      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-27"
-    },
-    {
-      "location": "San Diego, CA",
-      "landing": "Fisherman's Landing Fish Counts",
       "boat": "Dolphin",
       "trip": "1/2 Day PM",
       "anglers": "35 Anglers",
@@ -138,71 +125,6 @@
       "anglers": "33 Anglers",
       "species": "Rockfish",
       "count": 43,
-      "released": false,
-      "date": "2026-07-27",
-      "source": "San Diego Fish Reports",
-      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-27"
-    },
-    {
-      "location": "San Diego, CA",
-      "landing": "Fisherman's Landing Fish Counts",
-      "boat": "Pacific Queen",
-      "trip": "1.5 Day",
-      "anglers": "0 Anglers",
-      "species": "Yellowtail",
-      "count": 21,
-      "released": false,
-      "date": "2026-07-27",
-      "source": "San Diego Fish Reports",
-      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-27"
-    },
-    {
-      "location": "San Diego, CA",
-      "landing": "Fisherman's Landing Fish Counts",
-      "boat": "Pacific Queen",
-      "trip": "1.5 Day",
-      "anglers": "0 Anglers",
-      "species": "Dorado",
-      "count": 28,
-      "released": false,
-      "date": "2026-07-27",
-      "source": "San Diego Fish Reports",
-      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-27"
-    },
-    {
-      "location": "San Diego, CA",
-      "landing": "Fisherman's Landing Fish Counts",
-      "boat": "Pacific Queen",
-      "trip": "1.5 Day",
-      "anglers": "0 Anglers",
-      "species": "Yellowfin Tuna",
-      "count": 19,
-      "released": false,
-      "date": "2026-07-27",
-      "source": "San Diego Fish Reports",
-      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-27"
-    },
-    {
-      "location": "San Diego, CA",
-      "landing": "Fisherman's Landing Fish Counts",
-      "boat": "Tomahawk",
-      "trip": "2 Day",
-      "anglers": "28 Anglers",
-      "species": "Bluefin Tuna",
-      "count": 25,
-      "released": false,
-      "date": "2026-07-27",
-      "source": "San Diego Fish Reports",
-      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-27"
-    },
-    {
-      "location": "San Diego, CA",
-      "landing": "Fisherman's Landing Fish Counts",
-      "boat": "Tomahawk",
-      "trip": "2 Day",
-      "anglers": "28 Anglers",
-      "species": "Yellowtail",
-      "count": 21,
       "released": false,
       "date": "2026-07-27",
       "source": "San Diego Fish Reports",
@@ -466545,7 +466467,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-27 18:42:30 PDT",
+  "last_updated": "2026-07-27 23:18:17 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
