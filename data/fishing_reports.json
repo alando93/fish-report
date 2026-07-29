@@ -770,6 +770,32 @@
     {
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Effishency",
+      "trip": "3/4 Day",
+      "anglers": "6 Anglers",
+      "species": "Yellowtail",
+      "count": 1,
+      "released": false,
+      "date": "2026-07-28",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-28"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Effishency",
+      "trip": "3/4 Day",
+      "anglers": "6 Anglers",
+      "species": "Dorado",
+      "count": 1,
+      "released": false,
+      "date": "2026-07-28",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-28"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Pronto",
       "trip": "3/4 Day",
       "anglers": "8 Anglers",
@@ -1711,6 +1737,32 @@
       "anglers": "23 Anglers",
       "species": "Yellowfin Tuna",
       "count": 12,
+      "released": false,
+      "date": "2026-07-27",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-27"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Effishency",
+      "trip": "3/4 Day",
+      "anglers": "5 Anglers",
+      "species": "Dorado",
+      "count": 1,
+      "released": false,
+      "date": "2026-07-27",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-27"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Effishency",
+      "trip": "3/4 Day",
+      "anglers": "5 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 22,
       "released": false,
       "date": "2026-07-27",
       "source": "San Diego Fish Reports",
@@ -467884,7 +467936,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-29 10:04:19 PDT",
+  "last_updated": "2026-07-29 13:42:35 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
