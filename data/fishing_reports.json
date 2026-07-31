@@ -526,6 +526,19 @@
       "boat": "Patriot (SD)",
       "trip": "2 Day",
       "anglers": "8 Anglers",
+      "species": "Bluefin Tuna",
+      "count": 2,
+      "released": false,
+      "date": "2026-07-30",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-30"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Patriot (SD)",
+      "trip": "2 Day",
+      "anglers": "8 Anglers",
       "species": "Yellowtail",
       "count": 8,
       "released": false,
@@ -1097,7 +1110,7 @@
       "landing": "Point Loma Sportfishing Fish Counts",
       "boat": "Mission Belle",
       "trip": "Full Day Coronado Islands",
-      "anglers": "30 Anglers",
+      "anglers": "23 Anglers",
       "species": "Yellowtail",
       "count": 115,
       "released": false,
@@ -471017,7 +471030,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-31 03:28:22 PDT",
+  "last_updated": "2026-07-31 06:41:05 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
