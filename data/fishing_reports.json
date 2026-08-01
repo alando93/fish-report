@@ -1055,6 +1055,123 @@
     },
     {
       "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day AM",
+      "anglers": "38 Anglers",
+      "species": "Barred Sand Bass",
+      "count": 30,
+      "released": false,
+      "date": "2026-07-31",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-31"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day AM",
+      "anglers": "38 Anglers",
+      "species": "Barracuda",
+      "count": 45,
+      "released": false,
+      "date": "2026-07-31",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-31"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day AM",
+      "anglers": "38 Anglers",
+      "species": "Sheephead",
+      "count": 2,
+      "released": false,
+      "date": "2026-07-31",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-31"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day AM",
+      "anglers": "38 Anglers",
+      "species": "Calico Bass",
+      "count": 8,
+      "released": false,
+      "date": "2026-07-31",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-31"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day AM",
+      "anglers": "38 Anglers",
+      "species": "Rockfish",
+      "count": 3,
+      "released": false,
+      "date": "2026-07-31",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-31"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "20 Anglers",
+      "species": "Barred Sand Bass",
+      "count": 80,
+      "released": false,
+      "date": "2026-07-31",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-31"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "20 Anglers",
+      "species": "Barracuda",
+      "count": 52,
+      "released": false,
+      "date": "2026-07-31",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-31"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "20 Anglers",
+      "species": "Bonito",
+      "count": 1,
+      "released": false,
+      "date": "2026-07-31",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-31"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Mission Belle",
+      "trip": "Full Day",
+      "anglers": "15 Anglers",
+      "species": "Yellowtail",
+      "count": 56,
+      "released": false,
+      "date": "2026-07-31",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-07-31"
+    },
+    {
+      "location": "San Diego, CA",
       "landing": "Seaforth Sportfishing Fish Counts",
       "boat": "Aztec",
       "trip": "2 Day",
@@ -472434,7 +472551,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-07-31 18:55:08 PDT",
+  "last_updated": "2026-07-31 23:20:21 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
