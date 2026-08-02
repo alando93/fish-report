@@ -159,6 +159,58 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day PM",
+      "anglers": "55 Anglers",
+      "species": "Sand Bass",
+      "count": 138,
+      "released": false,
+      "date": "2026-08-01",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-01"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day PM",
+      "anglers": "55 Anglers",
+      "species": "Barracuda",
+      "count": 212,
+      "released": false,
+      "date": "2026-08-01",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-01"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day PM",
+      "anglers": "55 Anglers",
+      "species": "Sculpin",
+      "count": 1,
+      "released": false,
+      "date": "2026-08-01",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-01"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Premier",
+      "trip": "1/2 Day PM",
+      "anglers": "55 Anglers",
+      "species": "Bonito",
+      "count": 1,
+      "released": false,
+      "date": "2026-08-01",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-01"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Producer",
       "trip": "Overnight",
       "anglers": "29 Anglers",
@@ -632,6 +684,45 @@
       "anglers": "39 Anglers",
       "species": "Barracuda",
       "count": 101,
+      "released": false,
+      "date": "2026-08-01",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-01"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "35 Anglers",
+      "species": "Barred Sand Bass",
+      "count": 70,
+      "released": false,
+      "date": "2026-08-01",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-01"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "35 Anglers",
+      "species": "Barracuda",
+      "count": 40,
+      "released": false,
+      "date": "2026-08-01",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-01"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "35 Anglers",
+      "species": "Yellowtail",
+      "count": 2,
       "released": false,
       "date": "2026-08-01",
       "source": "San Diego Fish Reports",
@@ -473851,7 +473942,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-08-01 18:51:18 PDT",
+  "last_updated": "2026-08-01 23:25:58 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
