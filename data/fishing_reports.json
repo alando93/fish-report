@@ -263,6 +263,32 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Daiwa Pacific",
+      "trip": "Overnight",
+      "anglers": "25 Anglers",
+      "species": "Skipjack Tuna",
+      "count": 2,
+      "released": false,
+      "date": "2026-08-02",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-02"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Daiwa Pacific",
+      "trip": "Overnight",
+      "anglers": "25 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 15,
+      "released": false,
+      "date": "2026-08-02",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-02"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Excalibur",
       "trip": "3 Day",
       "anglers": "24 Anglers",
@@ -475866,7 +475892,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-08-03 07:15:59 PDT",
+  "last_updated": "2026-08-03 10:46:33 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
