@@ -484,6 +484,45 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Nautilus",
+      "trip": "1.5 Day",
+      "anglers": "5 Anglers",
+      "species": "Yellowtail",
+      "count": 4,
+      "released": false,
+      "date": "2026-08-02",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-02"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Nautilus",
+      "trip": "1.5 Day",
+      "anglers": "5 Anglers",
+      "species": "Dorado",
+      "count": 1,
+      "released": false,
+      "date": "2026-08-02",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-02"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Nautilus",
+      "trip": "1.5 Day",
+      "anglers": "5 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 10,
+      "released": false,
+      "date": "2026-08-02",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-02"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Old Glory",
       "trip": "Overnight",
       "anglers": "21 Anglers",
@@ -1529,6 +1568,45 @@
       "anglers": "23 Anglers",
       "species": "Yellowfin Tuna",
       "count": 39,
+      "released": false,
+      "date": "2026-08-02",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-02"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Seaforth Sportfishing Fish Counts",
+      "boat": "San Diego",
+      "trip": "Full Day Offshore",
+      "anglers": "34 Anglers",
+      "species": "Dorado",
+      "count": 3,
+      "released": false,
+      "date": "2026-08-02",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-02"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Seaforth Sportfishing Fish Counts",
+      "boat": "San Diego",
+      "trip": "Full Day Offshore",
+      "anglers": "34 Anglers",
+      "species": "Skipjack Tuna",
+      "count": 56,
+      "released": false,
+      "date": "2026-08-02",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-02"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Seaforth Sportfishing Fish Counts",
+      "boat": "San Diego",
+      "trip": "Full Day Offshore",
+      "anglers": "34 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 44,
       "released": false,
       "date": "2026-08-02",
       "source": "San Diego Fish Reports",
@@ -475788,7 +475866,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-08-02 18:53:36 PDT",
+  "last_updated": "2026-08-02 23:51:31 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
