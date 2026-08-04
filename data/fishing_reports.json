@@ -289,6 +289,32 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Old Glory",
+      "trip": "Overnight",
+      "anglers": "32 Anglers",
+      "species": "Dorado",
+      "count": 2,
+      "released": false,
+      "date": "2026-08-03",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-03"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Old Glory",
+      "trip": "Overnight",
+      "anglers": "32 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 29,
+      "released": false,
+      "date": "2026-08-03",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-03"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Premier",
       "trip": "1/2 Day AM",
       "anglers": "35 Anglers",
@@ -476880,7 +476906,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-08-03 18:28:36 PDT",
+  "last_updated": "2026-08-03 23:19:50 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
