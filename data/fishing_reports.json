@@ -510,12 +510,129 @@
     {
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "30 Anglers",
+      "species": "Sculpin",
+      "count": 4,
+      "released": false,
+      "date": "2026-08-08",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-08"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "30 Anglers",
+      "species": "Yellowtail",
+      "count": 9,
+      "released": false,
+      "date": "2026-08-08",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-08"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "30 Anglers",
+      "species": "Calico Bass",
+      "count": 3,
+      "released": false,
+      "date": "2026-08-08",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-08"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Effishency",
       "trip": "3/4 Day",
       "anglers": "5 Anglers",
       "species": "Yellowtail",
       "count": 11,
       "released": false,
+      "date": "2026-08-08",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-08"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Southern Cal",
+      "trip": "1/2 Day AM",
+      "anglers": "40 Anglers",
+      "species": "Sand Bass",
+      "count": 6,
+      "released": false,
+      "date": "2026-08-08",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-08"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Southern Cal",
+      "trip": "1/2 Day AM",
+      "anglers": "40 Anglers",
+      "species": "Calico Bass",
+      "count": 5,
+      "released": false,
+      "date": "2026-08-08",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-08"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Southern Cal",
+      "trip": "1/2 Day AM",
+      "anglers": "40 Anglers",
+      "species": "Whitefish",
+      "count": 2,
+      "released": false,
+      "date": "2026-08-08",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-08"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Southern Cal",
+      "trip": "1/2 Day AM",
+      "anglers": "40 Anglers",
+      "species": "Rockfish",
+      "count": 3,
+      "released": false,
+      "date": "2026-08-08",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-08"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Southern Cal",
+      "trip": "1/2 Day AM",
+      "anglers": "40 Anglers",
+      "species": "Sand Bass",
+      "count": 30,
+      "released": true,
+      "date": "2026-08-08",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-08"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Southern Cal",
+      "trip": "1/2 Day AM",
+      "anglers": "40 Anglers",
+      "species": "Calico Bass",
+      "count": 40,
+      "released": true,
       "date": "2026-08-08",
       "source": "San Diego Fish Reports",
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-08"
@@ -484342,7 +484459,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-08-09 09:22:04 PDT",
+  "last_updated": "2026-08-09 13:20:10 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
