@@ -822,6 +822,19 @@
     {
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day PM",
+      "anglers": "3 Anglers",
+      "species": "Yellowtail",
+      "count": 9,
+      "released": false,
+      "date": "2026-08-10",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-10"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Effishency",
       "trip": "Full Day",
       "anglers": "3 Anglers",
@@ -487865,7 +487878,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-08-11 09:46:59 PDT",
+  "last_updated": "2026-08-11 13:34:03 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
