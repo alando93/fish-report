@@ -237,6 +237,45 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Old Glory",
+      "trip": "Overnight",
+      "anglers": "31 Anglers",
+      "species": "Dorado",
+      "count": 2,
+      "released": false,
+      "date": "2026-08-11",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-11"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Old Glory",
+      "trip": "Overnight",
+      "anglers": "31 Anglers",
+      "species": "Skipjack Tuna",
+      "count": 54,
+      "released": false,
+      "date": "2026-08-11",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-11"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Old Glory",
+      "trip": "Overnight",
+      "anglers": "31 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 59,
+      "released": false,
+      "date": "2026-08-11",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-11"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Premier",
       "trip": "1/2 Day AM",
       "anglers": "12 Anglers",
@@ -450,6 +489,71 @@
       "anglers": "35 Anglers",
       "species": "Calico Bass",
       "count": 10,
+      "released": false,
+      "date": "2026-08-11",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-11"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "14 Anglers",
+      "species": "Barracuda",
+      "count": 3,
+      "released": false,
+      "date": "2026-08-11",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-11"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "14 Anglers",
+      "species": "Sheephead",
+      "count": 18,
+      "released": false,
+      "date": "2026-08-11",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-11"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "14 Anglers",
+      "species": "Calico Bass",
+      "count": 18,
+      "released": false,
+      "date": "2026-08-11",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-11"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "14 Anglers",
+      "species": "Rockfish",
+      "count": 6,
+      "released": false,
+      "date": "2026-08-11",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-11"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "14 Anglers",
+      "species": "White Seabass",
+      "count": 1,
       "released": false,
       "date": "2026-08-11",
       "source": "San Diego Fish Reports",
@@ -489087,7 +489191,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-08-11 18:05:47 PDT",
+  "last_updated": "2026-08-11 22:24:04 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
