@@ -354,6 +354,45 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Malihini",
+      "trip": "Full Day Offshore",
+      "anglers": "30 Anglers",
+      "species": "Dorado",
+      "count": 9,
+      "released": false,
+      "date": "2026-08-13",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-13"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Malihini",
+      "trip": "Full Day Offshore",
+      "anglers": "30 Anglers",
+      "species": "Skipjack Tuna",
+      "count": 1,
+      "released": false,
+      "date": "2026-08-13",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-13"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Malihini",
+      "trip": "Full Day Offshore",
+      "anglers": "30 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 94,
+      "released": false,
+      "date": "2026-08-13",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-13"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Nautilus",
       "trip": "Extended 1.5 Day",
       "anglers": "6 Anglers",
@@ -723,6 +762,19 @@
       "anglers": "13 Anglers",
       "species": "Yellowfin Tuna",
       "count": 8,
+      "released": false,
+      "date": "2026-08-13",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-13"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1.5 Day",
+      "anglers": "12 Anglers",
+      "species": "Yellowtail",
+      "count": 37,
       "released": false,
       "date": "2026-08-13",
       "source": "San Diego Fish Reports",
@@ -492116,7 +492168,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-08-14 05:41:21 PDT",
+  "last_updated": "2026-08-14 09:40:31 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
