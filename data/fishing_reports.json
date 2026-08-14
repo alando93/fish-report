@@ -174,7 +174,7 @@
       "landing": "Fisherman's Landing Fish Counts",
       "boat": "Pacific Dawn",
       "trip": "Overnight",
-      "anglers": "0 Anglers",
+      "anglers": "18 Anglers",
       "species": "Dorado",
       "count": 1,
       "released": false,
@@ -187,7 +187,7 @@
       "landing": "Fisherman's Landing Fish Counts",
       "boat": "Pacific Dawn",
       "trip": "Overnight",
-      "anglers": "0 Anglers",
+      "anglers": "18 Anglers",
       "species": "Yellowfin Tuna",
       "count": 4,
       "released": false,
@@ -492116,7 +492116,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-08-14 01:58:39 PDT",
+  "last_updated": "2026-08-14 05:41:21 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
