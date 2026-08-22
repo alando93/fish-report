@@ -503,9 +503,15 @@
         if (!selected.size) return [];
 
         const counts = {};             // counts[date][species] = count
-        const anglerLimitDaySum = {};  // anglerLimitDaySum[date] = total angler-limit-days
-        // Track which (tripKey, date) pairs we've already counted anglers for,
-        // so anglers don't get inflated by multiple species rows on the same trip.
+        const anglerLimitDaySum = {};  // anglerLimitDaySum[date][species] = total angler-limit-days
+        // Track which (species, tripKey, date) triples we've already counted
+        // anglers for, so anglers don't get inflated by multiple rows (e.g.
+        // kept + released) for the same species on the same trip. Scoped
+        // per-species, not just per-trip: a trip that caught both Bluefin
+        // and Yellowfin must contribute its anglers to EACH species' own
+        // denominator independently — pooling them into one shared
+        // per-date total (the original bug here) let boats that caught
+        // zero Bluefin but did catch Yellowfin dilute Bluefin's ratio.
         const anglerSeen = {};
         const dateToBucketKey = bucketKeyMap(buckets);
 
@@ -513,15 +519,17 @@
             if (!r.date || !r.species || !selected.has(r.species)) return;
             const anglers = parseInt(r.anglers) || 0;
             const tripKey = `${r.date}|${r.boat}|${r.trip}`;
-            const countAnglersOnThisRow = !anglerSeen[tripKey];
-            if (countAnglersOnThisRow) anglerSeen[tripKey] = true;
+            const dedupKey = `${r.species}|${tripKey}`;
+            const countAnglersOnThisRow = !anglerSeen[dedupKey];
+            if (countAnglersOnThisRow) anglerSeen[dedupKey] = true;
 
             eachAllocation(r, (d, w, tripInfo) => {
                 counts[d] = counts[d] || {};
                 counts[d][r.species] = (counts[d][r.species] || 0) + (r.count || 0) * w;
                 if (countAnglersOnThisRow) {
                     const limitDays = Math.max(1, Math.ceil(tripInfo.tripDays || 1));
-                    anglerLimitDaySum[d] = (anglerLimitDaySum[d] || 0) + anglers * limitDays * w;
+                    anglerLimitDaySum[d] = anglerLimitDaySum[d] || {};
+                    anglerLimitDaySum[d][r.species] = (anglerLimitDaySum[d][r.species] || 0) + anglers * limitDays * w;
                 }
 
                 // Breakdown: for each species, track catch per boat (with
@@ -551,7 +559,7 @@
                 let raw = 0, a = 0;
                 b.dates.forEach(d => {
                     raw += (counts[d] && counts[d][sp]) || 0;
-                    a += anglerLimitDaySum[d] || 0;
+                    a += (anglerLimitDaySum[d] && anglerLimitDaySum[d][sp]) || 0;
                 });
                 if (_tr.metric === 'perAngler') {
                     return a > 0 ? raw / a : null;
