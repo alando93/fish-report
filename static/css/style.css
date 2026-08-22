@@ -55,6 +55,12 @@
     --moon-new:  rgba(100, 100, 120, 0.12);
     --moon-full: rgba(230, 200, 110, 0.18);
 
+    /* Delta up/down (Trends: Species Deltas table) — same green/red as the
+       existing catch-limit health bar, so "good"/"bad" reads consistently
+       across the app. */
+    --delta-up:   #2da44e;
+    --delta-down: #f14668;
+
     /* Species category pill tokens */
     --pill-tuna-bg:            rgba(66, 100, 180, 0.09);
     --pill-tuna-border:        rgba(66, 100, 180, 0.30);
@@ -567,6 +573,34 @@
     letter-spacing: 0.04em;
 }
 
+/* Visually scopes a group of controls to the view they affect (Chart vs.
+   Table) — the accent bar + heading make ownership legible on sight,
+   instead of relying on the visitor to have learned which bare-word
+   control label belongs to which view. */
+.trends-panel {
+    border-left: 2px solid var(--accent);
+    background: var(--bg-subtle);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: var(--space-3) var(--space-3) var(--space-1);
+    margin-bottom: var(--space-3);
+}
+.trends-panel-label {
+    font-size: var(--font-xs);
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-2);
+}
+.trends-panel .trends-control-row:last-child { margin-bottom: var(--space-2); }
+
+.trends-chart-title {
+    font-size: var(--font-body);
+    font-weight: 600;
+    color: var(--fg);
+    margin-bottom: var(--space-2);
+}
+
 .trends-chart-wrap {
     position: relative;
     width: 100%;
@@ -586,7 +620,7 @@
     margin-left: auto;
     font-style: italic;
 }
-.trends-attribution-hint {
+.trends-hint {
     font-size: var(--font-sm);
     color: var(--fg-subtle);
     font-style: italic;
@@ -607,6 +641,54 @@
     text-align: center;
     color: var(--fg-subtle);
     font-size: var(--font-body);
+}
+
+/* --- Species Deltas table (Trends: Table display) -------------------------- */
+
+.trends-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.trends-delta-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-body);
+}
+.trends-delta-table th {
+    font-size: var(--font-sm);
+    font-weight: 500;
+    color: var(--fg-subtle);
+    text-align: right;
+    padding: 6px var(--space-3);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+.trends-delta-table th.txt,
+.trends-delta-table td.txt { text-align: left; }
+.trends-delta-table th.sortable { cursor: pointer; user-select: none; }
+.trends-delta-table th.sortable:hover { color: var(--fg); }
+.trends-delta-table th.sortable::after { content: ""; display: inline-block; width: 9px; }
+.trends-delta-table th.sort-asc::after  { content: "▲"; font-size: 9px; margin-left: 2px; }
+.trends-delta-table th.sort-desc::after { content: "▼"; font-size: 9px; margin-left: 2px; }
+.trends-delta-table td {
+    padding: 7px var(--space-3);
+    border-bottom: 1px solid var(--divider);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+.trends-delta-table td:first-child { font-weight: 600; color: var(--fg); }
+
+.trends-up   { color: var(--delta-up); }
+.trends-down { color: var(--delta-down); }
+.trends-delta-new   { font-weight: 600; }
+.trends-delta-muted { color: var(--fg-subtle); }
+.trends-delta-trips { color: var(--fg-subtle); font-size: var(--font-sm); }
+.trends-delta-empty {
+    text-align: center;
+    color: var(--fg-subtle);
+    padding: 24px;
 }
 
 /* --- Moon Calendar -------------------------------------------------------- */
