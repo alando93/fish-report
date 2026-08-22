@@ -22,11 +22,21 @@
         smoothing: 0,       // 0 | 7 | 14
         rangeDays: 90,      // 30 | 90 | 365 | 0 (all)
         attribution: 'asReported', // 'asReported' | 'spread'
-        breakdown: {},      // breakdown[date][groupLabel][subLabel] = { count, trips: [{ tripDays, dayIndex, totalDays }] }
+        aggregation: 'daily', // 'daily' | 'weekly' — one point per day, or one per 7-day bucket
+        breakdown: {},      // breakdown[bucketKey][groupLabel][subLabel] = { count, trips: [{ tripDays, dayIndex, totalDays }] }
+        bucketRanges: {},   // bucketRanges[bucketKey] = { start, end } — for the weekly tooltip title
         display: 'chart',      // 'chart' | 'table' — Species Deltas table toggle
         deltaWindow: 7,         // 7 | 14 | 30 — comparison window length in days
         deltaMetric: 'perAngler', // 'perAngler' | 'total' — independent of the chart's Metric
     };
+
+    // Bars (not a connected line) only for the Total Trips metric — weekly
+    // aggregation stays a line, just with fewer, further-apart points.
+    // Shared by createChart() (picks chart type) and the segmented-control
+    // handlers (decide whether to recreate the chart).
+    function chartTypeIsBar() {
+        return _tr.metric === 'totalTrips';
+    }
 
     window.initTrendsSection = function (reports) {
         _tr.reports = reports;
@@ -68,10 +78,22 @@
                         <div class="trends-control-row" id="tr-chart-controls-2">
                             <label>Metric</label>
                             <div id="tr-metric"></div>
+                            <label style="margin-left: var(--space-3);">Aggregation</label>
+                            <div id="tr-aggregation"></div>
                             <label style="margin-left: var(--space-3);">Smoothing</label>
                             <div id="tr-smoothing"></div>
                             <label style="margin-left: var(--space-3);">Range</label>
                             <div id="tr-range"></div>
+                        </div>
+
+                        <div class="trends-control-row" id="tr-metric-hint-row" hidden>
+                            <span class="trends-hint" id="tr-metric-hint">
+                                Per angler/day = total catch ÷ (anglers × trip length in
+                                legal-limit days) — e.g. a 3-day trip's anglers count 3× toward
+                                the total, so the rate is directly comparable to California's daily
+                                bag limit, not just raw catch per person. Matches the \u{1F3C6} shown
+                                in this chart's tooltips and the Daily Reports tab's per-limit-day figure.
+                            </span>
                         </div>
                     </div>
 
@@ -82,7 +104,7 @@
                             <div id="tr-delta-window"></div>
                             <label style="margin-left: var(--space-3);">Compare by</label>
                             <div id="tr-delta-metric"></div>
-                            <span class="trends-delta-hint">
+                            <span class="trends-hint">
                                 Compares the most recent window to the one immediately before it.
                                 "Total count" sums every boat's catch — a hot multi-day bite can run into
                                 the thousands even with the bite unchanged per angler.
@@ -93,10 +115,12 @@
                     <div class="trends-control-row" id="tr-attribution-row">
                         <label>Attribution</label>
                         <div id="tr-attribution"></div>
-                        <span class="trends-attribution-hint" id="tr-attribution-hint">
+                        <span class="trends-hint" id="tr-attribution-hint">
                             How multi-day trip catches are distributed across the calendar.
                         </span>
                     </div>
+
+                    <div class="trends-chart-title" id="trends-chart-title"></div>
 
                     <div class="trends-chart-wrap" id="trends-chart-wrap">
                         <canvas id="trends-chart"></canvas>
@@ -166,16 +190,35 @@
             container: document.getElementById('tr-metric'),
             options: [
                 { value: 'total',      label: 'Total fish' },
-                { value: 'perAngler',  label: 'Per angler' },
+                { value: 'perAngler',  label: 'Per angler/day' },
                 { value: 'totalTrips', label: 'Total trips' }
             ],
             selected: _tr.metric,
             onChange: v => {
-                const wasTrips = _tr.metric === 'totalTrips';
+                const wasBar = chartTypeIsBar();
                 _tr.metric = v;
-                const isTrips = v === 'totalTrips';
-                if (wasTrips !== isTrips) {
+                if (wasBar !== chartTypeIsBar()) {
                     // Chart.js v4 requires a recreate to swap base type.
+                    _tr.chart.destroy();
+                    _tr.chart = null;
+                    createChart();
+                }
+                applyMetricUI();
+                redraw();
+            }
+        });
+
+        UI.makeSegmented({
+            container: document.getElementById('tr-aggregation'),
+            options: [
+                { value: 'daily',  label: 'Daily' },
+                { value: 'weekly', label: 'Weekly' }
+            ],
+            selected: _tr.aggregation,
+            onChange: v => {
+                const wasBar = chartTypeIsBar();
+                _tr.aggregation = v;
+                if (wasBar !== chartTypeIsBar()) {
                     _tr.chart.destroy();
                     _tr.chart = null;
                     createChart();
@@ -285,6 +328,44 @@
         return new Set(speciesItems().slice(0, 2).map(i => i.value));
     }
 
+    // Compact, readable rendering of a species/boat selection for the chart
+    // title: name the items when there are few, summarize when there are many.
+    function seriesLabelList(selected) {
+        const arr = [...selected].sort();
+        if (!arr.length) return 'No selection';
+        if (arr.length <= 2) return arr.join(' & ');
+        return `${arr[0]} +${arr.length - 1} more`;
+    }
+
+    // Summarizes the current chart configuration — what's plotted, how
+    // it's measured, and over what window — as a plain-language title so
+    // the reading of the chart doesn't depend on remembering what each
+    // control is currently set to.
+    function buildChartTitle() {
+        const metricLabel = _tr.metric === 'totalTrips' ? 'Total trips'
+            : _tr.metric === 'perAngler' ? 'Per angler/day'
+            : 'Total fish';
+
+        let dimLabel;
+        if (_tr.metric === 'totalTrips') {
+            const boats = _tr.boatsMS ? _tr.boatsMS.getSelected() : new Set();
+            dimLabel = boats.size ? seriesLabelList(boats) : 'All boats';
+        } else if (_tr.mode === 'species') {
+            dimLabel = seriesLabelList(_tr.speciesMS.getSelected());
+        } else {
+            dimLabel = seriesLabelList(_tr.boatsMS.getSelected());
+        }
+
+        const aggLabel = _tr.aggregation === 'weekly' ? 'weekly' : 'daily';
+        const rangeLabel = !_tr.rangeDays ? 'all time'
+            : _tr.rangeDays === 30  ? 'last 30 days'
+            : _tr.rangeDays === 90  ? 'last 90 days'
+            : _tr.rangeDays === 365 ? 'last year'
+            : `last ${_tr.rangeDays} days`;
+
+        return `${dimLabel} — ${metricLabel}, ${aggLabel}, ${rangeLabel}`;
+    }
+
     // --- Aggregation -------------------------------------------------------
 
     function visibleDates() {
@@ -294,6 +375,45 @@
         const endTs = Date.parse(end + 'T12:00:00Z');
         const startTs = endTs - _tr.rangeDays * 86400000;
         return _tr.dates.filter(d => Date.parse(d + 'T12:00:00Z') >= startTs);
+    }
+
+    // Groups visible dates into buckets: one date per bucket for 'daily'
+    // (current behavior, unchanged), or non-overlapping 7-day buckets for
+    // 'weekly', anchored to the most recent visible date and walking
+    // backward — same anchoring the Species Deltas table uses for its
+    // comparison windows, so "this week" means the same thing in both
+    // places. A bucket's key is its most recent date (used as the chart's
+    // x-axis label, so moon bands / tooltip title / click-to-jump-to-date
+    // keep working unchanged). Returned oldest-first.
+    function buildBuckets(dates, aggregation) {
+        if (aggregation !== 'weekly' || !dates.length) {
+            return dates.map(d => ({ key: d, dates: [d] }));
+        }
+        const buckets = [];
+        const remaining = dates.slice();
+        let cursor = Date.parse(remaining[remaining.length - 1] + 'T12:00:00Z');
+        while (remaining.length) {
+            const bucketStart = cursor - 6 * 86400000;
+            const inBucket = [];
+            while (remaining.length &&
+                   Date.parse(remaining[remaining.length - 1] + 'T12:00:00Z') >= bucketStart) {
+                inBucket.unshift(remaining.pop());
+            }
+            if (inBucket.length) {
+                buckets.unshift({ key: inBucket[inBucket.length - 1], dates: inBucket });
+            }
+            cursor = bucketStart - 86400000;
+        }
+        return buckets;
+    }
+
+    // date -> the key of the bucket it belongs to, so per-record breakdown
+    // accumulation (species/boat tooltip sub-lists) can be filed under the
+    // right bucket regardless of aggregation.
+    function bucketKeyMap(buckets) {
+        const map = {};
+        buckets.forEach(b => b.dates.forEach(d => { map[d] = b.key; }));
+        return map;
     }
 
     // For each record, yield one or more (date, weight, tripInfo) entries depending
@@ -341,17 +461,53 @@
         return `  (${parts.join('; ')})`;
     }
 
-    // Build one series per selected species: daily total (or per-angler) for
-    // that species across all boats.
-    function seriesBySpecies(dates) {
+    // A breakdown entry's total legal-limit-days: each contributing trip's
+    // own tripDays rounded up to whole days (CA's daily bag limit applies
+    // per calendar day a trip covers — a 3-day trip carries 3x the daily
+    // allowance), summed across however many trips landed in this entry
+    // (more than one when a bucket aggregates several trips, e.g. weekly).
+    function entryLimitDays(info) {
+        return info.trips.reduce(
+            (sum, t) => sum + Math.max(1, Math.ceil(t.tripDays || 1)), 0) || 1;
+    }
+
+    // Whether a breakdown entry's catch hit the California daily bag limit,
+    // for the 🏆 shown in Per Angler chart tooltips. Reuses SPECIES_DAILY_LIMIT
+    // from dashboard.js (loaded after this file, but only read here at hover
+    // time, long after all scripts have run — same defensive-global pattern
+    // as TripDuration/moonPhase elsewhere in this file) and generalizes its
+    // single-trip limitBar math in dashboard.js to a breakdown entry that may
+    // aggregate several trips (weekly buckets).
+    function hitBagLimit(species, info, limitDays) {
+        if (typeof SPECIES_DAILY_LIMIT === 'undefined') return false;
+        const limit = SPECIES_DAILY_LIMIT[species];
+        if (limit == null || limit <= 0 || !info.anglers) return false;
+        return info.count / (info.anglers * limitDays * limit) >= 1;
+    }
+
+    // Build one series per selected species: total (or per-angler/day) per
+    // bucket across all boats. `buckets` come from buildBuckets() — one
+    // date each for 'daily', up to 7 dates each for 'weekly'. Per-angler is
+    // computed as a ratio of bucket sums (sum of count / sum of
+    // angler-limit-days), not an average of daily ratios — same convention
+    // the Species Deltas table uses for its window comparisons.
+    //
+    // Denominator is angler-LIMIT-DAYS, not raw anglers: `count` is a
+    // trip's entire cumulative catch, so a 3-day trip's anglers need to
+    // count 3x toward the total or the ratio reads as if the daily bag
+    // limit had been blown 3x over when the trip was actually right at it.
+    // Matches the Daily Reports tab's "per angler per limit-day" pill and
+    // the 🏆 trophy shown in this chart's own tooltips.
+    function seriesBySpecies(buckets) {
         const selected = _tr.speciesMS.getSelected();
         if (!selected.size) return [];
 
-        const counts = {};       // counts[date][species] = count
-        const anglerSum = {};    // anglerSum[date] = total anglers
+        const counts = {};             // counts[date][species] = count
+        const anglerLimitDaySum = {};  // anglerLimitDaySum[date] = total angler-limit-days
         // Track which (tripKey, date) pairs we've already counted anglers for,
         // so anglers don't get inflated by multiple species rows on the same trip.
         const anglerSeen = {};
+        const dateToBucketKey = bucketKeyMap(buckets);
 
         _tr.reports.forEach(r => {
             if (!r.date || !r.species || !selected.has(r.species)) return;
@@ -364,26 +520,40 @@
                 counts[d] = counts[d] || {};
                 counts[d][r.species] = (counts[d][r.species] || 0) + (r.count || 0) * w;
                 if (countAnglersOnThisRow) {
-                    anglerSum[d] = (anglerSum[d] || 0) + anglers * w;
+                    const limitDays = Math.max(1, Math.ceil(tripInfo.tripDays || 1));
+                    anglerLimitDaySum[d] = (anglerLimitDaySum[d] || 0) + anglers * limitDays * w;
                 }
 
-                // Breakdown: for each species, track catch per boat (with trip info for tooltip)
+                // Breakdown: for each species, track catch per boat (with
+                // trip info for the tooltip), filed under the whole
+                // bucket — not just whichever single date happens to be
+                // the bucket's label — so a weekly bar's tooltip shows the
+                // full week's mix, not one day of it.
                 const boat = r.boat || 'Unknown';
-                _tr.breakdown[d] = _tr.breakdown[d] || {};
-                _tr.breakdown[d][r.species] = _tr.breakdown[d][r.species] || {};
-                const bucket = _tr.breakdown[d][r.species][boat] =
-                    _tr.breakdown[d][r.species][boat] || { count: 0, trips: [] };
+                const bk = dateToBucketKey[d] || d;
+                _tr.breakdown[bk] = _tr.breakdown[bk] || {};
+                _tr.breakdown[bk][r.species] = _tr.breakdown[bk][r.species] || {};
+                const bucket = _tr.breakdown[bk][r.species][boat] =
+                    _tr.breakdown[bk][r.species][boat] || { count: 0, anglers: 0, trips: [] };
                 bucket.count += (r.count || 0) * w;
+                // Each row here is already one distinct trip for this exact
+                // species (source data is one row per date/boat/trip/species),
+                // so anglers can be summed directly — no dedup needed at this
+                // granularity, unlike the coarser per-bucket anglerSum above.
+                bucket.anglers += anglers * w;
                 bucket.trips.push(tripInfo);
             });
         });
 
         return [...selected].sort().map(sp => ({
             label: sp,
-            data: dates.map(d => {
-                const raw = (counts[d] && counts[d][sp]) || 0;
+            data: buckets.map(b => {
+                let raw = 0, a = 0;
+                b.dates.forEach(d => {
+                    raw += (counts[d] && counts[d][sp]) || 0;
+                    a += anglerLimitDaySum[d] || 0;
+                });
                 if (_tr.metric === 'perAngler') {
-                    const a = anglerSum[d] || 0;
                     return a > 0 ? raw / a : null;
                 }
                 return raw || null;
@@ -391,10 +561,13 @@
         }));
     }
 
-    // Build a single series of unique trip counts per date. Optionally
+    // Build a single series of unique trip counts per bucket. Optionally
     // filtered by the Boats multi-select (empty = all boats). Always uses
-    // as-reported attribution (a trip "returns" on one specific date).
-    function seriesTotalTrips(dates) {
+    // as-reported attribution (a trip "returns" on one specific date) —
+    // dedup is scoped per calendar day, then summed across a bucket's
+    // dates, so the same boat running the same trip type on two different
+    // days within a week still correctly counts as two trips.
+    function seriesTotalTrips(buckets) {
         const boatFilter = _tr.boatsMS ? _tr.boatsMS.getSelected() : new Set();
         const usingFilter = boatFilter.size > 0;
 
@@ -419,27 +592,39 @@
             }
         });
 
-        // Populate breakdown with the tooltip-ready trip list per date.
-        dates.forEach(d => {
-            _tr.breakdown[d] = _tr.breakdown[d] || {};
-            _tr.breakdown[d].__trips = meta[d] ? Object.values(meta[d]) : [];
+        // Populate breakdown with the tooltip-ready trip list per bucket
+        // (union of every contributing date's trips).
+        buckets.forEach(b => {
+            _tr.breakdown[b.key] = _tr.breakdown[b.key] || {};
+            const allTrips = [];
+            b.dates.forEach(d => { if (meta[d]) allTrips.push(...Object.values(meta[d])); });
+            _tr.breakdown[b.key].__trips = allTrips;
         });
 
         const label = usingFilter ? 'Total trips (filtered)' : 'Total trips';
         return [{
             label,
-            data: dates.map(d => (counts[d] ? counts[d].size : 0))
+            data: buckets.map(b => {
+                let sum = 0;
+                b.dates.forEach(d => { sum += counts[d] ? counts[d].size : 0; });
+                return sum;
+            })
         }];
     }
 
-    // Build one series per selected boat: daily total across all species.
-    function seriesByBoat(dates) {
+    // Build one series per selected boat: total (or per-angler) per bucket
+    // across all species. Mirrors seriesBySpecies() with roles swapped.
+    // Mirrors seriesBySpecies() with roles swapped, including the same
+    // angler-limit-days denominator for Per angler (see that function's
+    // comment for why raw anglers would misrepresent multi-day trips).
+    function seriesByBoat(buckets) {
         const selected = _tr.boatsMS.getSelected();
         if (!selected.size) return [];
 
-        const counts = {};       // counts[date][boat]
-        const anglerSum = {};    // anglerSum[date][boat]
+        const counts = {};             // counts[date][boat]
+        const anglerLimitDaySum = {};  // anglerLimitDaySum[date][boat]
         const anglerSeen = {};   // (tripKey) already counted for anglers?
+        const dateToBucketKey = bucketKeyMap(buckets);
 
         _tr.reports.forEach(r => {
             if (!r.date || !r.boat || !selected.has(r.boat)) return;
@@ -452,27 +637,34 @@
                 counts[d] = counts[d] || {};
                 counts[d][r.boat] = (counts[d][r.boat] || 0) + (r.count || 0) * w;
                 if (countAnglersOnThisRow) {
-                    anglerSum[d] = anglerSum[d] || {};
-                    anglerSum[d][r.boat] = (anglerSum[d][r.boat] || 0) + anglers * w;
+                    const limitDays = Math.max(1, Math.ceil(tripInfo.tripDays || 1));
+                    anglerLimitDaySum[d] = anglerLimitDaySum[d] || {};
+                    anglerLimitDaySum[d][r.boat] = (anglerLimitDaySum[d][r.boat] || 0) + anglers * limitDays * w;
                 }
 
-                // Breakdown: for each boat, track catch per species (with trip info for tooltip)
+                // Breakdown: for each boat, track catch per species (with
+                // trip info for the tooltip), filed under the whole bucket.
                 const sp = r.species || 'Unknown';
-                _tr.breakdown[d] = _tr.breakdown[d] || {};
-                _tr.breakdown[d][r.boat] = _tr.breakdown[d][r.boat] || {};
-                const bucket = _tr.breakdown[d][r.boat][sp] =
-                    _tr.breakdown[d][r.boat][sp] || { count: 0, trips: [] };
+                const bk = dateToBucketKey[d] || d;
+                _tr.breakdown[bk] = _tr.breakdown[bk] || {};
+                _tr.breakdown[bk][r.boat] = _tr.breakdown[bk][r.boat] || {};
+                const bucket = _tr.breakdown[bk][r.boat][sp] =
+                    _tr.breakdown[bk][r.boat][sp] || { count: 0, anglers: 0, trips: [] };
                 bucket.count += (r.count || 0) * w;
+                bucket.anglers += anglers * w;
                 bucket.trips.push(tripInfo);
             });
         });
 
         return [...selected].sort().map(boat => ({
             label: boat,
-            data: dates.map(d => {
-                const raw = (counts[d] && counts[d][boat]) || 0;
+            data: buckets.map(b => {
+                let raw = 0, a = 0;
+                b.dates.forEach(d => {
+                    raw += (counts[d] && counts[d][boat]) || 0;
+                    a += (anglerLimitDaySum[d] && anglerLimitDaySum[d][boat]) || 0;
+                });
                 if (_tr.metric === 'perAngler') {
-                    const a = (anglerSum[d] && anglerSum[d][boat]) || 0;
                     return a > 0 ? raw / a : null;
                 }
                 return raw || null;
@@ -534,15 +726,15 @@
         };
 
         const canvas = document.getElementById('trends-chart');
-        const isTrips = _tr.metric === 'totalTrips';
+        const isBar = chartTypeIsBar();
         _tr.chart = new Chart(canvas.getContext('2d'), {
-            type: isTrips ? 'bar' : 'line',
+            type: isBar ? 'bar' : 'line',
             data: { labels: [], datasets: [] },
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
                 events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
-                interaction: isTrips
+                interaction: isBar
                     ? { mode: 'index', axis: 'x', intersect: false }
                     : { mode: 'nearest', axis: 'x', intersect: false },
                 onClick(evt, _els, chart) {
@@ -590,8 +782,19 @@
                                 if (!items.length) return '';
                                 const d = items[0].label;
                                 const m = (typeof moonPhase === 'function') ? moonPhase(d) : null;
-                                const pretty = new Date(d + 'T12:00:00Z').toLocaleDateString('en-US',
-                                    { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+                                const range = _tr.bucketRanges[d];
+                                let pretty;
+                                if (range && range.start !== range.end) {
+                                    const s = new Date(range.start + 'T12:00:00Z');
+                                    const e = new Date(range.end + 'T12:00:00Z');
+                                    const startStr = s.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                                    const endStr = e.toLocaleDateString('en-US',
+                                        { month: 'short', day: 'numeric', year: 'numeric' });
+                                    pretty = `Week of ${startStr} – ${endStr}`;
+                                } else {
+                                    pretty = new Date(d + 'T12:00:00Z').toLocaleDateString('en-US',
+                                        { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+                                }
                                 return m ? `${pretty}  ${m.emoji} ${m.name} (${m.illumination}%)` : pretty;
                             },
                             label(ctx) {
@@ -614,7 +817,7 @@
                                 }
                                 const fmt = v == null ? '\u2014'
                                     : _tr.metric === 'perAngler'
-                                        ? v.toFixed(2) + ' / angler'
+                                        ? v.toFixed(2) + ' / angler/day'
                                         : Math.round(v).toLocaleString();
                                 const lines = [`${ctx.dataset.label}: ${fmt}`];
                                 const date = ctx.chart.data.labels[ctx.dataIndex];
@@ -626,7 +829,19 @@
                                         .slice(0, 8)
                                         .forEach(([name, info]) => {
                                             const suffix = tripSuffix(info.trips);
-                                            lines.push(`  ${name}: ${Math.round(info.count).toLocaleString()}${suffix}`);
+                                            let line = `  ${name}: ${Math.round(info.count).toLocaleString()}${suffix}`;
+                                            if (_tr.metric === 'perAngler') {
+                                                // In species mode, name = boat and every sub-line
+                                                // shares the outer dataset's species; in boat mode,
+                                                // name IS the species (the sub-key varies per line).
+                                                const species = _tr.mode === 'species' ? ctx.dataset.label : name;
+                                                const limitDays = entryLimitDays(info);
+                                                if (info.anglers > 0) {
+                                                    line += ` (${(info.count / (info.anglers * limitDays)).toFixed(2)}/angler/day)`;
+                                                }
+                                                if (hitBagLimit(species, info, limitDays)) line += ' \u{1F3C6}';
+                                            }
+                                            lines.push(line);
                                         });
                                 }
                                 return lines;
@@ -645,17 +860,29 @@
         if (!_tr.chart) return;
         _tr.breakdown = {};
         const dates = visibleDates();
+        const buckets = buildBuckets(dates, _tr.aggregation);
+
+        _tr.bucketRanges = {};
+        buckets.forEach(b => {
+            _tr.bucketRanges[b.key] = { start: b.dates[0], end: b.dates[b.dates.length - 1] };
+        });
 
         let raw;
         if (_tr.metric === 'totalTrips') {
-            raw = seriesTotalTrips(dates);
+            raw = seriesTotalTrips(buckets);
         } else {
-            raw = _tr.mode === 'species' ? seriesBySpecies(dates) : seriesByBoat(dates);
+            raw = _tr.mode === 'species' ? seriesBySpecies(buckets) : seriesByBoat(buckets);
         }
 
+        const isBar = chartTypeIsBar();
+        // Rolling-average smoothing only makes sense across daily points —
+        // its control is hidden in weekly mode (applyMetricUI), but guard
+        // here too in case a stale value from a prior daily session lingers
+        // into a weekly redraw.
+        const smoothingActive = _tr.smoothing && _tr.aggregation !== 'weekly';
         const datasets = raw.map((s, i) => {
             const color = _tr.palette[i % _tr.palette.length];
-            if (_tr.metric === 'totalTrips') {
+            if (isBar) {
                 return {
                     label: s.label,
                     data: s.data,
@@ -667,32 +894,41 @@
                     categoryPercentage: 0.95
                 };
             }
-            const data = _tr.smoothing ? rollingAverage(s.data, _tr.smoothing) : s.data;
+            const data = smoothingActive ? rollingAverage(s.data, _tr.smoothing) : s.data;
             return {
                 label: s.label,
                 data,
                 borderColor: color,
                 backgroundColor: color,
                 borderWidth: 1.6,
-                pointRadius: _tr.smoothing ? 0 : 2,
+                pointRadius: smoothingActive ? 0 : 2,
                 pointHoverRadius: 4,
                 tension: 0.25,
                 spanGaps: true
             };
         });
 
-        _tr.chart.data.labels = dates;
+        _tr.chart.data.labels = buckets.map(b => b.key);
         _tr.chart.data.datasets = datasets;
+        const baseTitle = _tr.metric === 'totalTrips' ? 'Trips'
+            : _tr.metric === 'perAngler' ? 'Fish per angler/day'
+            : 'Fish count';
+        // "(weekly total)" only makes sense for a literal sum (Total fish /
+        // Total trips) — Per angler/day is a rate, so a weekly bucket
+        // reports the same kind of number a daily one does, just averaged
+        // over more trips.
+        const weeklySuffix = _tr.aggregation === 'weekly' && _tr.metric !== 'perAngler' ? ' (weekly total)' : '';
         _tr.chart.options.scales.y.title = {
             display: true,
-            text: _tr.metric === 'totalTrips' ? 'Trips'
-                : _tr.metric === 'perAngler' ? 'Fish per angler'
-                : 'Fish count',
+            text: `${baseTitle}${weeklySuffix}`,
             color: 'rgba(0,0,0,0.55)',
             font: { size: 11 }
         };
         _tr.chart.options.plugins.legend.display = _tr.metric !== 'totalTrips';
         _tr.chart.update('none');
+
+        const titleEl = document.getElementById('trends-chart-title');
+        if (titleEl) titleEl.textContent = buildChartTitle();
     }
 
     // Toggle visibility / disabled-ness of controls that don't apply to the
@@ -705,6 +941,7 @@
         const smoothingEl  = document.getElementById('tr-smoothing');
         const attrEl       = document.getElementById('tr-attribution');
         const attrHintEl   = document.getElementById('tr-attribution-hint');
+        const metricHintRow = document.getElementById('tr-metric-hint-row');
 
         // Helper: hide/show a control along with its preceding <label>.
         function setHidden(el, hidden) {
@@ -713,6 +950,10 @@
             const prev = el.previousElementSibling;
             if (prev && prev.tagName === 'LABEL') prev.hidden = hidden;
         }
+
+        // Explains the angler-limit-days denominator — only relevant when
+        // Per angler/day is actually the metric being plotted.
+        if (metricHintRow) metricHintRow.hidden = _tr.metric !== 'perAngler';
 
         if (isTrips) {
             setHidden(modeEl,      true);
@@ -726,7 +967,9 @@
             // they switch back to Total fish / Per angler.
         } else {
             setHidden(modeEl,      false);
-            setHidden(smoothingEl, false);
+            // Rolling-average smoothing doesn't mean anything on top of
+            // already-weekly-bucketed points — hide it in that mode too.
+            setHidden(smoothingEl, _tr.aggregation === 'weekly');
             setHidden(attrEl,      false);
             if (attrHintEl) attrHintEl.hidden = false;
             // Species vs Boats visibility follows mode.
@@ -765,7 +1008,7 @@
     // state that affects both views' aggregation.
     function applyDisplayUI() {
         const isTable = _tr.display === 'table';
-        const ids = ['tr-chart-panel', 'trends-chart-wrap', 'trends-legend-note'];
+        const ids = ['tr-chart-panel', 'trends-chart-title', 'trends-chart-wrap', 'trends-legend-note'];
         ids.forEach(id => {
             const el = document.getElementById(id);
             if (el) el.hidden = isTable;

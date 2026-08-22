@@ -594,6 +594,13 @@
 }
 .trends-panel .trends-control-row:last-child { margin-bottom: var(--space-2); }
 
+.trends-chart-title {
+    font-size: var(--font-body);
+    font-weight: 600;
+    color: var(--fg);
+    margin-bottom: var(--space-2);
+}
+
 .trends-chart-wrap {
     position: relative;
     width: 100%;
@@ -613,7 +620,7 @@
     margin-left: auto;
     font-style: italic;
 }
-.trends-attribution-hint {
+.trends-hint {
     font-size: var(--font-sm);
     color: var(--fg-subtle);
     font-style: italic;
@@ -634,12 +641,6 @@
     text-align: center;
     color: var(--fg-subtle);
     font-size: var(--font-body);
-}
-
-.trends-delta-hint {
-    font-size: var(--font-sm);
-    color: var(--fg-subtle);
-    font-style: italic;
 }
 
 /* --- Species Deltas table (Trends: Table display) -------------------------- */
