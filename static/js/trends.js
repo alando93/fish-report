@@ -75,10 +75,12 @@
                     <div class="trends-control-row" id="tr-delta-controls" hidden>
                         <label>Window</label>
                         <div id="tr-delta-window"></div>
-                        <label style="margin-left: var(--space-3);">Metric</label>
+                        <label style="margin-left: var(--space-3);">Compare by</label>
                         <div id="tr-delta-metric"></div>
                         <span class="trends-delta-hint">
                             Compares the most recent window to the one immediately before it.
+                            "Total count" sums every boat's catch — a hot multi-day bite can run into
+                            the thousands even with the bite unchanged per angler.
                         </span>
                     </div>
 
@@ -138,7 +140,7 @@
             container: document.getElementById('tr-delta-metric'),
             options: [
                 { value: 'perAngler', label: 'Per angler' },
-                { value: 'total',     label: 'Total' }
+                { value: 'total',     label: 'Total count' }
             ],
             selected: _tr.deltaMetric,
             onChange: v => { _tr.deltaMetric = v; renderDeltaTable(); }
