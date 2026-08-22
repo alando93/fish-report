@@ -56,32 +56,38 @@
                         <div id="tr-display"></div>
                     </div>
 
-                    <div class="trends-control-row" id="tr-chart-controls-1">
-                        <label>View</label>
-                        <div id="tr-mode"></div>
-                        <div id="tr-species-ms"></div>
-                        <div id="tr-boats-ms" hidden></div>
+                    <div class="trends-panel" id="tr-chart-panel">
+                        <div class="trends-panel-label">Chart options</div>
+                        <div class="trends-control-row" id="tr-chart-controls-1">
+                            <label>View</label>
+                            <div id="tr-mode"></div>
+                            <div id="tr-species-ms"></div>
+                            <div id="tr-boats-ms" hidden></div>
+                        </div>
+
+                        <div class="trends-control-row" id="tr-chart-controls-2">
+                            <label>Metric</label>
+                            <div id="tr-metric"></div>
+                            <label style="margin-left: var(--space-3);">Smoothing</label>
+                            <div id="tr-smoothing"></div>
+                            <label style="margin-left: var(--space-3);">Range</label>
+                            <div id="tr-range"></div>
+                        </div>
                     </div>
 
-                    <div class="trends-control-row" id="tr-chart-controls-2">
-                        <label>Metric</label>
-                        <div id="tr-metric"></div>
-                        <label style="margin-left: var(--space-3);">Smoothing</label>
-                        <div id="tr-smoothing"></div>
-                        <label style="margin-left: var(--space-3);">Range</label>
-                        <div id="tr-range"></div>
-                    </div>
-
-                    <div class="trends-control-row" id="tr-delta-controls" hidden>
-                        <label>Window</label>
-                        <div id="tr-delta-window"></div>
-                        <label style="margin-left: var(--space-3);">Compare by</label>
-                        <div id="tr-delta-metric"></div>
-                        <span class="trends-delta-hint">
-                            Compares the most recent window to the one immediately before it.
-                            "Total count" sums every boat's catch — a hot multi-day bite can run into
-                            the thousands even with the bite unchanged per angler.
-                        </span>
+                    <div class="trends-panel" id="tr-table-panel" hidden>
+                        <div class="trends-panel-label">Table options</div>
+                        <div class="trends-control-row" id="tr-delta-controls">
+                            <label>Window</label>
+                            <div id="tr-delta-window"></div>
+                            <label style="margin-left: var(--space-3);">Compare by</label>
+                            <div id="tr-delta-metric"></div>
+                            <span class="trends-delta-hint">
+                                Compares the most recent window to the one immediately before it.
+                                "Total count" sums every boat's catch — a hot multi-day bite can run into
+                                the thousands even with the bite unchanged per angler.
+                            </span>
+                        </div>
                     </div>
 
                     <div class="trends-control-row" id="tr-attribution-row">
@@ -759,14 +765,14 @@
     // state that affects both views' aggregation.
     function applyDisplayUI() {
         const isTable = _tr.display === 'table';
-        const ids = ['tr-chart-controls-1', 'tr-chart-controls-2', 'trends-chart-wrap', 'trends-legend-note'];
+        const ids = ['tr-chart-panel', 'trends-chart-wrap', 'trends-legend-note'];
         ids.forEach(id => {
             const el = document.getElementById(id);
             if (el) el.hidden = isTable;
         });
-        const deltaControls = document.getElementById('tr-delta-controls');
+        const tablePanel = document.getElementById('tr-table-panel');
         const tableWrap = document.getElementById('trends-table-wrap');
-        if (deltaControls) deltaControls.hidden = !isTable;
+        if (tablePanel) tablePanel.hidden = !isTable;
         if (tableWrap) tableWrap.hidden = !isTable;
     }
 

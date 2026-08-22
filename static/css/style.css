@@ -573,6 +573,27 @@
     letter-spacing: 0.04em;
 }
 
+/* Visually scopes a group of controls to the view they affect (Chart vs.
+   Table) — the accent bar + heading make ownership legible on sight,
+   instead of relying on the visitor to have learned which bare-word
+   control label belongs to which view. */
+.trends-panel {
+    border-left: 2px solid var(--accent);
+    background: var(--bg-subtle);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: var(--space-3) var(--space-3) var(--space-1);
+    margin-bottom: var(--space-3);
+}
+.trends-panel-label {
+    font-size: var(--font-xs);
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-2);
+}
+.trends-panel .trends-control-row:last-child { margin-bottom: var(--space-2); }
+
 .trends-chart-wrap {
     position: relative;
     width: 100%;
