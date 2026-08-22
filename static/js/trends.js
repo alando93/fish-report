@@ -2,6 +2,13 @@
 
 (function () {
 
+    // Species Deltas table: minimum trip count required in *each* window
+    // (not combined) before a species gets a real Delta % — a combined
+    // floor still let a 4-trip window divide by a 1-trip window and print
+    // "+1741%" on real data during testing, so both sides must clear this
+    // independently. Tunable; see FISH-002.
+    const DELTA_MIN_TRIPS_PER_WINDOW = 2;
+
     const _tr = {
         reports: [],
         dates: [],
@@ -16,6 +23,9 @@
         rangeDays: 90,      // 30 | 90 | 365 | 0 (all)
         attribution: 'asReported', // 'asReported' | 'spread'
         breakdown: {},      // breakdown[date][groupLabel][subLabel] = { count, trips: [{ tripDays, dayIndex, totalDays }] }
+        display: 'chart',      // 'chart' | 'table' — Species Deltas table toggle
+        deltaWindow: 7,         // 7 | 14 | 30 — comparison window length in days
+        deltaMetric: 'perAngler', // 'perAngler' | 'total' — independent of the chart's Metric
     };
 
     window.initTrendsSection = function (reports) {
@@ -42,13 +52,18 @@
 
                 <div class="trends-body">
                     <div class="trends-control-row">
+                        <label>Display</label>
+                        <div id="tr-display"></div>
+                    </div>
+
+                    <div class="trends-control-row" id="tr-chart-controls-1">
                         <label>View</label>
                         <div id="tr-mode"></div>
                         <div id="tr-species-ms"></div>
                         <div id="tr-boats-ms" hidden></div>
                     </div>
 
-                    <div class="trends-control-row">
+                    <div class="trends-control-row" id="tr-chart-controls-2">
                         <label>Metric</label>
                         <div id="tr-metric"></div>
                         <label style="margin-left: var(--space-3);">Smoothing</label>
@@ -57,19 +72,33 @@
                         <div id="tr-range"></div>
                     </div>
 
-                    <div class="trends-control-row">
+                    <div class="trends-control-row" id="tr-delta-controls" hidden>
+                        <label>Window</label>
+                        <div id="tr-delta-window"></div>
+                        <label style="margin-left: var(--space-3);">Metric</label>
+                        <div id="tr-delta-metric"></div>
+                        <span class="trends-delta-hint">
+                            Compares the most recent window to the one immediately before it.
+                        </span>
+                    </div>
+
+                    <div class="trends-control-row" id="tr-attribution-row">
                         <label>Attribution</label>
                         <div id="tr-attribution"></div>
-                        <span class="trends-attribution-hint">
+                        <span class="trends-attribution-hint" id="tr-attribution-hint">
                             How multi-day trip catches are distributed across the calendar.
                         </span>
                     </div>
 
-                    <div class="trends-chart-wrap">
+                    <div class="trends-chart-wrap" id="trends-chart-wrap">
                         <canvas id="trends-chart"></canvas>
                     </div>
 
-                    <div class="trends-legend-note">
+                    <div class="trends-table-wrap" id="trends-table-wrap" hidden>
+                        <table class="trends-delta-table" id="species-delta-table"></table>
+                    </div>
+
+                    <div class="trends-legend-note" id="trends-legend-note">
                         <span><span class="trends-legend-swatch new"></span>new moon (\u00B11 day)</span>
                         <span><span class="trends-legend-swatch full"></span>full moon (\u00B11 day)</span>
                         <span class="trends-click-hint">Tip: click/tap any day to update its Daily Report.</span>
@@ -79,6 +108,42 @@
         `;
 
         // Segmented controls
+        _tr.displaySeg = UI.makeSegmented({
+            container: document.getElementById('tr-display'),
+            options: [
+                { value: 'chart', label: 'Chart' },
+                { value: 'table', label: 'Table' }
+            ],
+            selected: _tr.display,
+            onChange: v => {
+                _tr.display = v;
+                applyDisplayUI();
+                if (v === 'table') renderDeltaTable();
+                else if (_tr.chart) _tr.chart.resize();
+            }
+        });
+
+        UI.makeSegmented({
+            container: document.getElementById('tr-delta-window'),
+            options: [
+                { value: '7',  label: '7d' },
+                { value: '14', label: '14d' },
+                { value: '30', label: '30d' }
+            ],
+            selected: String(_tr.deltaWindow),
+            onChange: v => { _tr.deltaWindow = parseInt(v, 10) || 7; renderDeltaTable(); }
+        });
+
+        UI.makeSegmented({
+            container: document.getElementById('tr-delta-metric'),
+            options: [
+                { value: 'perAngler', label: 'Per angler' },
+                { value: 'total',     label: 'Total' }
+            ],
+            selected: _tr.deltaMetric,
+            onChange: v => { _tr.deltaMetric = v; renderDeltaTable(); }
+        });
+
         UI.makeSegmented({
             container: document.getElementById('tr-mode'),
             options: [
@@ -142,7 +207,11 @@
                 { value: 'spread',     label: 'Spread multi-day' }
             ],
             selected: _tr.attribution,
-            onChange: v => { _tr.attribution = v; redraw(); }
+            onChange: v => {
+                _tr.attribution = v;
+                redraw();
+                if (_tr.display === 'table') renderDeltaTable();
+            }
         });
 
         // Multi-selects
@@ -164,6 +233,7 @@
 
         createChart();
         applyMetricUI();
+        applyDisplayUI();
         redraw();
     };
 
@@ -626,7 +696,7 @@
         const boatsEl      = document.getElementById('tr-boats-ms');
         const smoothingEl  = document.getElementById('tr-smoothing');
         const attrEl       = document.getElementById('tr-attribution');
-        const attrHintEl   = document.querySelector('.trends-attribution-hint');
+        const attrHintEl   = document.getElementById('tr-attribution-hint');
 
         // Helper: hide/show a control along with its preceding <label>.
         function setHidden(el, hidden) {
@@ -673,5 +743,219 @@
             }
         }
         redraw();
+    }
+
+    // --- Species Deltas table (Display: Table) ------------------------------
+    //
+    // A sortable, color-coded table of per-species catch deltas between the
+    // most recent comparison window and the one immediately before it —
+    // built to answer "is the tuna bite dying down?" at a glance, which is
+    // hard to read off overlapping chart lines. See FISH-002.
+
+    // Toggle visibility between the chart controls/canvas and the table
+    // controls/table. Attribution stays visible in both modes — it's shared
+    // state that affects both views' aggregation.
+    function applyDisplayUI() {
+        const isTable = _tr.display === 'table';
+        const ids = ['tr-chart-controls-1', 'tr-chart-controls-2', 'trends-chart-wrap', 'trends-legend-note'];
+        ids.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.hidden = isTable;
+        });
+        const deltaControls = document.getElementById('tr-delta-controls');
+        const tableWrap = document.getElementById('trends-table-wrap');
+        if (deltaControls) deltaControls.hidden = !isTable;
+        if (tableWrap) tableWrap.hidden = !isTable;
+    }
+
+    // For each species, sum counts (and deduped angler totals, and unique
+    // trip counts) into the current window and the immediately preceding
+    // window of the same length. Reuses eachAllocation()/_tr.attribution —
+    // the same per-day trip-allocation math seriesBySpecies() uses — rather
+    // than reimplementing it.
+    function computeSpeciesWindowStats(windowDays) {
+        const dates = _tr.dates;
+        const stats = {};
+        if (!dates.length) return stats;
+
+        const end = dates[dates.length - 1];
+        const endTs = Date.parse(end + 'T12:00:00Z');
+        const curStart = endTs - (windowDays - 1) * 86400000;
+        const priorEnd = curStart - 86400000;
+        const priorStart = priorEnd - (windowDays - 1) * 86400000;
+
+        const currentSet = new Set();
+        const priorSet = new Set();
+        dates.forEach(d => {
+            const t = Date.parse(d + 'T12:00:00Z');
+            if (t >= curStart && t <= endTs) currentSet.add(d);
+            else if (t >= priorStart && t <= priorEnd) priorSet.add(d);
+        });
+
+        // Dedup key so a trip spanning multiple species rows doesn't get its
+        // anglers counted once per species per window (mirrors the
+        // anglerSeen pattern in seriesBySpecies()).
+        const anglerSeen = {};
+
+        function bucket(species) {
+            return stats[species] || (stats[species] = {
+                curTotal: 0, curAnglers: 0, curTrips: new Set(),
+                priorTotal: 0, priorAnglers: 0, priorTrips: new Set()
+            });
+        }
+
+        _tr.reports.forEach(r => {
+            if (!r.date || !r.species) return;
+            const anglers = parseInt(r.anglers) || 0;
+            const tripKey = `${r.boat}|${r.trip}|${r.date}`;
+
+            eachAllocation(r, (d, w) => {
+                const which = currentSet.has(d) ? 'cur' : priorSet.has(d) ? 'prior' : null;
+                if (!which) return;
+
+                const b = bucket(r.species);
+                const amt = (r.count || 0) * w;
+                if (which === 'cur') b.curTotal += amt; else b.priorTotal += amt;
+
+                const dedupKey = `${which}|${r.species}|${tripKey}`;
+                if (!anglerSeen[dedupKey]) {
+                    anglerSeen[dedupKey] = true;
+                    if (which === 'cur') b.curAnglers += anglers * w; else b.priorAnglers += anglers * w;
+                }
+                (which === 'cur' ? b.curTrips : b.priorTrips).add(tripKey);
+            });
+        });
+
+        return stats;
+    }
+
+    // Build one row per species with both windows' values (raw + the
+    // selected metric), the delta, and a guarded Delta % — null unless
+    // *both* windows independently clear DELTA_MIN_TRIPS_PER_WINDOW (too
+    // noisy to trust otherwise), or the species is flagged isNew (enough
+    // current-window trips, zero prior-window catches).
+    function speciesDeltaRows() {
+        const stats = computeSpeciesWindowStats(_tr.deltaWindow);
+        const usePerAngler = _tr.deltaMetric === 'perAngler';
+
+        return Object.keys(stats).map(species => {
+            const s = stats[species];
+            const curVal = usePerAngler ? (s.curAnglers > 0 ? s.curTotal / s.curAnglers : 0) : s.curTotal;
+            const priorVal = usePerAngler ? (s.priorAnglers > 0 ? s.priorTotal / s.priorAnglers : 0) : s.priorTotal;
+
+            const curOK = s.curTrips.size >= DELTA_MIN_TRIPS_PER_WINDOW;
+            const priorOK = s.priorTrips.size >= DELTA_MIN_TRIPS_PER_WINDOW;
+            const isNew = curOK && s.priorTotal === 0;
+            const pct = (curOK && priorOK && !isNew && priorVal > 0) ? (curVal / priorVal - 1) * 100 : null;
+
+            return {
+                species,
+                curVal, priorVal,
+                delta: curVal - priorVal,
+                pct, isNew,
+                curTrips: s.curTrips.size,
+                priorTrips: s.priorTrips.size
+            };
+        });
+    }
+
+    // Default row order (before any header click): |Delta %| descending, so
+    // big drop-offs surface alongside big gains instead of getting buried
+    // under every positive move. "New" species count as the largest
+    // possible move; rows without a computable Delta % sink to the bottom
+    // without any special-case ranking.
+    function magnitudeSortKey(row) {
+        if (row.isNew) return Number.MAX_SAFE_INTEGER;
+        return row.pct == null ? -1 : Math.abs(row.pct);
+    }
+
+    function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, c => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        })[c]);
+    }
+
+    function fmtCount(v) { return Number.isFinite(v) ? Math.round(v).toLocaleString() : '—'; }
+    function fmtRate(v)  { return Number.isFinite(v) ? v.toFixed(2) : '—'; }
+    function fmtSignedCount(v) { const r = Math.round(v); return (r >= 0 ? '+' : '') + r.toLocaleString(); }
+    function fmtSignedRate(v)  { return (v >= 0 ? '+' : '') + v.toFixed(2); }
+    function fmtPct(v)         { return (v >= 0 ? '+' : '') + v.toFixed(1) + '%'; }
+    function deltaClass(v)     { return v > 0 ? 'trends-up' : v < 0 ? 'trends-down' : ''; }
+
+    // Missing-data sentinel (mirrors equity-horizon's Positions table
+    // convention): sorts last descending / first ascending instead of
+    // producing NaN when parsed as a float.
+    const MISSING_SORT = '-1e18';
+
+    function renderDeltaTable() {
+        const table = document.getElementById('species-delta-table');
+        if (!table) return;
+
+        const rows = speciesDeltaRows();
+        rows.sort((a, b) => magnitudeSortKey(b) - magnitudeSortKey(a));
+
+        const usePerAngler = _tr.deltaMetric === 'perAngler';
+        const valFmt = usePerAngler ? fmtRate : fmtCount;
+        const signedFmt = usePerAngler ? fmtSignedRate : fmtSignedCount;
+
+        const thead = '<thead><tr>' +
+            '<th class="sortable txt" data-type="text">Species</th>' +
+            `<th class="sortable">Last ${_tr.deltaWindow}d</th>` +
+            `<th class="sortable">Prior ${_tr.deltaWindow}d</th>` +
+            '<th class="sortable">Δ</th>' +
+            '<th class="sortable">Δ%</th>' +
+            '<th>Trips</th>' +
+            '</tr></thead>';
+
+        const bodyRows = rows.map(r => {
+            const pctCell = r.isNew
+                ? `<td class="trends-up trends-delta-new" data-sort="1e18">New</td>`
+                : (r.pct == null
+                    ? `<td class="trends-delta-muted" data-sort="${MISSING_SORT}">—</td>`
+                    : `<td class="${deltaClass(r.pct)}" data-sort="${r.pct}">${fmtPct(r.pct)}</td>`);
+
+            return '<tr>' +
+                `<td class="txt" data-sort="${escapeHtml(r.species)}">${escapeHtml(r.species)}</td>` +
+                `<td data-sort="${r.curVal}">${valFmt(r.curVal)}</td>` +
+                `<td data-sort="${r.priorVal}">${valFmt(r.priorVal)}</td>` +
+                `<td class="${deltaClass(r.delta)}" data-sort="${r.delta}">${signedFmt(r.delta)}</td>` +
+                pctCell +
+                `<td class="trends-delta-trips">${r.curTrips} / ${r.priorTrips}</td>` +
+                '</tr>';
+        }).join('');
+
+        table.innerHTML = thead + '<tbody>' +
+            (bodyRows || '<tr><td colspan="6" class="trends-delta-empty">No data for this window.</td></tr>') +
+            '</tbody>';
+
+        attachDeltaSort(table);
+    }
+
+    // Click-to-sort for the Species Deltas table, ported from
+    // equity-horizon's Positions table SORT_JS: read the raw value from
+    // each cell's data-sort attribute (never reparse the formatted text),
+    // toggle direction on repeat clicks of the same header, and re-append
+    // <tr> rows in the new order. Reattached on every render since the
+    // table body is rebuilt from scratch each time.
+    function attachDeltaSort(table) {
+        const headRow = table.tHead.rows[0];
+        const tbody = table.tBodies[0];
+        Array.prototype.forEach.call(headRow.cells, (th, colIndex) => {
+            if (!th.classList.contains('sortable')) return;
+            th.addEventListener('click', () => {
+                const dir = th.classList.contains('sort-desc') ? 'asc' : 'desc';
+                Array.prototype.forEach.call(headRow.cells, h => h.classList.remove('sort-asc', 'sort-desc'));
+                th.classList.add(dir === 'asc' ? 'sort-asc' : 'sort-desc');
+                const isText = th.getAttribute('data-type') === 'text';
+                const rowEls = Array.prototype.slice.call(tbody.rows);
+                rowEls.sort((a, b) => {
+                    const av = a.cells[colIndex].getAttribute('data-sort') || '';
+                    const bv = b.cells[colIndex].getAttribute('data-sort') || '';
+                    const cmp = isText ? av.localeCompare(bv) : (parseFloat(av) - parseFloat(bv));
+                    return dir === 'asc' ? cmp : -cmp;
+                });
+                rowEls.forEach(row => tbody.appendChild(row));
+            });
+        });
     }
 })();
