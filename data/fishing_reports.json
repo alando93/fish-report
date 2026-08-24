@@ -1054,6 +1054,32 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-23"
     },
     {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Pronto",
+      "trip": "Full Day",
+      "anglers": "12 Anglers",
+      "species": "Skipjack Tuna",
+      "count": 1,
+      "released": false,
+      "date": "2026-08-23",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-23"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Pronto",
+      "trip": "Full Day",
+      "anglers": "12 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 10,
+      "released": false,
+      "date": "2026-08-23",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-23"
+    },
+    {
       "location": "San Diego, CA",
       "landing": "Point Loma Sportfishing Fish Counts",
       "boat": "Daily Double",
@@ -505792,7 +505818,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-08-24 09:24:28 PDT",
+  "last_updated": "2026-08-24 13:18:49 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
