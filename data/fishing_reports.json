@@ -263,6 +263,19 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Daiwa Pacific",
+      "trip": "Overnight",
+      "anglers": "18 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 7,
+      "released": false,
+      "date": "2026-08-24",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-24"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Old Glory",
       "trip": "Overnight",
       "anglers": "19 Anglers",
@@ -506715,7 +506728,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-08-25 09:24:36 PDT",
+  "last_updated": "2026-08-25 13:17:43 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
