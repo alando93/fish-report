@@ -69,7 +69,7 @@
       "location": "San Diego, CA",
       "landing": "Fisherman's Landing Fish Counts",
       "boat": "Pegasus",
-      "trip": "Overnight",
+      "trip": "2 Day",
       "anglers": "17 Anglers",
       "species": "Bluefin Tuna",
       "count": 68,
@@ -82,10 +82,10 @@
       "location": "San Diego, CA",
       "landing": "Fisherman's Landing Fish Counts",
       "boat": "Pegasus",
-      "trip": "Overnight",
+      "trip": "2 Day",
       "anglers": "17 Anglers",
-      "species": "Yellowfin Tuna",
-      "count": 170,
+      "species": "Yellowtail",
+      "count": 10,
       "released": false,
       "date": "2026-08-25",
       "source": "San Diego Fish Reports",
@@ -508015,7 +508015,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-08-26 05:30:47 PDT",
+  "last_updated": "2026-08-26 09:41:17 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
