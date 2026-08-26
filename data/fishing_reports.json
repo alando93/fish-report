@@ -224,6 +224,32 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Nautilus",
+      "trip": "Overnight",
+      "anglers": "5 Anglers",
+      "species": "Dorado",
+      "count": 4,
+      "released": false,
+      "date": "2026-08-25",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-25"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Nautilus",
+      "trip": "Overnight",
+      "anglers": "5 Anglers",
+      "species": "Striped Marlin",
+      "count": 2,
+      "released": true,
+      "date": "2026-08-25",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-25"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Old Glory",
       "trip": "Overnight",
       "anglers": "33 Anglers",
@@ -507989,7 +508015,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-08-26 01:31:19 PDT",
+  "last_updated": "2026-08-26 05:30:47 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
