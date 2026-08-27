@@ -81,6 +81,19 @@
     {
       "location": "San Diego, CA",
       "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Lucky B Sportfishing",
+      "trip": "Full Day",
+      "anglers": "2 Anglers",
+      "species": "Yellowtail",
+      "count": 10,
+      "released": false,
+      "date": "2026-08-26",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-26"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
       "boat": "Constitution",
       "trip": "2 Day",
       "anglers": "21 Anglers",
@@ -509055,7 +509068,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-08-26 22:48:24 PDT",
+  "last_updated": "2026-08-27 11:37:59 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
