@@ -784,6 +784,58 @@
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "25 Anglers",
+      "species": "Sand Bass",
+      "count": 12,
+      "released": false,
+      "date": "2026-08-28",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-28"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "25 Anglers",
+      "species": "Calico Bass",
+      "count": 8,
+      "released": false,
+      "date": "2026-08-28",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-28"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "25 Anglers",
+      "species": "Bonito",
+      "count": 75,
+      "released": false,
+      "date": "2026-08-28",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-28"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
+      "trip": "1/2 Day Twilight",
+      "anglers": "25 Anglers",
+      "species": "Calico Bass",
+      "count": 30,
+      "released": true,
+      "date": "2026-08-28",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-08-28"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Chubasco II",
       "trip": "3/4 Day",
       "anglers": "30 Anglers",
       "species": "Sand Bass",
@@ -511993,7 +512045,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-08-29 03:35:09 PDT",
+  "last_updated": "2026-08-29 08:56:17 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
