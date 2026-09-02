@@ -94,6 +94,71 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Malihini",
+      "trip": "Full Day",
+      "anglers": "21 Anglers",
+      "species": "Sand Bass",
+      "count": 4,
+      "released": false,
+      "date": "2026-09-01",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-01"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Malihini",
+      "trip": "Full Day",
+      "anglers": "21 Anglers",
+      "species": "Bullet Tuna",
+      "count": 1,
+      "released": false,
+      "date": "2026-09-01",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-01"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Malihini",
+      "trip": "Full Day",
+      "anglers": "21 Anglers",
+      "species": "Yellowtail",
+      "count": 12,
+      "released": false,
+      "date": "2026-09-01",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-01"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Malihini",
+      "trip": "Full Day",
+      "anglers": "21 Anglers",
+      "species": "Calico Bass",
+      "count": 14,
+      "released": false,
+      "date": "2026-09-01",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-01"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Malihini",
+      "trip": "Full Day",
+      "anglers": "21 Anglers",
+      "species": "Bonito",
+      "count": 100,
+      "released": false,
+      "date": "2026-09-01",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-01"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Grande",
       "trip": "Full Day Offshore",
       "anglers": "32 Anglers",
@@ -517583,7 +517648,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-09-01 19:00:54 PDT",
+  "last_updated": "2026-09-02 01:13:57 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
