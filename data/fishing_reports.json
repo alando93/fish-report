@@ -265,7 +265,7 @@
       "landing": "H&M Landing Fish Counts",
       "boat": "Legend",
       "trip": "2 Day",
-      "anglers": "0 Anglers",
+      "anglers": "28 Anglers",
       "species": "Bluefin Tuna",
       "count": 32,
       "released": false,
@@ -278,7 +278,7 @@
       "landing": "H&M Landing Fish Counts",
       "boat": "Legend",
       "trip": "2 Day",
-      "anglers": "0 Anglers",
+      "anglers": "28 Anglers",
       "species": "Yellowtail",
       "count": 3,
       "released": false,
@@ -291,7 +291,7 @@
       "landing": "H&M Landing Fish Counts",
       "boat": "Legend",
       "trip": "2 Day",
-      "anglers": "0 Anglers",
+      "anglers": "28 Anglers",
       "species": "Dorado",
       "count": 4,
       "released": false,
@@ -304,7 +304,7 @@
       "landing": "H&M Landing Fish Counts",
       "boat": "Legend",
       "trip": "2 Day",
-      "anglers": "0 Anglers",
+      "anglers": "28 Anglers",
       "species": "Striped Marlin",
       "count": 1,
       "released": false,
@@ -317,7 +317,7 @@
       "landing": "H&M Landing Fish Counts",
       "boat": "Legend",
       "trip": "2 Day",
-      "anglers": "0 Anglers",
+      "anglers": "28 Anglers",
       "species": "Yellowfin Tuna",
       "count": 3,
       "released": false,
@@ -518584,7 +518584,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-09-03 01:23:26 PDT",
+  "last_updated": "2026-09-03 08:28:56 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
