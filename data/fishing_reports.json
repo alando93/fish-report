@@ -263,6 +263,71 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Legend",
+      "trip": "2 Day",
+      "anglers": "0 Anglers",
+      "species": "Bluefin Tuna",
+      "count": 32,
+      "released": false,
+      "date": "2026-09-02",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-02"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Legend",
+      "trip": "2 Day",
+      "anglers": "0 Anglers",
+      "species": "Yellowtail",
+      "count": 3,
+      "released": false,
+      "date": "2026-09-02",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-02"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Legend",
+      "trip": "2 Day",
+      "anglers": "0 Anglers",
+      "species": "Dorado",
+      "count": 4,
+      "released": false,
+      "date": "2026-09-02",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-02"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Legend",
+      "trip": "2 Day",
+      "anglers": "0 Anglers",
+      "species": "Striped Marlin",
+      "count": 1,
+      "released": false,
+      "date": "2026-09-02",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-02"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Legend",
+      "trip": "2 Day",
+      "anglers": "0 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 3,
+      "released": false,
+      "date": "2026-09-02",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-02"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Nautilus",
       "trip": "2.5 Day",
       "anglers": "5 Anglers",
@@ -518519,7 +518584,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-09-02 19:05:45 PDT",
+  "last_updated": "2026-09-03 01:23:26 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
