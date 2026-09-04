@@ -185,6 +185,58 @@
     {
       "location": "San Diego, CA",
       "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Pegasus",
+      "trip": "2 Day",
+      "anglers": "9 Anglers",
+      "species": "Bluefin Tuna",
+      "count": 32,
+      "released": false,
+      "date": "2026-09-03",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-03"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Pegasus",
+      "trip": "2 Day",
+      "anglers": "9 Anglers",
+      "species": "Yellowtail",
+      "count": 30,
+      "released": false,
+      "date": "2026-09-03",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-03"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Pegasus",
+      "trip": "2 Day",
+      "anglers": "9 Anglers",
+      "species": "Dorado",
+      "count": 10,
+      "released": false,
+      "date": "2026-09-03",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-03"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Pegasus",
+      "trip": "2 Day",
+      "anglers": "9 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 9,
+      "released": false,
+      "date": "2026-09-03",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-03"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
       "boat": "Islander",
       "trip": "3 Day",
       "anglers": "10 Anglers",
@@ -519572,7 +519624,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-09-04 01:19:15 PDT",
+  "last_updated": "2026-09-04 08:26:52 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
