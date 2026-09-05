@@ -1,6 +1,110 @@
 {
   "reports": [
     {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day AM",
+      "anglers": "12 Anglers",
+      "species": "Bonito",
+      "count": 60,
+      "released": false,
+      "date": "2026-09-05",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-05"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Seaforth Sportfishing Fish Counts",
+      "boat": "New Seaforth",
+      "trip": "1/2 Day AM",
+      "anglers": "45 Anglers",
+      "species": "Sand Bass",
+      "count": 3,
+      "released": false,
+      "date": "2026-09-05",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-05"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Seaforth Sportfishing Fish Counts",
+      "boat": "New Seaforth",
+      "trip": "1/2 Day AM",
+      "anglers": "45 Anglers",
+      "species": "Barracuda",
+      "count": 44,
+      "released": false,
+      "date": "2026-09-05",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-05"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Seaforth Sportfishing Fish Counts",
+      "boat": "New Seaforth",
+      "trip": "1/2 Day AM",
+      "anglers": "45 Anglers",
+      "species": "Calico Bass",
+      "count": 8,
+      "released": false,
+      "date": "2026-09-05",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-05"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Seaforth Sportfishing Fish Counts",
+      "boat": "New Seaforth",
+      "trip": "1/2 Day AM",
+      "anglers": "45 Anglers",
+      "species": "Bonito",
+      "count": 74,
+      "released": false,
+      "date": "2026-09-05",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-05"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Seaforth Sportfishing Fish Counts",
+      "boat": "New Seaforth",
+      "trip": "1/2 Day Twilight",
+      "anglers": "53 Anglers",
+      "species": "Calico Bass",
+      "count": 1,
+      "released": false,
+      "date": "2026-09-05",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-05"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Seaforth Sportfishing Fish Counts",
+      "boat": "New Seaforth",
+      "trip": "1/2 Day Twilight",
+      "anglers": "53 Anglers",
+      "species": "Bonito",
+      "count": 191,
+      "released": false,
+      "date": "2026-09-05",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-05"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Seaforth Sportfishing Fish Counts",
+      "boat": "New Seaforth",
+      "trip": "1/2 Day Twilight",
+      "anglers": "53 Anglers",
+      "species": "Rockfish",
+      "count": 2,
+      "released": false,
+      "date": "2026-09-05",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-05"
+    },
+    {
       "location": "San Diego, CA",
       "landing": "Fisherman's Landing Fish Counts",
       "boat": "Dolphin",
@@ -521353,7 +521457,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-09-05 10:48:25 PDT",
+  "last_updated": "2026-09-05 14:47:49 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
