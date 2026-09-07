@@ -341,6 +341,97 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Malihini",
+      "trip": "Full Day",
+      "anglers": "22 Anglers",
+      "species": "Sand Bass",
+      "count": 4,
+      "released": false,
+      "date": "2026-09-06",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-06"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Malihini",
+      "trip": "Full Day",
+      "anglers": "22 Anglers",
+      "species": "Bullet Tuna",
+      "count": 67,
+      "released": false,
+      "date": "2026-09-06",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-06"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Malihini",
+      "trip": "Full Day",
+      "anglers": "22 Anglers",
+      "species": "Sculpin",
+      "count": 4,
+      "released": false,
+      "date": "2026-09-06",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-06"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Malihini",
+      "trip": "Full Day",
+      "anglers": "22 Anglers",
+      "species": "Sheephead",
+      "count": 1,
+      "released": false,
+      "date": "2026-09-06",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-06"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Malihini",
+      "trip": "Full Day",
+      "anglers": "22 Anglers",
+      "species": "Calico Bass",
+      "count": 1,
+      "released": false,
+      "date": "2026-09-06",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-06"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Malihini",
+      "trip": "Full Day",
+      "anglers": "22 Anglers",
+      "species": "Bonito",
+      "count": 110,
+      "released": false,
+      "date": "2026-09-06",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-06"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Malihini",
+      "trip": "Full Day",
+      "anglers": "22 Anglers",
+      "species": "Red Rockfish",
+      "count": 3,
+      "released": false,
+      "date": "2026-09-06",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-06"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Grande",
       "trip": "Full Day Offshore",
       "anglers": "41 Anglers",
@@ -524148,7 +524239,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-09-06 18:55:25 PDT",
+  "last_updated": "2026-09-07 01:44:46 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
