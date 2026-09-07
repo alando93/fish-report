@@ -96,7 +96,7 @@
       "landing": "Fisherman's Landing Fish Counts",
       "boat": "Dolphin",
       "trip": "1/2 Day PM",
-      "anglers": "27 Anglers",
+      "anglers": "58 Anglers",
       "species": "Barracuda",
       "count": 29,
       "released": false,
@@ -109,7 +109,7 @@
       "landing": "Fisherman's Landing Fish Counts",
       "boat": "Dolphin",
       "trip": "1/2 Day PM",
-      "anglers": "27 Anglers",
+      "anglers": "58 Anglers",
       "species": "Sheephead",
       "count": 3,
       "released": false,
@@ -122,7 +122,7 @@
       "landing": "Fisherman's Landing Fish Counts",
       "boat": "Dolphin",
       "trip": "1/2 Day PM",
-      "anglers": "27 Anglers",
+      "anglers": "58 Anglers",
       "species": "Yellowtail",
       "count": 4,
       "released": false,
@@ -135,7 +135,7 @@
       "landing": "Fisherman's Landing Fish Counts",
       "boat": "Dolphin",
       "trip": "1/2 Day PM",
-      "anglers": "27 Anglers",
+      "anglers": "58 Anglers",
       "species": "Calico Bass",
       "count": 20,
       "released": false,
@@ -148,7 +148,7 @@
       "landing": "Fisherman's Landing Fish Counts",
       "boat": "Dolphin",
       "trip": "1/2 Day PM",
-      "anglers": "27 Anglers",
+      "anglers": "58 Anglers",
       "species": "Bonito",
       "count": 358,
       "released": false,
@@ -524239,7 +524239,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-09-07 01:44:46 PDT",
+  "last_updated": "2026-09-07 09:51:48 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
