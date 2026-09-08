@@ -978,6 +978,84 @@
     {
       "location": "San Diego, CA",
       "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day AM",
+      "anglers": "40 Anglers",
+      "species": "Barracuda",
+      "count": 13,
+      "released": false,
+      "date": "2026-09-07",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-07"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day AM",
+      "anglers": "40 Anglers",
+      "species": "Sheephead",
+      "count": 6,
+      "released": false,
+      "date": "2026-09-07",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-07"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day AM",
+      "anglers": "40 Anglers",
+      "species": "Calico Bass",
+      "count": 22,
+      "released": false,
+      "date": "2026-09-07",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-07"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day AM",
+      "anglers": "40 Anglers",
+      "species": "Whitefish",
+      "count": 5,
+      "released": false,
+      "date": "2026-09-07",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-07"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day AM",
+      "anglers": "40 Anglers",
+      "species": "Bonito",
+      "count": 89,
+      "released": false,
+      "date": "2026-09-07",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-07"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day AM",
+      "anglers": "40 Anglers",
+      "species": "Rockfish",
+      "count": 31,
+      "released": false,
+      "date": "2026-09-07",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-07"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
       "boat": "Point Loma",
       "trip": "Full Day",
       "anglers": "19 Anglers",
@@ -525617,7 +525695,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-09-07 19:06:18 PDT",
+  "last_updated": "2026-09-08 01:25:51 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
