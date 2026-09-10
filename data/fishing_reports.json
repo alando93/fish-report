@@ -315,6 +315,45 @@
     {
       "location": "San Diego, CA",
       "landing": "H&M Landing Fish Counts",
+      "boat": "Patriot (SD)",
+      "trip": "2 Day",
+      "anglers": "7 Anglers",
+      "species": "Bluefin Tuna",
+      "count": 28,
+      "released": false,
+      "date": "2026-09-09",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-09"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Patriot (SD)",
+      "trip": "2 Day",
+      "anglers": "7 Anglers",
+      "species": "Yellowtail",
+      "count": 5,
+      "released": false,
+      "date": "2026-09-09",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-09"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Patriot (SD)",
+      "trip": "2 Day",
+      "anglers": "7 Anglers",
+      "species": "Dorado",
+      "count": 1,
+      "released": false,
+      "date": "2026-09-09",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-09"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
       "boat": "Ranger 85",
       "trip": "2 Day",
       "anglers": "17 Anglers",
@@ -527333,7 +527372,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-09-09 19:08:33 PDT",
+  "last_updated": "2026-09-10 01:30:06 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
