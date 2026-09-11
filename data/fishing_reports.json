@@ -201,6 +201,32 @@
       "boat": "Nautilus",
       "trip": "Full Day",
       "anglers": "6 Anglers",
+      "species": "Yellowtail",
+      "count": 9,
+      "released": false,
+      "date": "2026-09-10",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-10"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Nautilus",
+      "trip": "Full Day",
+      "anglers": "6 Anglers",
+      "species": "Dorado",
+      "count": 3,
+      "released": false,
+      "date": "2026-09-10",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-10"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "H&M Landing Fish Counts",
+      "boat": "Nautilus",
+      "trip": "Full Day",
+      "anglers": "6 Anglers",
       "species": "Yellowfin Tuna",
       "count": 30,
       "released": false,
@@ -528399,7 +528425,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-09-10 19:05:23 PDT",
+  "last_updated": "2026-09-11 01:24:45 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
