@@ -159,6 +159,32 @@
     {
       "location": "San Diego, CA",
       "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Pacific Dawn",
+      "trip": "2 Day",
+      "anglers": "14 Anglers",
+      "species": "Dorado",
+      "count": 126,
+      "released": false,
+      "date": "2026-09-13",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-13"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Pacific Dawn",
+      "trip": "2 Day",
+      "anglers": "14 Anglers",
+      "species": "Wahoo",
+      "count": 1,
+      "released": false,
+      "date": "2026-09-13",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-13"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
       "boat": "Pegasus",
       "trip": "2.5 Day",
       "anglers": "11 Anglers",
@@ -1134,6 +1160,58 @@
     {
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day PM",
+      "anglers": "25 Anglers",
+      "species": "Sand Bass",
+      "count": 28,
+      "released": false,
+      "date": "2026-09-13",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-13"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day PM",
+      "anglers": "25 Anglers",
+      "species": "Yellowtail",
+      "count": 1,
+      "released": false,
+      "date": "2026-09-13",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-13"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day PM",
+      "anglers": "25 Anglers",
+      "species": "Calico Bass",
+      "count": 33,
+      "released": false,
+      "date": "2026-09-13",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-13"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "1/2 Day PM",
+      "anglers": "25 Anglers",
+      "species": "Whitefish",
+      "count": 2,
+      "released": false,
+      "date": "2026-09-13",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-13"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Chubasco II",
       "trip": "3/4 Day",
       "anglers": "20 Anglers",
@@ -1295,6 +1373,19 @@
       "anglers": "40 Anglers",
       "species": "Bonito",
       "count": 49,
+      "released": false,
+      "date": "2026-09-13",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-13"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "40 Anglers",
+      "species": "White Seabass",
+      "count": 1,
       "released": false,
       "date": "2026-09-13",
       "source": "San Diego Fish Reports",
@@ -533742,7 +533833,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-09-14 02:22:54 PDT",
+  "last_updated": "2026-09-14 10:15:12 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
