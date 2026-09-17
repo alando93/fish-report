@@ -213,7 +213,7 @@
       "landing": "Fisherman's Landing Fish Counts",
       "boat": "Liberty",
       "trip": "2 Day",
-      "anglers": "11 Anglers",
+      "anglers": "14 Anglers",
       "species": "Yellowtail",
       "count": 4,
       "released": false,
@@ -226,7 +226,7 @@
       "landing": "Fisherman's Landing Fish Counts",
       "boat": "Liberty",
       "trip": "2 Day",
-      "anglers": "11 Anglers",
+      "anglers": "14 Anglers",
       "species": "Dorado",
       "count": 56,
       "released": false,
@@ -239,7 +239,7 @@
       "landing": "Fisherman's Landing Fish Counts",
       "boat": "Liberty",
       "trip": "2 Day",
-      "anglers": "11 Anglers",
+      "anglers": "14 Anglers",
       "species": "Yellowfin Tuna",
       "count": 7,
       "released": false,
@@ -537343,7 +537343,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-09-17 02:01:06 PDT",
+  "last_updated": "2026-09-17 08:53:30 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
