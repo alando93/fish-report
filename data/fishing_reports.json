@@ -820,6 +820,58 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-16"
     },
     {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "2 Day",
+      "anglers": "12 Anglers",
+      "species": "Yellowtail",
+      "count": 5,
+      "released": false,
+      "date": "2026-09-16",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-16"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "2 Day",
+      "anglers": "12 Anglers",
+      "species": "Dorado",
+      "count": 3,
+      "released": false,
+      "date": "2026-09-16",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-16"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "2 Day",
+      "anglers": "12 Anglers",
+      "species": "Skipjack Tuna",
+      "count": 61,
+      "released": false,
+      "date": "2026-09-16",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-16"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Blue Horizon",
+      "trip": "2 Day",
+      "anglers": "12 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 204,
+      "released": false,
+      "date": "2026-09-16",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-16"
+    },
+    {
       "location": "San Diego, CA",
       "landing": "Point Loma Sportfishing Fish Counts",
       "boat": "Daily Double",
@@ -537343,7 +537395,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-09-17 08:53:30 PDT",
+  "last_updated": "2026-09-17 12:24:46 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
