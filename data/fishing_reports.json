@@ -1056,6 +1056,97 @@
     {
       "location": "Oceanside, CA",
       "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Sea Star",
+      "trip": "1/2 Day PM",
+      "anglers": "15 Anglers",
+      "species": "Sand Bass",
+      "count": 5,
+      "released": false,
+      "date": "2026-09-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-18"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Sea Star",
+      "trip": "1/2 Day PM",
+      "anglers": "15 Anglers",
+      "species": "Sculpin",
+      "count": 2,
+      "released": false,
+      "date": "2026-09-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-18"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Sea Star",
+      "trip": "1/2 Day PM",
+      "anglers": "15 Anglers",
+      "species": "Yellowtail",
+      "count": 2,
+      "released": false,
+      "date": "2026-09-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-18"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Sea Star",
+      "trip": "1/2 Day PM",
+      "anglers": "15 Anglers",
+      "species": "Calico Bass",
+      "count": 20,
+      "released": false,
+      "date": "2026-09-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-18"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Sea Star",
+      "trip": "1/2 Day PM",
+      "anglers": "15 Anglers",
+      "species": "Bonito",
+      "count": 75,
+      "released": false,
+      "date": "2026-09-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-18"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Sea Star",
+      "trip": "1/2 Day PM",
+      "anglers": "15 Anglers",
+      "species": "Sand Bass",
+      "count": 3,
+      "released": true,
+      "date": "2026-09-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-18"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
+      "boat": "Sea Star",
+      "trip": "1/2 Day PM",
+      "anglers": "15 Anglers",
+      "species": "Calico Bass",
+      "count": 88,
+      "released": true,
+      "date": "2026-09-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-18"
+    },
+    {
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center Fish Counts",
       "boat": "Chubasco II",
       "trip": "3/4 Day",
       "anglers": "32 Anglers",
@@ -540333,7 +540424,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-09-18 19:16:50 PDT",
+  "last_updated": "2026-09-19 01:23:10 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
