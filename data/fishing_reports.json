@@ -198,45 +198,6 @@
     {
       "location": "San Diego, CA",
       "landing": "Fisherman's Landing Fish Counts",
-      "boat": "Poseidon",
-      "trip": "Overnight",
-      "anglers": "18 Anglers",
-      "species": "Wahoo",
-      "count": 14,
-      "released": false,
-      "date": "2026-09-18",
-      "source": "San Diego Fish Reports",
-      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-18"
-    },
-    {
-      "location": "San Diego, CA",
-      "landing": "Fisherman's Landing Fish Counts",
-      "boat": "Poseidon",
-      "trip": "Overnight",
-      "anglers": "18 Anglers",
-      "species": "Yellowfin Tuna",
-      "count": 46,
-      "released": false,
-      "date": "2026-09-18",
-      "source": "San Diego Fish Reports",
-      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-18"
-    },
-    {
-      "location": "San Diego, CA",
-      "landing": "Fisherman's Landing Fish Counts",
-      "boat": "Poseidon",
-      "trip": "Overnight",
-      "anglers": "18 Anglers",
-      "species": "Striped Marlin",
-      "count": 1,
-      "released": true,
-      "date": "2026-09-18",
-      "source": "San Diego Fish Reports",
-      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-18"
-    },
-    {
-      "location": "San Diego, CA",
-      "landing": "Fisherman's Landing Fish Counts",
       "boat": "Liberty",
       "trip": "1.5 Day",
       "anglers": "21 Anglers",
@@ -372,6 +333,58 @@
       "anglers": "19 Anglers",
       "species": "Yellowfin Tuna",
       "count": 70,
+      "released": true,
+      "date": "2026-09-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-18"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Poseidon",
+      "trip": "3.5 Day",
+      "anglers": "18 Anglers",
+      "species": "Dorado",
+      "count": 92,
+      "released": false,
+      "date": "2026-09-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-18"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Poseidon",
+      "trip": "3.5 Day",
+      "anglers": "18 Anglers",
+      "species": "Wahoo",
+      "count": 14,
+      "released": false,
+      "date": "2026-09-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-18"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Poseidon",
+      "trip": "3.5 Day",
+      "anglers": "18 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 46,
+      "released": false,
+      "date": "2026-09-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-18"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing Fish Counts",
+      "boat": "Poseidon",
+      "trip": "3.5 Day",
+      "anglers": "18 Anglers",
+      "species": "Striped Marlin",
+      "count": 1,
       "released": true,
       "date": "2026-09-18",
       "source": "San Diego Fish Reports",
@@ -540424,7 +540437,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-09-19 01:23:10 PDT",
+  "last_updated": "2026-09-19 08:02:32 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
