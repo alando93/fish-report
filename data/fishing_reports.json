@@ -878,7 +878,7 @@
       "trip": "Full Day Offshore",
       "anglers": "23 Anglers",
       "species": "Yellowfin Tuna",
-      "count": 61,
+      "count": 91,
       "released": false,
       "date": "2026-09-19",
       "source": "San Diego Fish Reports",
@@ -541555,7 +541555,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-09-19 19:25:13 PDT",
+  "last_updated": "2026-09-20 01:54:37 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
