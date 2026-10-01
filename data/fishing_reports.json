@@ -522,6 +522,58 @@
     },
     {
       "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "29 Anglers",
+      "species": "Yellowtail",
+      "count": 3,
+      "released": false,
+      "date": "2026-09-30",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-30"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "29 Anglers",
+      "species": "Calico Bass",
+      "count": 46,
+      "released": false,
+      "date": "2026-09-30",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-30"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "29 Anglers",
+      "species": "Bonito",
+      "count": 42,
+      "released": false,
+      "date": "2026-09-30",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-30"
+    },
+    {
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing Fish Counts",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "29 Anglers",
+      "species": "Rockfish",
+      "count": 3,
+      "released": false,
+      "date": "2026-09-30",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-09-30"
+    },
+    {
+      "location": "San Diego, CA",
       "landing": "Seaforth Sportfishing Fish Counts",
       "boat": "New Seaforth",
       "trip": "1/2 Day AM",
@@ -557324,7 +557376,7 @@
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2024-01-01"
     }
   ],
-  "last_updated": "2026-10-01 03:34:08 PDT",
+  "last_updated": "2026-10-01 10:43:27 PDT",
   "sources": [
     "San Diego Fish Reports"
   ]
