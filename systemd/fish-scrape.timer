@@ -1,0 +1,12 @@
+[Unit]
+Description=Fish report scrape every 4h (FISH-001)
+
+[Timer]
+# :30 past 02/06/10/14/18/22 UTC — offset from the Actions cron (0 */4 UTC)
+# so the two writers don't collide during the coexistence window
+OnCalendar=*-*-* 02/4:30:00 UTC
+RandomizedDelaySec=5m
+Persistent=true
+
+[Install]
+WantedBy=timers.target

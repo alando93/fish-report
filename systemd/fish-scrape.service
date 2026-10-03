@@ -1,0 +1,8 @@
+[Unit]
+Description=Fish report scrape + push (FISH-001)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/alan/git/fish-report-scraper/scrape_run.sh
