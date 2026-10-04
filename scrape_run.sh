@@ -19,7 +19,7 @@ set -u
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PY="$REPO/.venv/bin/python"
-SCRAPER="$REPO/automated_scraping/scripts/sandiego_fish_reports_scraper.py"
+SCRAPER="$REPO/automated_scraping/scripts/fish_reports_scraper.py"
 STAGING="$HOME/git/fish-report"
 LOG="$HOME/.local/state/fish-scrape.log"
 ENV_FILE="$HOME/.config/fish-scrape.env"   # HEALTHCHECKS_URL (ping URL)

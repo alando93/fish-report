@@ -324,8 +324,15 @@
         const available = new Set(_tr.allSpecies);
         const picks = preferred.filter(s => available.has(s));
         if (picks.length) return new Set(picks);
-        // Fall back to top 2 by total count
-        return new Set(speciesItems().slice(0, 2).map(i => i.value));
+        // Fall back to top 2 by total count (speciesItems() is alphabetical)
+        const totals = {};
+        _tr.reports.forEach(r => {
+            if (r.species) totals[r.species] = (totals[r.species] || 0) + (r.count || 0);
+        });
+        return new Set(_tr.allSpecies
+            .slice()
+            .sort((a, b) => (totals[b] || 0) - (totals[a] || 0))
+            .slice(0, 2));
     }
 
     // Compact, readable rendering of a species/boat selection for the chart

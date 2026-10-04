@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoCal Fishing Dashboard</title>
+    <title>Fishing Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
-    <nav class="navbar is-primary" role="navigation">
+    <nav class="navbar is-primary app-navbar" role="navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="./">
                 <i class="fas fa-fish mr-2"></i>
-                <span class="has-text-weight-bold">SoCal Fishing Dashboard</span>
+                <span class="has-text-weight-bold">Fishing Dashboard</span>
             </a>
+            <div class="navbar-item region-select">
+                <label for="regionSelect" class="is-sr-only">Region</label>
+                <select id="regionSelect"></select>
+            </div>
         </div>
     </nav>
 
@@ -35,8 +39,8 @@
             <footer class="mt-6 has-text-centered has-text-grey">
                 <p id="lastUpdated">Last updated: Loading...</p>
                 <p class="mt-2" style="font-size: 12px;">
-                    Data scraped every 12 hours from
-                    <a href="https://www.sandiegofishreports.com/" target="_blank" rel="noopener">sandiegofishreports.com</a>.
+                    Data scraped every 4 hours from
+                    <a id="sourceLink" href="#" target="_blank" rel="noopener"></a>.
                 </p>
                 <p class="mt-1" style="font-size: 12px;">
                     Moon phases computed from the
@@ -44,7 +48,7 @@
                     (29.530588 days, anchored to the 2000-01-06 new moon).
                 </p>
                 <p class="mt-2">
-                    <a href="https://github.com/alando93/fishing-report-app" target="_blank" rel="noopener">
+                    <a href="https://github.com/alando93/fish-report" target="_blank" rel="noopener">
                         <i class="fab fa-github mr-1"></i>View on GitHub
                     </a>
                 </p>
