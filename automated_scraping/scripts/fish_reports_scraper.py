@@ -86,13 +86,14 @@ SITES: Dict[str, Site] = {
         cities=None,
         default_location="San Diego, CA",
     ),
-    # The same pages also report San Pedro, Marina Del Rey, Redondo Beach, Ventura
-    # and Avila Beach. Adding one is a line here plus a backfill.
+    # The same pages also report San Pedro, Redondo Beach, Ventura and Avila Beach.
+    # Adding one is a line here plus a backfill.
     "socal": Site(
         region="socal",
         source="SoCal Fish Reports",
         base_url="https://www.socalfishreports.com",
         cities=frozenset({
+            "Marina Del Rey, CA",
             "Long Beach, CA",
             "Newport Beach, CA",
             "Dana Point, CA",

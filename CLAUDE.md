@@ -47,7 +47,7 @@ Scraper logs go to `scraper_v3.log` in the working directory. See `README.md` fo
 ## Scraper notes
 
 - `scrape_date_range` is **idempotent per region file**: when new records are saved, any existing records for the dates in the new batch are dropped first. That is only safe because each file has exactly one source; never point two sites at one file.
-- **Tracked cities are an allowlist** (`SITES[...].cities`). The socal and norcal pages also return San Pedro, Marina Del Rey, Redondo Beach, Ventura, Avila Beach, San Francisco, Sausalito, Half Moon Bay, Monterey, Santa Cruz, Bodega Bay, Eureka and San Jose for free. Adding one is a line in `SITES` plus a backfill of that region.
+- **Tracked cities are an allowlist** (`SITES[...].cities`). The socal and norcal pages also return San Pedro, Redondo Beach, Ventura, Avila Beach, San Francisco, Sausalito, Half Moon Bay, Monterey, Santa Cruz, Bodega Bay, Eureka and San Jose for free. Adding one is a line in `SITES` plus a backfill of that region.
 - **Six-packs are excluded** by name (`SIX_PACK_BOATS`). A boat new to a region averaging ≤6 anglers logs a `WARNING` to review.
 - **Landing comes from the boat cell's second link**, not the panel heading. On socal/norcal the panel is a city.
 - Dedup key: `(date, location, boat, trip, anglers, species, count, released)`, plus `_dedupe_trips` for one trip listed under two landings. Each file is capped at 100,000 records (trimming logs a warning).

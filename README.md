@@ -11,13 +11,13 @@ The scraper fetches the daily dock-totals page from three sister sites that shar
 | Region | Site | Cities tracked |
 |---|---|---|
 | `sandiego` | [sandiegofishreports.com](https://www.sandiegofishreports.com/dock_totals/boats.php) | Everything the site reports (San Diego, Oceanside) |
-| `socal` | [socalfishreports.com](https://www.socalfishreports.com/dock_totals/boats.php) | Long Beach, Newport Beach, Dana Point, Oxnard, Santa Barbara, Morro Bay |
+| `socal` | [socalfishreports.com](https://www.socalfishreports.com/dock_totals/boats.php) | Marina Del Rey, Long Beach, Newport Beach, Dana Point, Oxnard, Santa Barbara, Morro Bay |
 | `norcal` | [norcalfishreports.com](https://www.norcalfishreports.com/dock_totals/boats.php) | Berkeley, Emeryville |
 
 **Six-pack charters are excluded** in every region (`SIX_PACK_BOATS` in the scraper). Their light loads distort per-angler numbers.
 
 **Untracked cities come free.** The same page requests already return these cities, which the allowlist drops:
-- **socal:** San Pedro, Marina Del Rey, Redondo Beach, Ventura, Avila Beach
+- **socal:** San Pedro, Redondo Beach, Ventura, Avila Beach
 - **norcal:** San Francisco, Sausalito, Half Moon Bay, Monterey, Santa Cruz, Bodega Bay, Eureka, San Jose
 
 To track one, add it to that site's `cities` in `SITES`, then backfill that region (`--site <region> --start_date 2024-01-01 --end_date <today>`). No new scraping code is needed.
