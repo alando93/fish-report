@@ -86,6 +86,30 @@
     margin-top: var(--space-5);
 }
 
+/* --- Region picker (navbar) ---------------------------------------------- */
+
+.app-navbar .navbar-brand {
+    flex-grow: 1;
+}
+.region-select {
+    margin-left: auto;
+}
+.region-select select {
+    appearance: auto;
+    font: inherit;
+    font-size: var(--font-body);
+    color: var(--fg);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 4px 8px;
+    cursor: pointer;
+}
+@media screen and (max-width: 640px) {
+    /* 16px stops iOS Safari zooming in on focus; beats the rule above on specificity */
+    .region-select select { font-size: 16px; }
+}
+
 /* --- Tab bar -------------------------------------------------------------- */
 
 .tab-bar {

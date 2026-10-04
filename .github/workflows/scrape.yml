@@ -1,8 +1,10 @@
 name: Scrape Fishing Reports
 
+# Manual fallback only. The scheduled scraper runs on the OptiPlex
+# (fish-scrape.timer, scrape_run.sh) and is the only regular data writer.
+# This workflow is disabled in GitHub too; `gh workflow enable` before dispatching,
+# and stop the OptiPlex timer first so two writers don't race.
 on:
-  schedule:
-    - cron: '0 */4 * * *'  # Run every 4 hours
   workflow_dispatch:
     inputs:
       start_date:
@@ -17,6 +19,10 @@ on:
         description: 'Rolling lookback window in days (used only when start/end dates are blank).'
         required: false
         default: '2'
+      site:
+        description: 'Region to scrape (sandiego, socal or norcal). Leave blank for all.'
+        required: false
+        default: ''
 
 jobs:
   scrape:
@@ -29,7 +35,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.10'
+        python-version: '3.12'
 
     - name: Install dependencies
       run: |
@@ -42,14 +48,18 @@ jobs:
         END="${{ github.event.inputs.end_date }}"
         DAYS="${{ github.event.inputs.days }}"
         DAYS="${DAYS:-2}"
+        SITE_ARGS=()
+        if [ -n "${{ github.event.inputs.site }}" ]; then
+          SITE_ARGS=(--site "${{ github.event.inputs.site }}")
+        fi
 
         if [ -n "$START" ] && [ -n "$END" ]; then
           echo "Backfill mode: $START → $END"
-          python automated_scraping/scripts/sandiego_fish_reports_scraper.py \
+          python automated_scraping/scripts/fish_reports_scraper.py "${SITE_ARGS[@]}" \
             --start_date "$START" --end_date "$END"
         else
           echo "Rolling window mode: last $DAYS days"
-          python automated_scraping/scripts/sandiego_fish_reports_scraper.py --days "$DAYS"
+          python automated_scraping/scripts/fish_reports_scraper.py "${SITE_ARGS[@]}" --days "$DAYS"
         fi
 
     - name: Commit and push changes

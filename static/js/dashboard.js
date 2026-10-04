@@ -1,6 +1,43 @@
-// SoCal Fishing Dashboard — Daily Reports view.
+// Fishing Dashboard — Daily Reports view.
 
 let allReports = [];
+
+// ---------------------------------------------------------------------------
+// Regions — one data file per source site, written by fish_reports_scraper.py.
+// The region comes from ?region=, then the last one picked, then the default.
+// Switching reloads the page so every view initializes from one region's data.
+// ---------------------------------------------------------------------------
+
+const REGIONS = {
+    sandiego: { label: 'San Diego', file: 'data/sandiego.json' },
+    socal:    { label: 'SoCal',     file: 'data/socal.json' },
+    norcal:   { label: 'NorCal',    file: 'data/norcal.json' },
+};
+const DEFAULT_REGION = 'sandiego';
+const REGION_STORAGE_KEY = 'fish-report-region';
+
+function _currentRegion() {
+    const fromUrl = new URLSearchParams(window.location.search).get('region');
+    if (fromUrl && REGIONS[fromUrl]) return fromUrl;
+    try {
+        const saved = localStorage.getItem(REGION_STORAGE_KEY);
+        if (saved && REGIONS[saved]) return saved;
+    } catch (e) { /* storage blocked — fall through */ }
+    return DEFAULT_REGION;
+}
+
+function _initRegionSelect(region) {
+    const select = document.getElementById('regionSelect');
+    if (!select) return;
+    select.innerHTML = Object.entries(REGIONS)
+        .map(([key, r]) => `<option value="${key}"${key === region ? ' selected' : ''}>${r.label}</option>`)
+        .join('');
+    select.addEventListener('change', () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('region', select.value);
+        window.location.assign(url.toString());
+    });
+}
 
 // ---------------------------------------------------------------------------
 // Bootstrap
@@ -9,9 +46,17 @@ let allReports = [];
 document.addEventListener('DOMContentLoaded', initializeDashboard);
 
 async function initializeDashboard() {
+    const region = _currentRegion();
+    _rt.region = region;
+    try { localStorage.setItem(REGION_STORAGE_KEY, region); } catch (e) { /* not critical */ }
+    _initRegionSelect(region);
+    document.title = `${REGIONS[region].label} · Fishing Dashboard`;
+
     try {
-        const data = await fetchFishingData();
+        const data = await fetchFishingData(region);
         allReports = data.reports || [];
+        _rt.siteUrl = data.site_url || '';
+        _setSourceLinks();
 
         const dateRange = getDateRange(allReports);
         document.getElementById('lastUpdated').textContent =
@@ -77,10 +122,27 @@ window._rtJumpToDate = function (date) {
     _rtChangeDate(date);
 };
 
-async function fetchFishingData() {
-    const response = await fetch('data/fishing_reports.json');
+async function fetchFishingData(region) {
+    const response = await fetch(REGIONS[region].file);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     return response.json();
+}
+
+function _siteHost() {
+    try { return new URL(_rt.siteUrl).hostname.replace(/^www\./, ''); }
+    catch (e) { return 'the source site'; }
+}
+
+function _dockTotalsUrl(date) {
+    return `${_rt.siteUrl}/dock_totals/boats.php?date=${date}`;
+}
+
+function _setSourceLinks() {
+    const footer = document.getElementById('sourceLink');
+    if (footer) {
+        footer.href = _rt.siteUrl;
+        footer.textContent = _siteHost();
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -142,6 +204,8 @@ function _rtSpeciesCategory(sp) {
 // ---------------------------------------------------------------------------
 
 let _rt = {
+    region: DEFAULT_REGION,
+    siteUrl: '',
     allReports: [],
     currentDate: '',
     minDate: '',
@@ -169,7 +233,7 @@ function initReportsTable(reports) {
                     <div id="rt-title"    class="toolbar-title"></div>
                     <div id="rt-sub"      class="toolbar-sub"></div>
                     <a   id="rt-src" href="#" target="_blank" rel="noopener"
-                         class="toolbar-link">sandiegofishreports.com &rarr;</a>
+                         class="toolbar-link">${_siteHost()} &rarr;</a>
                 </div>
 
                 <div class="toolbar-controls">
@@ -211,7 +275,7 @@ function _rtCheckDelayedData(lastUpdated) {
     const scrapeDateStr = lastUpdated.slice(0, 10);
     if (scrapeDateStr <= _rt.maxDate) return;
 
-    const dismissKey = `delayed-banner-${scrapeDateStr}`;
+    const dismissKey = `delayed-banner-${_rt.region}-${scrapeDateStr}`;
     if (sessionStorage.getItem(dismissKey)) return;
 
     const maxDt = new Date(_rt.maxDate + 'T12:00:00Z');
@@ -222,7 +286,7 @@ function _rtCheckDelayedData(lastUpdated) {
     banner.className = 'rt-delayed-banner';
     banner.innerHTML =
         `<span><strong>Today’s reports aren’t posted yet</strong> — ` +
-        `sandiegofishreports.com hasn’t published data for ${scrapeDateStr}. ` +
+        `${_siteHost()} hasn’t published data for ${scrapeDateStr}. ` +
         `Showing the most recent available data (${fmtMax}).</span>` +
         `<button class="rt-delayed-banner__close" aria-label="Dismiss">×</button>`;
     banner.querySelector('button').addEventListener('click', () => {
@@ -250,8 +314,7 @@ function _rtGetTripsForDate(date) {
                     trip:      r.trip      || '',
                     anglers:   parseInt(r.anglers) || 0,
                     catch:     {},
-                    sourceUrl: r.source_url ||
-                               `https://www.sandiegofishreports.com/dock_totals/boats.php?date=${date}`
+                    sourceUrl: r.source_url || _dockTotalsUrl(date)
                 };
             }
             if (r.species && r.count) {
@@ -314,8 +377,7 @@ function _rtChangeDate(date) {
     } else {
         subEl.innerHTML = `${fmtDate} \u2014 no data scraped for this date${moonHtml}`;
     }
-    document.getElementById('rt-src').href =
-        `https://www.sandiegofishreports.com/dock_totals/boats.php?date=${date}`;
+    document.getElementById('rt-src').href = _dockTotalsUrl(date);
 
     // Refresh species filter items for the new date
     const speciesList = [...new Set(trips.flatMap(r => r.catch.map(c => c.sp)))].sort();
