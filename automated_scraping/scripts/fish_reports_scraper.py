@@ -123,14 +123,16 @@ SIX_PACK_BOATS: FrozenSet[str] = frozenset({
     "Game Changer", "Got Bait", "Limitless", "Little G", "Lucky B Sportfishing",
     "Nautilus", "No Patience", "Primetime", "Reel Champion", "Voodoo",
     # socal
-    "Blackfish", "Current", "Graylight", "Lex Sea", "Second Chance",
+    "Blackfish", "Current", "Graylight", "Lex Sea", "MarDiosa", "Orion", "Second Chance",
     # norcal
-    "Diamond", "Golden State Sportfishing", "Here We Go", "Playn Hooky",
+    "Diamond", "Golden State Sportfishing", "Heisen-sturg", "Here We Go", "Playn Hooky",
     "Reel Addiction 1", "Reel Addiction 2", "Round 2", "Scallywag",
 })
 
-# A boat not yet in a region's file that averages this many anglers or fewer is
-# logged as a likely six-pack, for a human to add to SIX_PACK_BOATS.
+# A boat not yet in a region's file that never carried more than this many anglers
+# is logged as a likely six-pack, for a human to add to SIX_PACK_BOATS. Max, not
+# average: a licensed six-pack can't exceed 6, while limited-load party boats
+# (Alicia, Pronto) have light days but top out well above it.
 SIX_PACK_WARN_ANGLERS = 6
 
 # Boats that some days appear under two landings with the same trip. Pin them to
@@ -496,7 +498,7 @@ class FishReportsScraper:
         new_reports: List[Dict[str, Any]],
         existing_reports: List[Dict[str, Any]],
     ) -> None:
-        """Log boats new to this region whose trips average few anglers."""
+        """Log boats new to this region that never carried more than a six-pack's load."""
         known = {r["boat"] for r in existing_reports}
         anglers_by_trip: Dict[tuple, int] = {}
         for r in new_reports:
@@ -510,12 +512,11 @@ class FishReportsScraper:
         for (boat, _, _), anglers in anglers_by_trip.items():
             by_boat[boat].append(anglers)
         for boat, loads in sorted(by_boat.items()):
-            avg = sum(loads) / len(loads)
-            if avg <= SIX_PACK_WARN_ANGLERS:
+            if max(loads) <= SIX_PACK_WARN_ANGLERS:
                 logger.warning(
-                    "New %s boat '%s' averages %.1f anglers over %d trip(s) — "
+                    "New %s boat '%s' carried at most %d anglers over %d trip(s) — "
                     "likely a six-pack; add it to SIX_PACK_BOATS if so",
-                    self.site.region, boat, avg, len(loads),
+                    self.site.region, boat, max(loads), len(loads),
                 )
 
     @staticmethod

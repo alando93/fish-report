@@ -186,7 +186,7 @@ python automated_scraping/scripts/fish_reports_scraper.py --verbose
 1. For each region, sends a GET request to `boats.php?date=YYYY-MM-DD` for each date in the range, at most one request per second.
 2. Finds every `.panel` div on the page. On sandiego a panel is a landing; on socal/norcal it is a city.
 3. Each table row yields boat name, landing (the second link in the boat cell), city, trip type, angler count, and a catch string like `"107 Rockfish, 2 Sheephead Released"`. The trip type is a link on sandiego and plain text on socal/norcal.
-4. Rows outside the region's city allowlist and six-pack boats are dropped. A boat new to the region that averages 6 or fewer anglers is logged as a likely six-pack to review.
+4. Rows outside the region's city allowlist and six-pack boats are dropped. A boat new to the region that never carried more than 6 anglers is logged as a likely six-pack to review.
 5. The catch string is split with regex into individual `{species, count, released}` records.
 6. New records are merged into the region's file, replacing old records for the same dates so re-runs are clean. A date whose records match the previous day exactly is skipped, because the site serves the prior day's page until it posts.
 
