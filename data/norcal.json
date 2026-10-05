@@ -2,7 +2,7 @@
   "region": "norcal",
   "source": "NorCal Fish Reports",
   "site_url": "https://www.norcalfishreports.com",
-  "last_updated": "2026-10-04 15:35:48 PDT",
+  "last_updated": "2026-10-04 19:30:37 PDT",
   "reports": [
     {
       "region": "norcal",
@@ -69,6 +69,34 @@
       "anglers": "12 Anglers",
       "species": "Rockfish",
       "count": 116,
+      "released": false,
+      "date": "2026-10-04",
+      "source": "NorCal Fish Reports",
+      "source_url": "https://www.norcalfishreports.com/dock_totals/boats.php?date=2026-10-04"
+    },
+    {
+      "region": "norcal",
+      "location": "Emeryville, CA",
+      "landing": "Fish Emeryville",
+      "boat": "New Huck Finn",
+      "trip": "Full Day",
+      "anglers": "15 Anglers",
+      "species": "Lingcod",
+      "count": 30,
+      "released": false,
+      "date": "2026-10-04",
+      "source": "NorCal Fish Reports",
+      "source_url": "https://www.norcalfishreports.com/dock_totals/boats.php?date=2026-10-04"
+    },
+    {
+      "region": "norcal",
+      "location": "Emeryville, CA",
+      "landing": "Fish Emeryville",
+      "boat": "New Huck Finn",
+      "trip": "Full Day",
+      "anglers": "15 Anglers",
+      "species": "Rockfish",
+      "count": 150,
       "released": false,
       "date": "2026-10-04",
       "source": "NorCal Fish Reports",
