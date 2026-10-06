@@ -2,8 +2,22 @@
   "region": "norcal",
   "source": "NorCal Fish Reports",
   "site_url": "https://www.norcalfishreports.com",
-  "last_updated": "2026-10-06 11:34:47 PDT",
+  "last_updated": "2026-10-06 15:34:46 PDT",
   "reports": [
+    {
+      "region": "norcal",
+      "location": "Emeryville, CA",
+      "landing": "Fish Emeryville",
+      "boat": "Lady K",
+      "trip": "Full Day",
+      "anglers": "6 Anglers",
+      "species": "Bluefin Tuna",
+      "count": 7,
+      "released": false,
+      "date": "2026-10-06",
+      "source": "NorCal Fish Reports",
+      "source_url": "https://www.norcalfishreports.com/dock_totals/boats.php?date=2026-10-06"
+    },
     {
       "region": "norcal",
       "location": "Berkeley, CA",
