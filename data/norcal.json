@@ -2,7 +2,7 @@
   "region": "norcal",
   "source": "NorCal Fish Reports",
   "site_url": "https://www.norcalfishreports.com",
-  "last_updated": "2026-10-07 19:33:49 PDT",
+  "last_updated": "2026-10-07 23:30:35 PDT",
   "reports": [
     {
       "region": "norcal",
@@ -41,6 +41,20 @@
       "anglers": "13 Anglers",
       "species": "Rockfish",
       "count": 130,
+      "released": false,
+      "date": "2026-10-07",
+      "source": "NorCal Fish Reports",
+      "source_url": "https://www.norcalfishreports.com/dock_totals/boats.php?date=2026-10-07"
+    },
+    {
+      "region": "norcal",
+      "location": "Berkeley, CA",
+      "landing": "Berkeley Charter Boats",
+      "boat": "New Easy Rider",
+      "trip": "Full Day",
+      "anglers": "14 Anglers",
+      "species": "King Salmon",
+      "count": 23,
       "released": false,
       "date": "2026-10-07",
       "source": "NorCal Fish Reports",
