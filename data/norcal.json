@@ -2,8 +2,36 @@
   "region": "norcal",
   "source": "NorCal Fish Reports",
   "site_url": "https://www.norcalfishreports.com",
-  "last_updated": "2026-10-08 11:33:51 PDT",
+  "last_updated": "2026-10-08 15:33:47 PDT",
   "reports": [
+    {
+      "region": "norcal",
+      "location": "Berkeley, CA",
+      "landing": "Happy Hooker Sportfishing",
+      "boat": "Happy Hooker",
+      "trip": "Full Day",
+      "anglers": "9 Anglers",
+      "species": "Halibut",
+      "count": 18,
+      "released": false,
+      "date": "2026-10-08",
+      "source": "NorCal Fish Reports",
+      "source_url": "https://www.norcalfishreports.com/dock_totals/boats.php?date=2026-10-08"
+    },
+    {
+      "region": "norcal",
+      "location": "Berkeley, CA",
+      "landing": "Happy Hooker Sportfishing",
+      "boat": "Happy Hooker",
+      "trip": "Full Day",
+      "anglers": "9 Anglers",
+      "species": "Striped Bass",
+      "count": 18,
+      "released": false,
+      "date": "2026-10-08",
+      "source": "NorCal Fish Reports",
+      "source_url": "https://www.norcalfishreports.com/dock_totals/boats.php?date=2026-10-08"
+    },
     {
       "region": "norcal",
       "location": "Berkeley, CA",
