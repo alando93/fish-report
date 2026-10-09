@@ -2,8 +2,22 @@
   "region": "norcal",
   "source": "NorCal Fish Reports",
   "site_url": "https://www.norcalfishreports.com",
-  "last_updated": "2026-10-09 11:30:37 PDT",
+  "last_updated": "2026-10-09 15:31:52 PDT",
   "reports": [
+    {
+      "region": "norcal",
+      "location": "Emeryville, CA",
+      "landing": "Fish Emeryville",
+      "boat": "Sea Wolf",
+      "trip": "Full Day",
+      "anglers": "20 Anglers",
+      "species": "Rockfish",
+      "count": 200,
+      "released": false,
+      "date": "2026-10-09",
+      "source": "NorCal Fish Reports",
+      "source_url": "https://www.norcalfishreports.com/dock_totals/boats.php?date=2026-10-09"
+    },
     {
       "region": "norcal",
       "location": "Berkeley, CA",
