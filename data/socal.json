@@ -2,7 +2,7 @@
   "region": "socal",
   "source": "SoCal Fish Reports",
   "site_url": "https://www.socalfishreports.com",
-  "last_updated": "2026-10-10 19:34:42 PDT",
+  "last_updated": "2026-10-10 23:33:43 PDT",
   "reports": [
     {
       "region": "socal",
@@ -279,6 +279,34 @@
       "anglers": "14 Anglers",
       "species": "Red Rockfish",
       "count": 5,
+      "released": false,
+      "date": "2026-10-10",
+      "source": "SoCal Fish Reports",
+      "source_url": "https://www.socalfishreports.com/dock_totals/boats.php?date=2026-10-10"
+    },
+    {
+      "region": "socal",
+      "location": "Santa Barbara, CA",
+      "landing": "Santa Barbara Landing",
+      "boat": "Coral Sea",
+      "trip": "3/4 Day",
+      "anglers": "20 Anglers",
+      "species": "Lingcod",
+      "count": 2,
+      "released": false,
+      "date": "2026-10-10",
+      "source": "SoCal Fish Reports",
+      "source_url": "https://www.socalfishreports.com/dock_totals/boats.php?date=2026-10-10"
+    },
+    {
+      "region": "socal",
+      "location": "Santa Barbara, CA",
+      "landing": "Santa Barbara Landing",
+      "boat": "Coral Sea",
+      "trip": "3/4 Day",
+      "anglers": "20 Anglers",
+      "species": "Rockfish",
+      "count": 200,
       "released": false,
       "date": "2026-10-10",
       "source": "SoCal Fish Reports",
