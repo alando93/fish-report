@@ -2,8 +2,36 @@
   "region": "norcal",
   "source": "NorCal Fish Reports",
   "site_url": "https://www.norcalfishreports.com",
-  "last_updated": "2026-10-11 11:33:47 PDT",
+  "last_updated": "2026-10-11 15:31:07 PDT",
   "reports": [
+    {
+      "region": "norcal",
+      "location": "Emeryville, CA",
+      "landing": "Fish Emeryville",
+      "boat": "Sea Wolf",
+      "trip": "Full Day",
+      "anglers": "22 Anglers",
+      "species": "Lingcod",
+      "count": 6,
+      "released": false,
+      "date": "2026-10-11",
+      "source": "NorCal Fish Reports",
+      "source_url": "https://www.norcalfishreports.com/dock_totals/boats.php?date=2026-10-11"
+    },
+    {
+      "region": "norcal",
+      "location": "Emeryville, CA",
+      "landing": "Fish Emeryville",
+      "boat": "Sea Wolf",
+      "trip": "Full Day",
+      "anglers": "22 Anglers",
+      "species": "Rockfish",
+      "count": 220,
+      "released": false,
+      "date": "2026-10-11",
+      "source": "NorCal Fish Reports",
+      "source_url": "https://www.norcalfishreports.com/dock_totals/boats.php?date=2026-10-11"
+    },
     {
       "region": "norcal",
       "location": "Berkeley, CA",
