@@ -2,7 +2,7 @@
   "region": "sandiego",
   "source": "San Diego Fish Reports",
   "site_url": "https://www.sandiegofishreports.com",
-  "last_updated": "2026-10-15 03:30:57 PDT",
+  "last_updated": "2026-10-15 07:34:38 PDT",
   "reports": [
     {
       "region": "sandiego",
@@ -126,6 +126,34 @@
       "species": "Calico Bass",
       "count": 55,
       "released": true,
+      "date": "2026-10-14",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-10-14"
+    },
+    {
+      "region": "sandiego",
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing",
+      "boat": "Pacific Queen",
+      "trip": "2 Day",
+      "anglers": "22 Anglers",
+      "species": "Wahoo",
+      "count": 2,
+      "released": false,
+      "date": "2026-10-14",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-10-14"
+    },
+    {
+      "region": "sandiego",
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing",
+      "boat": "Pacific Queen",
+      "trip": "2 Day",
+      "anglers": "22 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 42,
+      "released": false,
       "date": "2026-10-14",
       "source": "San Diego Fish Reports",
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-10-14"
