@@ -2,7 +2,7 @@
   "region": "sandiego",
   "source": "San Diego Fish Reports",
   "site_url": "https://www.sandiegofishreports.com",
-  "last_updated": "2026-10-25 07:30:09 PDT",
+  "last_updated": "2026-10-25 11:30:35 PDT",
   "reports": [
     {
       "region": "sandiego",
@@ -769,6 +769,34 @@
       "anglers": "30 Anglers",
       "species": "Yellowfin Tuna",
       "count": 34,
+      "released": false,
+      "date": "2026-10-24",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-10-24"
+    },
+    {
+      "region": "sandiego",
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center",
+      "boat": "Blue Horizon",
+      "trip": "Full Day",
+      "anglers": "13 Anglers",
+      "species": "Skipjack Tuna",
+      "count": 30,
+      "released": false,
+      "date": "2026-10-24",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-10-24"
+    },
+    {
+      "region": "sandiego",
+      "location": "Oceanside, CA",
+      "landing": "Oceanside Sea Center",
+      "boat": "Blue Horizon",
+      "trip": "Full Day",
+      "anglers": "13 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 8,
       "released": false,
       "date": "2026-10-24",
       "source": "San Diego Fish Reports",
