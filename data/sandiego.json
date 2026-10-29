@@ -2,7 +2,7 @@
   "region": "sandiego",
   "source": "San Diego Fish Reports",
   "site_url": "https://www.sandiegofishreports.com",
-  "last_updated": "2026-10-29 03:33:14 PDT",
+  "last_updated": "2026-10-29 07:31:41 PDT",
   "reports": [
     {
       "region": "sandiego",
@@ -573,6 +573,34 @@
       "anglers": "28 Anglers",
       "species": "Yellowfin Tuna",
       "count": 1,
+      "released": false,
+      "date": "2026-10-28",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-10-28"
+    },
+    {
+      "region": "sandiego",
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "9 Anglers",
+      "species": "Barred Sand Bass",
+      "count": 19,
+      "released": false,
+      "date": "2026-10-28",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-10-28"
+    },
+    {
+      "region": "sandiego",
+      "location": "San Diego, CA",
+      "landing": "Point Loma Sportfishing",
+      "boat": "Daily Double",
+      "trip": "1/2 Day PM",
+      "anglers": "9 Anglers",
+      "species": "Calico Bass",
+      "count": 6,
       "released": false,
       "date": "2026-10-28",
       "source": "San Diego Fish Reports",
