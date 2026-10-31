@@ -2,8 +2,36 @@
   "region": "sandiego",
   "source": "San Diego Fish Reports",
   "site_url": "https://www.sandiegofishreports.com",
-  "last_updated": "2026-10-31 07:33:34 PDT",
+  "last_updated": "2026-10-31 11:33:58 PDT",
   "reports": [
+    {
+      "region": "sandiego",
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing",
+      "boat": "Dolphin",
+      "trip": "3/4 Day",
+      "anglers": "31 Anglers",
+      "species": "Skipjack Tuna",
+      "count": 79,
+      "released": false,
+      "date": "2026-10-30",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-10-30"
+    },
+    {
+      "region": "sandiego",
+      "location": "San Diego, CA",
+      "landing": "Fisherman's Landing",
+      "boat": "Dolphin",
+      "trip": "3/4 Day",
+      "anglers": "31 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 23,
+      "released": false,
+      "date": "2026-10-30",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-10-30"
+    },
     {
       "region": "sandiego",
       "location": "San Diego, CA",
