@@ -2,8 +2,36 @@
   "region": "sandiego",
   "source": "San Diego Fish Reports",
   "site_url": "https://www.sandiegofishreports.com",
-  "last_updated": "2026-11-04 10:33:37 PST",
+  "last_updated": "2026-11-04 14:30:44 PST",
   "reports": [
+    {
+      "region": "sandiego",
+      "location": "San Diego, CA",
+      "landing": "H&M Landing",
+      "boat": "Tradition",
+      "trip": "1/2 Day Twilight",
+      "anglers": "10 Anglers",
+      "species": "Spiny Lobster",
+      "count": 51,
+      "released": false,
+      "date": "2026-11-04",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-11-04"
+    },
+    {
+      "region": "sandiego",
+      "location": "San Diego, CA",
+      "landing": "H&M Landing",
+      "boat": "Tradition",
+      "trip": "1/2 Day Twilight",
+      "anglers": "10 Anglers",
+      "species": "Spiny Lobster",
+      "count": 101,
+      "released": true,
+      "date": "2026-11-04",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-11-04"
+    },
     {
       "region": "sandiego",
       "location": "San Diego, CA",
