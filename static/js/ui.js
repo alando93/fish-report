@@ -12,7 +12,7 @@
     //   selected:  Set<string> initial selection
     //   onChange:  (selected: Set<string>) => void
     //
-    // Returns: { setItems(items), getSelected(), clear(), refreshBadge() }
+    // Returns: { setItems(items), getSelected(), setSelected(values), clear(), setLabel(text) }
     function makeMultiSelect(opts) {
         const { container, label, onChange } = opts;
         const state = {
@@ -133,6 +133,11 @@
             clear() {
                 state.selected.clear();
                 render();
+            },
+            // Change the button text only (the dropdown header keeps the
+            // original label), e.g. "Boats: all" while nothing is picked.
+            setLabel(text) {
+                container.querySelector('.ms-btn .ms-label').textContent = text;
             }
         };
     }

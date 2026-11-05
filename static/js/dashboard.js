@@ -259,6 +259,20 @@ function initReportsTable(reports) {
     document.getElementById('rt-latest').addEventListener('click', () => _rtChangeDate(_rt.maxDate));
     document.getElementById('rt-date').addEventListener('change', e => _rtChangeDate(e.target.value));
 
+    // "Trends →" under each boat (FISH-004): open Trends on that boat's
+    // species breakdown. One delegated listener, since rt-card is rebuilt
+    // on every date change. Mirrors _rtJumpToDate in the other direction.
+    document.getElementById('rt-card').addEventListener('click', e => {
+        const link = e.target.closest('.rt-trends-link');
+        if (!link) return;
+        e.preventDefault();
+        _switchTab('trends', true);
+        if (typeof window._trFocusBoat === 'function') {
+            window._trFocusBoat(decodeURIComponent(link.dataset.boat));
+        }
+        window.scrollTo({ top: 0 });
+    });
+
     // Species filter (shared UI helper)
     _rt.speciesFilter = UI.makeMultiSelect({
         container: document.getElementById('rt-species-filter'),
@@ -508,6 +522,8 @@ function _rtBuildTable(trips) {
                 <tr class="rt-trip-row${isMultiTrip ? ' rt-multi-trip' : ''}">
                     <td class="rt-col-boat">
                         <div class="rt-boat-name">${r.boat}</div>
+                        <a href="#trends" class="toolbar-link rt-trends-link"
+                           data-boat="${encodeURIComponent(r.boat)}">Trends &rarr;</a>
                     </td>
                     <td class="rt-col-trip">
                         <div class="rt-trip-anglers">${r.anglers ? `${r.anglers} Anglers` : '\u2014'}</div>

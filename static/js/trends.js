@@ -9,6 +9,11 @@
     // independently. Tunable; see FISH-002.
     const DELTA_MIN_TRIPS_PER_WINDOW = 2;
 
+    // An empty line picker (Species in By species, Boats in By boat) charts
+    // the top N by total catch within the current filter and range, without
+    // touching the picker itself. See FISH-004.
+    const TOP_N_LINES = 5;
+
     const _tr = {
         reports: [],
         dates: [],
@@ -28,6 +33,10 @@
         display: 'chart',      // 'chart' | 'table' — Species Deltas table toggle
         deltaWindow: 7,         // 7 | 14 | 30 — comparison window length in days
         deltaMetric: 'perAngler', // 'perAngler' | 'total' — independent of the chart's Metric
+        // Set by the series functions on each redraw: how many lines were
+        // auto-picked (top N) because the line picker was empty, else 0.
+        // Read by buildChartTitle().
+        autoLineCount: 0,
     };
 
     // Bars (not a connected line) only for the Total Trips metric — weekly
@@ -72,7 +81,11 @@
                             <label>View</label>
                             <div id="tr-mode"></div>
                             <div id="tr-species-ms"></div>
-                            <div id="tr-boats-ms" hidden></div>
+                            <div id="tr-boats-ms"></div>
+                        </div>
+
+                        <div class="trends-control-row" id="tr-picker-hint-row">
+                            <span class="trends-hint" id="tr-picker-hint"></span>
                         </div>
 
                         <div class="trends-control-row" id="tr-chart-controls-2">
@@ -93,6 +106,8 @@
                                 the total, so the rate is directly comparable to California's daily
                                 bag limit, not just raw catch per person. Matches the \u{1F3C6} shown
                                 in this chart's tooltips and the Daily Reports tab's per-limit-day figure.
+                                A species' rate only counts trips that caught it, so "Yellowtail on
+                                Mission Belle" is per angler on the Mission Belle trips that caught yellowtail.
                             </span>
                         </div>
                     </div>
@@ -104,10 +119,12 @@
                             <div id="tr-delta-window"></div>
                             <label style="margin-left: var(--space-3);">Compare by</label>
                             <div id="tr-delta-metric"></div>
+                            <div id="tr-delta-boats-slot" style="margin-left: var(--space-3);"></div>
                             <span class="trends-hint">
                                 Compares the most recent window to the one immediately before it.
                                 "Total count" sums every boat's catch — a hot multi-day bite can run into
                                 the thousands even with the bite unchanged per angler.
+                                <span id="tr-delta-filter-hint"></span>
                             </span>
                         </div>
                     </div>
@@ -176,7 +193,7 @@
             onChange: v => { _tr.deltaMetric = v; renderDeltaTable(); }
         });
 
-        UI.makeSegmented({
+        _tr.modeSeg = UI.makeSegmented({
             container: document.getElementById('tr-mode'),
             options: [
                 { value: 'species', label: 'By species' },
@@ -271,7 +288,7 @@
             label: 'Species',
             items: speciesItems(),
             selected: defaultSpeciesSelection(),
-            onChange: () => redraw()
+            onChange: onPickerChange
         });
 
         _tr.boatsMS = UI.makeMultiSelect({
@@ -279,12 +296,13 @@
             label: 'Boats',
             items: boatItems(),
             selected: new Set(),
-            onChange: () => redraw()
+            onChange: onPickerChange
         });
 
         createChart();
         applyMetricUI();
         applyDisplayUI();
+        updatePickerLabels();
         redraw();
     };
 
@@ -294,6 +312,50 @@
     window._trOnShow = function () {
         if (_tr.chart) _tr.chart.resize();
     };
+
+    // Called from a Daily Reports row's "Trends →" link: chart that boat's
+    // catch by species. Species is cleared so the chart shows the boat's
+    // own top species, not whatever the fleet-wide pick was. Metric, range,
+    // aggregation and display are left as the user had them.
+    window._trFocusBoat = function (boat) {
+        if (!_tr.chart || !boat) return;
+        _tr.mode = 'species';
+        if (_tr.modeSeg) _tr.modeSeg.set('species');
+        _tr.boatsMS.setSelected([boat]);
+        _tr.speciesMS.setSelected([]);
+        onModeChange();
+        if (_tr.display === 'table') renderDeltaTable();
+    };
+
+    function onPickerChange() {
+        updatePickerLabels();
+        redraw();
+        if (_tr.display === 'table') renderDeltaTable();
+    }
+
+    // Button text says what each picker does in the current view, so an
+    // empty picker never looks like "nothing selected = nothing shown":
+    // the line picker reads "Species: top 5", the filter picker "Boats: all".
+    // In Total trips both pickers are filters.
+    function updatePickerLabels() {
+        if (!_tr.speciesMS || !_tr.boatsMS) return;
+        const isTrips = _tr.metric === 'totalTrips';
+        const lineDim = isTrips ? null : _tr.mode;   // 'species' | 'boat' | null
+        const sp = _tr.speciesMS.getSelected();
+        const bt = _tr.boatsMS.getSelected();
+        const emptyText = (isLine) => isLine ? `top ${TOP_N_LINES}` : 'all';
+        _tr.speciesMS.setLabel(sp.size ? 'Species' : `Species: ${emptyText(lineDim === 'species')}`);
+        _tr.boatsMS.setLabel(bt.size ? 'Boats' : `Boats: ${emptyText(lineDim === 'boat')}`);
+
+        const hint = document.getElementById('tr-picker-hint');
+        if (hint) {
+            hint.textContent = isTrips
+                ? 'Species and Boats both filter which trips are counted. Empty means all.'
+                : _tr.mode === 'species'
+                    ? 'Species picks the lines. Boats limits what is counted (empty = all boats).'
+                    : 'Boats picks the lines. Species limits what is counted (empty = all species).';
+        }
+    }
 
     // --- Default selections ------------------------------------------------
 
@@ -353,14 +415,22 @@
             : _tr.metric === 'perAngler' ? 'Per angler/day'
             : 'Total fish';
 
+        // Lines first, then the filter. A filtered chart must never read as
+        // the whole fleet, so the filter is always named when one is set.
+        const species = _tr.speciesMS.getSelected();
+        const boats = _tr.boatsMS.getSelected();
+        const autoLines = (noun) => _tr.autoLineCount
+            ? `Top ${_tr.autoLineCount} ${noun}${_tr.autoLineCount === 1 ? '' : (noun === 'species' ? '' : 's')}`
+            : `No ${noun === 'species' ? 'species' : 'boats'} with catch`;
+        const only = (sel) => sel.size ? ` · ${seriesLabelList(sel)} only` : '';
+
         let dimLabel;
         if (_tr.metric === 'totalTrips') {
-            const boats = _tr.boatsMS ? _tr.boatsMS.getSelected() : new Set();
-            dimLabel = boats.size ? seriesLabelList(boats) : 'All boats';
+            dimLabel = (boats.size ? seriesLabelList(boats) : 'All boats') + only(species);
         } else if (_tr.mode === 'species') {
-            dimLabel = seriesLabelList(_tr.speciesMS.getSelected());
+            dimLabel = (species.size ? seriesLabelList(species) : autoLines('species')) + only(boats);
         } else {
-            dimLabel = seriesLabelList(_tr.boatsMS.getSelected());
+            dimLabel = (boats.size ? seriesLabelList(boats) : autoLines('boat')) + only(species);
         }
 
         const aggLabel = _tr.aggregation === 'weekly' ? 'weekly' : 'daily';
@@ -382,6 +452,26 @@
         const endTs = Date.parse(end + 'T12:00:00Z');
         const startTs = endTs - _tr.rangeDays * 86400000;
         return _tr.dates.filter(d => Date.parse(d + 'T12:00:00Z') >= startTs);
+    }
+
+    // Top N values of `field` ('species' | 'boat') by total catch over the
+    // visible range, counting only rows that pass the other picker's
+    // filter. Used when the line picker is empty. One helper for both
+    // views so "top 5" means the same thing in each. Ranked over the
+    // visible range, not all time, so it reflects who is fishing now.
+    function topLines(field, filterField, filterSet, n) {
+        const inRange = new Set(visibleDates());
+        const totals = {};
+        _tr.reports.forEach(r => {
+            const key = r[field];
+            if (!key || !inRange.has(r.date)) return;
+            if (filterSet.size && !filterSet.has(r[filterField])) return;
+            totals[key] = (totals[key] || 0) + (r.count || 0);
+        });
+        return new Set(Object.keys(totals)
+            .filter(k => totals[k] > 0)
+            .sort((a, b) => totals[b] - totals[a] || a.localeCompare(b))
+            .slice(0, n));
     }
 
     // Groups visible dates into buckets: one date per bucket for 'daily'
@@ -505,8 +595,17 @@
     // limit had been blown 3x over when the trip was actually right at it.
     // Matches the Daily Reports tab's "per angler per limit-day" pill and
     // the 🏆 trophy shown in this chart's own tooltips.
+    //
+    // The Boats picker filters (FISH-004): when it has a selection, only
+    // those boats' rows are counted, so Boats = Excel gives Excel's own
+    // species breakdown.
     function seriesBySpecies(buckets) {
-        const selected = _tr.speciesMS.getSelected();
+        const boatFilter = _tr.boatsMS.getSelected();
+        let selected = _tr.speciesMS.getSelected();
+        if (!selected.size) {
+            selected = topLines('species', 'boat', boatFilter, TOP_N_LINES);
+            _tr.autoLineCount = selected.size;
+        }
         if (!selected.size) return [];
 
         const counts = {};             // counts[date][species] = count
@@ -524,6 +623,7 @@
 
         _tr.reports.forEach(r => {
             if (!r.date || !r.species || !selected.has(r.species)) return;
+            if (boatFilter.size && !boatFilter.has(r.boat)) return;
             const anglers = parseInt(r.anglers) || 0;
             const tripKey = `${r.date}|${r.boat}|${r.trip}`;
             const dedupKey = `${r.species}|${tripKey}`;
@@ -577,14 +677,17 @@
     }
 
     // Build a single series of unique trip counts per bucket. Optionally
-    // filtered by the Boats multi-select (empty = all boats). Always uses
+    // filtered by the Boats multi-select (empty = all boats) and by the
+    // Species multi-select (only trips that caught one of those species;
+    // empty = all trips). Always uses
     // as-reported attribution (a trip "returns" on one specific date) —
     // dedup is scoped per calendar day, then summed across a bucket's
     // dates, so the same boat running the same trip type on two different
     // days within a week still correctly counts as two trips.
     function seriesTotalTrips(buckets) {
         const boatFilter = _tr.boatsMS ? _tr.boatsMS.getSelected() : new Set();
-        const usingFilter = boatFilter.size > 0;
+        const speciesFilter = _tr.speciesMS ? _tr.speciesMS.getSelected() : new Set();
+        const usingFilter = boatFilter.size > 0 || speciesFilter.size > 0;
 
         // For each date, collect unique (boat|trip) keys and the underlying
         // trip metadata for the tooltip.
@@ -593,7 +696,8 @@
 
         _tr.reports.forEach(r => {
             if (!r.date || !r.boat) return;
-            if (usingFilter && !boatFilter.has(r.boat)) return;
+            if (boatFilter.size && !boatFilter.has(r.boat)) return;
+            if (speciesFilter.size && !speciesFilter.has(r.species)) return;
             const tripKey = `${r.boat}|${r.trip || ''}`;
             counts[r.date] = counts[r.date] || new Set();
             if (!counts[r.date].has(tripKey)) {
@@ -632,8 +736,18 @@
     // Mirrors seriesBySpecies() with roles swapped, including the same
     // angler-limit-days denominator for Per angler (see that function's
     // comment for why raw anglers would misrepresent multi-day trips).
+    //
+    // The Species picker filters (FISH-004): when it has a selection, only
+    // those species' rows are counted. Because rows without the species are
+    // skipped before the angler dedup, Per angler only counts trips that
+    // caught it, the same convention seriesBySpecies() uses.
     function seriesByBoat(buckets) {
-        const selected = _tr.boatsMS.getSelected();
+        const speciesFilter = _tr.speciesMS.getSelected();
+        let selected = _tr.boatsMS.getSelected();
+        if (!selected.size) {
+            selected = topLines('boat', 'species', speciesFilter, TOP_N_LINES);
+            _tr.autoLineCount = selected.size;
+        }
         if (!selected.size) return [];
 
         const counts = {};             // counts[date][boat]
@@ -643,6 +757,7 @@
 
         _tr.reports.forEach(r => {
             if (!r.date || !r.boat || !selected.has(r.boat)) return;
+            if (speciesFilter.size && !speciesFilter.has(r.species)) return;
             const anglers = parseInt(r.anglers) || 0;
             const tripKey = `${r.date}|${r.boat}|${r.trip}`;
             const countAnglersOnThisRow = !anglerSeen[tripKey];
@@ -874,6 +989,7 @@
     function redraw() {
         if (!_tr.chart) return;
         _tr.breakdown = {};
+        _tr.autoLineCount = 0;
         const dates = visibleDates();
         const buckets = buildBuckets(dates, _tr.aggregation);
 
@@ -970,10 +1086,14 @@
         // Per angler/day is actually the metric being plotted.
         if (metricHintRow) metricHintRow.hidden = _tr.metric !== 'perAngler';
 
+        // Both pickers are always visible (FISH-004): in By species/By boat
+        // one picks the lines and the other filters; in Total trips both
+        // filter which trips are counted.
+        setHidden(speciesEl, false);
+        setHidden(boatsEl,   false);
+
         if (isTrips) {
             setHidden(modeEl,      true);
-            setHidden(speciesEl,   true);
-            setHidden(boatsEl,     false);  // keep Boats as an optional filter
             setHidden(smoothingEl, true);
             setHidden(attrEl,      true);
             if (attrHintEl) attrHintEl.hidden = true;
@@ -987,27 +1107,15 @@
             setHidden(smoothingEl, _tr.aggregation === 'weekly');
             setHidden(attrEl,      false);
             if (attrHintEl) attrHintEl.hidden = false;
-            // Species vs Boats visibility follows mode.
-            setHidden(speciesEl, _tr.mode !== 'species');
-            setHidden(boatsEl,   _tr.mode !== 'boat');
         }
+        updatePickerLabels();
     }
 
+    // Selections are shared across views: pick Excel in By boat, switch to
+    // By species, and you see Excel's species. Nothing is auto-filled here;
+    // an empty line picker charts the top N instead (see topLines()).
     function onModeChange() {
-        const speciesEl = document.getElementById('tr-species-ms');
-        const boatsEl   = document.getElementById('tr-boats-ms');
-        if (_tr.mode === 'species') {
-            speciesEl.hidden = false;
-            boatsEl.hidden = true;
-        } else {
-            speciesEl.hidden = true;
-            boatsEl.hidden = false;
-            // If the user hasn't picked any boats yet, seed with top 3
-            if (_tr.boatsMS.getSelected().size === 0) {
-                const top = boatItems().slice(0, 3).map(i => i.value);
-                _tr.boatsMS.setSelected(top);
-            }
-        }
+        updatePickerLabels();
         redraw();
     }
 
@@ -1032,6 +1140,17 @@
         const tableWrap = document.getElementById('trends-table-wrap');
         if (tablePanel) tablePanel.hidden = !isTable;
         if (tableWrap) tableWrap.hidden = !isTable;
+
+        // The table respects the Boats picker, but the chart panel (where
+        // the picker lives) is hidden in table mode. Move the one picker
+        // node between the two panels instead of keeping two in sync.
+        const boatsEl = document.getElementById('tr-boats-ms');
+        const slot = document.getElementById('tr-delta-boats-slot');
+        const speciesEl = document.getElementById('tr-species-ms');
+        if (boatsEl && slot && speciesEl) {
+            if (isTable) slot.appendChild(boatsEl);
+            else speciesEl.after(boatsEl);
+        }
     }
 
     // For each species, sum counts (and deduped angler totals, and unique
@@ -1070,8 +1189,13 @@
             });
         }
 
+        // Rows are always species, so View doesn't apply; the Boats picker
+        // does (FISH-004), giving per-boat species deltas.
+        const boatFilter = _tr.boatsMS ? _tr.boatsMS.getSelected() : new Set();
+
         _tr.reports.forEach(r => {
             if (!r.date || !r.species) return;
+            if (boatFilter.size && !boatFilter.has(r.boat)) return;
             const anglers = parseInt(r.anglers) || 0;
             const tripKey = `${r.boat}|${r.trip}|${r.date}`;
 
@@ -1159,6 +1283,14 @@
 
         const rows = speciesDeltaRows();
         rows.sort((a, b) => magnitudeSortKey(b) - magnitudeSortKey(a));
+
+        const filterHint = document.getElementById('tr-delta-filter-hint');
+        if (filterHint) {
+            const boats = _tr.boatsMS.getSelected();
+            filterHint.textContent = boats.size
+                ? `Only counting ${seriesLabelList(boats)}.`
+                : '';
+        }
 
         const usePerAngler = _tr.deltaMetric === 'perAngler';
         const valFmt = usePerAngler ? fmtRate : fmtCount;
