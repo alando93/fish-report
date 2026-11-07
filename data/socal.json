@@ -2,8 +2,36 @@
   "region": "socal",
   "source": "SoCal Fish Reports",
   "site_url": "https://www.socalfishreports.com",
-  "last_updated": "2026-11-07 10:33:08 PST",
+  "last_updated": "2026-11-07 14:34:46 PST",
   "reports": [
+    {
+      "region": "socal",
+      "location": "Oxnard, CA",
+      "landing": "Channel Islands Sportfishing",
+      "boat": "Mirage",
+      "trip": "Overnight",
+      "anglers": "21 Anglers",
+      "species": "Whitefish",
+      "count": 210,
+      "released": false,
+      "date": "2026-11-07",
+      "source": "SoCal Fish Reports",
+      "source_url": "https://www.socalfishreports.com/dock_totals/boats.php?date=2026-11-07"
+    },
+    {
+      "region": "socal",
+      "location": "Oxnard, CA",
+      "landing": "Channel Islands Sportfishing",
+      "boat": "Mirage",
+      "trip": "Overnight",
+      "anglers": "21 Anglers",
+      "species": "Rockfish",
+      "count": 210,
+      "released": false,
+      "date": "2026-11-07",
+      "source": "SoCal Fish Reports",
+      "source_url": "https://www.socalfishreports.com/dock_totals/boats.php?date=2026-11-07"
+    },
     {
       "region": "socal",
       "location": "Morro Bay, CA",
