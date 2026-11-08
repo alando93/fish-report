@@ -25,7 +25,9 @@
         mode: 'species',    // 'species' | 'boat'
         metric: 'total',    // 'total' | 'perAngler'
         smoothing: 0,       // 0 | 7 | 14
-        rangeDays: 90,      // 30 | 90 | 365 | 0 (all)
+        rangeDays: 90,      // 30 | 90 | 365 | 0 (all) | -1 (custom: rangeFrom..rangeTo)
+        rangeFrom: '',      // 'YYYY-MM-DD', inclusive — only used when rangeDays === -1
+        rangeTo: '',        // 'YYYY-MM-DD', inclusive
         attribution: 'asReported', // 'asReported' | 'spread'
         aggregation: 'daily', // 'daily' | 'weekly' — one point per day, or one per 7-day bucket
         breakdown: {},      // breakdown[bucketKey][groupLabel][subLabel] = { count, trips: [{ tripDays, dayIndex, totalDays }] }
@@ -97,6 +99,11 @@
                             <div id="tr-smoothing"></div>
                             <label style="margin-left: var(--space-3);">Range</label>
                             <div id="tr-range"></div>
+                            <span class="tr-custom-range" id="tr-custom-range" hidden>
+                                <input type="date" id="tr-range-from" aria-label="From date">
+                                <span class="tr-custom-range-sep">to</span>
+                                <input type="date" id="tr-range-to" aria-label="To date">
+                            </span>
                         </div>
 
                         <div class="trends-control-row" id="tr-metric-hint-row" hidden>
@@ -262,11 +269,45 @@
                 { value: '30',  label: '30d' },
                 { value: '90',  label: '90d' },
                 { value: '365', label: '1y' },
-                { value: '0',   label: 'All' }
+                { value: '0',   label: 'All' },
+                { value: '-1',  label: 'Custom' }
             ],
             selected: String(_tr.rangeDays),
-            onChange: v => { _tr.rangeDays = parseInt(v, 10) || 0; redraw(); }
+            onChange: v => {
+                const days = parseInt(v, 10) || 0;
+                // First time into Custom: start from whatever window was
+                // showing, so the chart doesn't jump.
+                if (days === -1 && !_tr.rangeFrom) {
+                    const shown = visibleDates();
+                    _tr.rangeFrom = shown[0] || '';
+                    _tr.rangeTo = shown[shown.length - 1] || '';
+                }
+                _tr.rangeDays = days;
+                syncCustomRange();
+                redraw();
+            }
         });
+
+        const fromEl = document.getElementById('tr-range-from');
+        const toEl   = document.getElementById('tr-range-to');
+        if (_tr.dates.length) {
+            const lo = _tr.dates[0], hi = _tr.dates[_tr.dates.length - 1];
+            [fromEl, toEl].forEach(el => { el.min = lo; el.max = hi; });
+        }
+        // 'change' (not 'input') so typing a date digit-by-digit doesn't
+        // redraw on every keystroke. A cleared box keeps the old value.
+        const onCustomChange = () => {
+            if (fromEl.value) _tr.rangeFrom = fromEl.value;
+            if (toEl.value)   _tr.rangeTo   = toEl.value;
+            if (_tr.rangeFrom && _tr.rangeTo && _tr.rangeFrom > _tr.rangeTo) {
+                [_tr.rangeFrom, _tr.rangeTo] = [_tr.rangeTo, _tr.rangeFrom];
+            }
+            syncCustomRange();
+            redraw();
+        };
+        fromEl.addEventListener('change', onCustomChange);
+        toEl.addEventListener('change', onCustomChange);
+        syncCustomRange();
 
         UI.makeSegmented({
             container: document.getElementById('tr-attribution'),
@@ -326,6 +367,15 @@
         onModeChange();
         if (_tr.display === 'table') renderDeltaTable();
     };
+
+    // Show the From/To boxes only in Custom mode, filled from state.
+    function syncCustomRange() {
+        const wrap = document.getElementById('tr-custom-range');
+        if (!wrap) return;
+        wrap.hidden = _tr.rangeDays !== -1;
+        document.getElementById('tr-range-from').value = _tr.rangeFrom;
+        document.getElementById('tr-range-to').value = _tr.rangeTo;
+    }
 
     function onPickerChange() {
         updatePickerLabels();
@@ -434,7 +484,11 @@
         }
 
         const aggLabel = _tr.aggregation === 'weekly' ? 'weekly' : 'daily';
-        const rangeLabel = !_tr.rangeDays ? 'all time'
+        const fmtDay = d => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US',
+            { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+        const rangeLabel = _tr.rangeDays === -1
+            ? (_tr.rangeFrom && _tr.rangeTo ? `${fmtDay(_tr.rangeFrom)} – ${fmtDay(_tr.rangeTo)}` : 'all time')
+            : !_tr.rangeDays ? 'all time'
             : _tr.rangeDays === 30  ? 'last 30 days'
             : _tr.rangeDays === 90  ? 'last 90 days'
             : _tr.rangeDays === 365 ? 'last year'
@@ -447,6 +501,11 @@
 
     function visibleDates() {
         if (!_tr.dates.length) return [];
+        if (_tr.rangeDays === -1) {
+            // ISO dates compare correctly as strings. Inclusive both ends.
+            return _tr.dates.filter(d =>
+                (!_tr.rangeFrom || d >= _tr.rangeFrom) && (!_tr.rangeTo || d <= _tr.rangeTo));
+        }
         if (!_tr.rangeDays) return _tr.dates;
         const end = _tr.dates[_tr.dates.length - 1];
         const endTs = Date.parse(end + 'T12:00:00Z');

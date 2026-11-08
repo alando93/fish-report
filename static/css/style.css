@@ -291,9 +291,34 @@
     border-bottom: 1px solid var(--divider);
     font-size: var(--font-sm);
     color: var(--fg-subtle);
+}
+
+/* Header + search stay pinned while the list scrolls. */
+.ms-dd-top {
     position: sticky;
     top: 0;
+    z-index: 1;
     background: var(--bg);
+    border-bottom: 1px solid var(--divider);
+}
+.ms-search-wrap { padding: var(--space-2) var(--space-3); }
+.ms-search {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px var(--space-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+    color: var(--fg);
+    /* 16px stops iOS Safari/Chrome zooming the page on focus. */
+    font-size: 16px;
+}
+@media (min-width: 641px) { .ms-search { font-size: var(--font-body); } }
+.ms-search:focus { outline: none; border-color: var(--accent); }
+.ms-empty {
+    padding: 7px var(--space-3);
+    font-size: var(--font-body);
+    color: var(--fg-subtle);
 }
 
 .ms-clear {
@@ -589,6 +614,23 @@
     flex-wrap: wrap;
     margin-bottom: var(--space-3);
 }
+
+.tr-custom-range {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+.tr-custom-range[hidden] { display: none; }
+.tr-custom-range input[type="date"] {
+    padding: 4px var(--space-2);
+    font-size: var(--font-md);
+    color: var(--fg);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+}
+.tr-custom-range input[type="date"]:focus { outline: none; border-color: var(--accent); }
+.tr-custom-range-sep { font-size: var(--font-sm); color: var(--fg-subtle); }
 
 .trends-control-row > label {
     font-size: var(--font-sm);

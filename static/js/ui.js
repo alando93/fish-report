@@ -31,9 +31,15 @@
                 <span class="ms-badge" hidden></span>
             </button>
             <div class="ms-dropdown" hidden>
-                <div class="ms-dd-header">
-                    <span>${label}</span>
-                    <span class="ms-clear">Clear all</span>
+                <div class="ms-dd-top">
+                    <div class="ms-dd-header">
+                        <span>${label}</span>
+                        <span class="ms-clear">Clear all</span>
+                    </div>
+                    <div class="ms-search-wrap">
+                        <input class="ms-search" type="search" placeholder="Search ${label.toLowerCase()}…"
+                               autocomplete="off" spellcheck="false" aria-label="Search ${label}">
+                    </div>
                 </div>
                 <div class="ms-dd-list"></div>
             </div>
@@ -44,6 +50,17 @@
         const list     = container.querySelector('.ms-dd-list');
         const badge    = container.querySelector('.ms-badge');
         const clearEl  = container.querySelector('.ms-clear');
+        const search   = container.querySelector('.ms-search');
+        let query = '';
+
+        // Items matching the search box (case-insensitive substring on the
+        // label, ignoring any markup in it). Empty query = all items.
+        function visibleItems() {
+            const q = query.trim().toLowerCase();
+            if (!q) return state.items;
+            return state.items.filter(it =>
+                String(it.label).replace(/<[^>]*>/g, '').toLowerCase().includes(q));
+        }
 
         function positionDropdown() {
             if (window.innerWidth > 640) {
@@ -61,9 +78,17 @@
             dropdown.style.maxWidth = dropW + 'px';
         }
 
+        function resetSearch() {
+            if (!query) return;
+            query = '';
+            search.value = '';
+            render();
+        }
+
         function closeDropdown() {
             dropdown.hidden = true;
             dropdown.style.cssText = '';
+            resetSearch();
         }
 
         btn.addEventListener('click', e => {
@@ -72,11 +97,33 @@
             document.querySelectorAll('.ms-dropdown').forEach(d => {
                 if (d !== dropdown) { d.hidden = true; d.style.cssText = ''; }
             });
-            dropdown.hidden = !dropdown.hidden;
-            if (!dropdown.hidden) positionDropdown();
+            if (dropdown.hidden) {
+                dropdown.hidden = false;
+                positionDropdown();
+                // Skip autofocus on narrow screens so the keyboard doesn't
+                // pop up over the list; tap the box to search there.
+                if (window.innerWidth > 640) search.focus();
+            } else {
+                closeDropdown();
+            }
         });
         document.addEventListener('click', closeDropdown);
         dropdown.addEventListener('click', e => e.stopPropagation());
+
+        search.addEventListener('input', () => {
+            query = search.value;
+            render();
+        });
+        search.addEventListener('keydown', e => {
+            if (e.key === 'Enter') {
+                // Enter toggles the top match, handy when one item is left.
+                const first = list.querySelector('.ms-item');
+                if (first) first.click();
+            } else if (e.key === 'Escape') {
+                if (query) resetSearch();
+                else { closeDropdown(); btn.focus(); }
+            }
+        });
 
         clearEl.addEventListener('click', () => {
             state.selected.clear();
@@ -85,7 +132,8 @@
         });
 
         function render() {
-            list.innerHTML = state.items.map(it => {
+            const shown = visibleItems();
+            list.innerHTML = shown.length ? shown.map(it => {
                 const on = state.selected.has(it.value);
                 return `
                     <div class="ms-item${on ? ' is-on' : ''}" data-v="${encodeURIComponent(it.value)}">
@@ -94,7 +142,7 @@
                         ${it.meta ? `<span class="ms-item-meta">${it.meta}</span>` : ''}
                     </div>
                 `;
-            }).join('');
+            }).join('') : '<div class="ms-empty">No matches</div>';
 
             list.querySelectorAll('.ms-item').forEach(el => {
                 el.addEventListener('click', () => {
