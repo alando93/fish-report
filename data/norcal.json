@@ -2,8 +2,36 @@
   "region": "norcal",
   "source": "NorCal Fish Reports",
   "site_url": "https://www.norcalfishreports.com",
-  "last_updated": "2026-11-10 10:31:53 PST",
+  "last_updated": "2026-11-10 14:30:47 PST",
   "reports": [
+    {
+      "region": "norcal",
+      "location": "Emeryville, CA",
+      "landing": "Fish Emeryville",
+      "boat": "Oakland Anglers II",
+      "trip": "Full Day",
+      "anglers": "26 Anglers",
+      "species": "Dungeness Crab",
+      "count": 260,
+      "released": false,
+      "date": "2026-11-10",
+      "source": "NorCal Fish Reports",
+      "source_url": "https://www.norcalfishreports.com/dock_totals/boats.php?date=2026-11-10"
+    },
+    {
+      "region": "norcal",
+      "location": "Emeryville, CA",
+      "landing": "Fish Emeryville",
+      "boat": "Oakland Anglers II",
+      "trip": "Full Day",
+      "anglers": "26 Anglers",
+      "species": "Rockfish",
+      "count": 118,
+      "released": false,
+      "date": "2026-11-10",
+      "source": "NorCal Fish Reports",
+      "source_url": "https://www.norcalfishreports.com/dock_totals/boats.php?date=2026-11-10"
+    },
     {
       "region": "norcal",
       "location": "Berkeley, CA",
