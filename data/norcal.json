@@ -2,8 +2,36 @@
   "region": "norcal",
   "source": "NorCal Fish Reports",
   "site_url": "https://www.norcalfishreports.com",
-  "last_updated": "2026-11-11 06:35:12 PST",
+  "last_updated": "2026-11-11 10:32:00 PST",
   "reports": [
+    {
+      "region": "norcal",
+      "location": "Berkeley, CA",
+      "landing": "Happy Hooker Sportfishing",
+      "boat": "Happy Hooker",
+      "trip": "Full Day",
+      "anglers": "24 Anglers",
+      "species": "Dungeness Crab",
+      "count": 240,
+      "released": false,
+      "date": "2026-11-10",
+      "source": "NorCal Fish Reports",
+      "source_url": "https://www.norcalfishreports.com/dock_totals/boats.php?date=2026-11-10"
+    },
+    {
+      "region": "norcal",
+      "location": "Berkeley, CA",
+      "landing": "Happy Hooker Sportfishing",
+      "boat": "Happy Hooker",
+      "trip": "Full Day",
+      "anglers": "24 Anglers",
+      "species": "Rockfish",
+      "count": 240,
+      "released": false,
+      "date": "2026-11-10",
+      "source": "NorCal Fish Reports",
+      "source_url": "https://www.norcalfishreports.com/dock_totals/boats.php?date=2026-11-10"
+    },
     {
       "region": "norcal",
       "location": "Berkeley, CA",
