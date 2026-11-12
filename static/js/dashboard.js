@@ -150,32 +150,82 @@ function _setSourceLinks() {
 // ---------------------------------------------------------------------------
 
 const SPECIES_DAILY_LIMIT = {
+    // California daily bag limits per angler, keyed by the exact species name
+    // the scraper emits. Checked against CDFW 2026-11-11 (Groundfish Summary,
+    // Southern Region map, Ask Marine summary table). Species with no bag limit
+    // (skipjack, mackerel, sanddabs, petrale/starry flounder) are left out on
+    // purpose, along with season-dependent or ambiguous names (salmon, generic
+    // "Perch", "Blue Perch", opaleye/halfmoon/sargo), so no bar shows for them.
+    // Tunas & pelagics
     'Yellowtail': 10,
     'Bluefin Tuna': 2,
+    'Pacific Bluefin Tuna': 2,
     'Yellowfin Tuna': 10,
-    'Albacore': 25,
-    'Skipjack Tuna': 25,
-    'Dorado': 5,
-    'Wahoo': 10,
+    'Bigeye Tuna': 10,
+    'Albacore': 10,            // south of Pt. Conception; 25 north of it
+    'Dorado': 10,
+    'Wahoo': 10,               // general limit: 10 of any one species
+    'Barracuda': 10,
+    'Bonito': 10,
+    'Pacific Bonito': 10,
+    'Striped Marlin': 1,
+    'Blue Marlin': 1,
+    'Swordfish': 2,
+    // Inshore
     'White Seabass': 3,
     'White Sea Bass': 3,
     'Halibut': 5,
-    'Calico Bass': 5,
-    'Sand Bass': 10,
-    'Spotted Bay Bass': 3,
+    'California Halibut': 5,
+    'Calico Bass': 5,          // kelp/barred sand/spotted sand bass: 5 combined
+    'Kelp Bass': 5,
+    'Sand Bass': 4,            // max 4 barred sand bass within the 5
+    'Barred Sand Bass': 4,
+    'Spotted Sand Bass': 5,
+    'Spotted Bay Bass': 5,
+    'Sheephead': 2,
+    'Sculpin': 5,              // California scorpionfish
+    'Whitefish': 10,           // ocean whitefish
+    'Ocean Whitefish': 10,
+    'Rubberlip Seaperch': 10,  // surfperch: 20 combined, 10 of any one species
+    'Giant Seabass': 0,
+    'White Sturgeon': 0,       // catch-and-release only
+    // Groundfish — RCG complex (rockfish, cabezon, greenling): 10 combined
     'Rockfish': 10,
-    'Vermilion Rockfish': 10,
+    'Red Rockfish': 10,
+    'Copper Rockfish': 1,
+    'Vermilion Rockfish': 2,   // 2 south of the Northern Mgmt Area; 4 in it
+    'Vermillion Rockfish': 2,
+    'Red Snapper': 2,          // SoCal landings' name for vermilion rockfish
+    'Canary Rockfish': 2,
     'Bocaccio': 10,
-    'Canary Rockfish': 10,
+    'Salmon Grouper': 10,      // bocaccio
     'Chilipepper': 10,
+    'Blue Rockfish': 10,
+    'Black Rockfish': 10,
+    'Brown Rockfish': 10,
+    'Gopher Rockfish': 10,
+    'Starry Rockfish': 10,
+    'Flag Rockfish': 10,
+    'Greenspotted Rockfish': 10,
+    'Olive Rockfish': 10,
+    'Yellowtail Rockfish': 10,
+    'China Rockfish': 10,
+    'Rosy Rockfish': 10,
+    'Treefish': 10,
+    'Cabezon': 10,
     'Cowcod': 0,
     'Lingcod': 2,
-    'Sheephead': 5,
-    'Sculpin': 10,
-    'Bonito': 20,
-    'Barracuda': 10,
-    'Striped Marlin': 1,
-    'Swordfish': 1,
+    // Sharks
+    'Mako Shark': 2,
+    'Thresher Shark': 2,
+    'Blue Shark': 2,
+    'Sevengill Shark': 1,
+    'Leopard Shark': 3,
+    // Invertebrates
+    'Spiny Lobster': 7,
+    'Lobster': 7,
+    'Rock Crab': 35,
+    'Red Rock Crab': 35,
 };
 
 const SPECIES_CATEGORY = {
