@@ -47,7 +47,7 @@ jobs:
         START="${{ github.event.inputs.start_date }}"
         END="${{ github.event.inputs.end_date }}"
         DAYS="${{ github.event.inputs.days }}"
-        DAYS="${DAYS:-2}"
+        DAYS="${DAYS:-7}"
         SITE_ARGS=()
         if [ -n "${{ github.event.inputs.site }}" ]; then
           SITE_ARGS=(--site "${{ github.event.inputs.site }}")

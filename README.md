@@ -159,7 +159,7 @@ Records are deduplicated by `date + location + boat + trip + anglers + species +
 # Install dependencies
 pip install -r requirements.txt
 
-# Scrape today and the previous 2 days for every region (default)
+# Scrape today and the previous 7 days for every region (default)
 python automated_scraping/scripts/fish_reports_scraper.py
 
 # One region (repeat --site for several)
@@ -188,7 +188,9 @@ python automated_scraping/scripts/fish_reports_scraper.py --verbose
 3. Each table row yields boat name, landing (the second link in the boat cell), city, trip type, angler count, and a catch string like `"107 Rockfish, 2 Sheephead Released"`. The trip type is a link on sandiego and plain text on socal/norcal.
 4. Rows outside the region's city allowlist and six-pack boats are dropped. A boat new to the region that never carried more than 6 anglers is logged as a likely six-pack to review.
 5. The catch string is split with regex into individual `{species, count, released}` records.
-6. New records are merged into the region's file, replacing old records for the same dates so re-runs are clean. A date whose records match the previous day exactly is skipped, because the site serves the prior day's page until it posts.
+6. New records are merged into the region's file, replacing old records for the same dates so re-runs are clean.
+7. **Unposted dates are skipped.** For a date it hasn't posted, a site serves its latest posted day instead (headed "Dock Totals - <that day>"). The scraper reads the date in the page's `<h1>`; if it isn't the requested date, nothing is saved for that date and any stored records for it are removed, since they can only be a copy of another day. If the heading has no readable date, a date whose records match the previous day exactly is skipped instead.
+8. A failed request or parse leaves that date as stored and makes the run exit with code 3 after saving everything else. `scrape_run.sh` copies the scraper's warnings and errors into its run log as `SCRP` lines and reports a run with errors to Healthchecks as failed.
 
 Logs are written to `scraper_v3.log` in the working directory.
 
@@ -196,7 +198,7 @@ Logs are written to `scraper_v3.log` in the working directory.
 
 ## Automation
 
-**Scheduled:** `fish-scrape.timer` (systemd user timer, every 4 hours at :30 UTC) runs `scrape_run.sh` in a dedicated clone. Each run syncs to `origin/main`, scrapes the last 2 days for every region, commits `data/` if it changed, and pushes. It never force-pushes, pings Healthchecks on success or failure, and is the only regular data writer.
+**Scheduled:** `fish-scrape.timer` (systemd user timer, every 4 hours at :30 UTC) runs `scrape_run.sh` in a dedicated clone. Each run syncs to `origin/main`, scrapes the last 7 days for every region (so days a site posts late still get picked up), commits `data/` if it changed, and pushes. It never force-pushes, pings Healthchecks on success or failure, and is the only regular data writer.
 
 **Manual fallback:** `.github/workflows/scrape.yml` is `workflow_dispatch` only and is disabled in GitHub. To use it, stop the timer, run `gh workflow enable "Scrape Fishing Reports"`, then dispatch it with optional `start_date`/`end_date`, `days` and `site` inputs.
 

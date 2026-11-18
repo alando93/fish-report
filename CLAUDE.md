@@ -14,7 +14,7 @@ python -m http.server 8000           # → http://localhost:8000
 
 # Run scraper (writes data/<region>.json)
 pip install -r requirements.txt      # once
-python automated_scraping/scripts/fish_reports_scraper.py                     # all regions, last 2 days
+python automated_scraping/scripts/fish_reports_scraper.py                     # all regions, last 7 days
 python automated_scraping/scripts/fish_reports_scraper.py --site socal --dry_run --verbose --date 2026-04-18
 python automated_scraping/scripts/fish_reports_scraper.py --data_dir /tmp/scratch --days 7   # leave data/ alone
 ```
@@ -48,6 +48,7 @@ Scraper logs go to `scraper_v3.log` in the working directory. See `README.md` fo
 
 - `scrape_date_range` is **idempotent per region file**: when new records are saved, any existing records for the dates in the new batch are dropped first. That is only safe because each file has exactly one source; never point two sites at one file.
 - **Tracked cities are an allowlist** (`SITES[...].cities`). The socal and norcal pages also return San Pedro, Redondo Beach, Ventura, Avila Beach, San Francisco, Sausalito, Half Moon Bay, Monterey, Santa Cruz, Bodega Bay, Eureka and San Jose for free. Adding one is a line in `SITES` plus a backfill of that region.
+- **Unposted dates come back as another day's page.** `_page_date` reads the `<h1>` date; on a mismatch `scrape_date` returns `None`, and `save_reports` removes any stored records for that date. Don't "fix" a missing day by hand-editing data: it's usually the site, not the scraper.
 - **Six-packs are excluded** by name (`SIX_PACK_BOATS`). A boat new to a region that never carried more than 6 anglers logs a `WARNING` to review.
 - **Landing comes from the boat cell's second link**, not the panel heading. On socal/norcal the panel is a city.
 - Dedup key: `(date, location, boat, trip, anglers, species, count, released)`, plus `_dedupe_trips` for one trip listed under two landings. Each file is capped at 100,000 records (trimming logs a warning).
