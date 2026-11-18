@@ -11,7 +11,7 @@ Each site is a region with its own output file (data/<region>.json). A region ke
 only the cities in its allowlist, and six-pack charters are dropped everywhere.
 
 Usage:
-    # Scrape the last 2 days for every region (default)
+    # Scrape today and the previous 7 days for every region (default)
     python fish_reports_scraper.py
 
     # One region, one date
@@ -149,6 +149,8 @@ MAX_RECORDS = 100_000
 REQUEST_TIMEOUT = 30
 REQUEST_DELAY = 1.0          # seconds between requests to one site
 SAVE_EVERY_DAYS = 30         # long ranges are saved in chunks, so a crash loses little
+DEFAULT_LOOKBACK_DAYS = 7
+EXIT_PARTIAL = 3             # some dates failed to fetch/parse; the rest were saved    # late postings are picked up as long as they land in this window
 
 HEADERS = {
     "User-Agent": (
@@ -166,6 +168,11 @@ HEADERS = {
 # Regex: matches patterns like "107 Rockfish", "2 Sheephead Released",
 # or "96 Bluefin Tuna (up to 60 pounds)". The optional parenthetical group
 # consumes weight/size notes before the lookahead so they don't break matching.
+# The page heading names the date the page actually shows, e.g.
+# "Fish Counts by Boat - November 16, 2026". For a date the site hasn't posted,
+# it serves its latest posted day under "Dock Totals - <that day>" instead.
+PAGE_DATE_PATTERN = re.compile(r"([A-Z][a-z]+ \d{1,2}, \d{4})")
+
 CATCH_PATTERN = re.compile(r"(\d+)\s+([A-Za-z][A-Za-z\s]*?)(?:\s+(Released))?(?:\s*\([^)]*\))?(?=\s*,\s*\d|\s*$)")
 
 
@@ -179,14 +186,20 @@ class FishReportsScraper:
         self.session = requests.Session()
         self.session.headers.update(HEADERS)
         self._last_request = 0.0
+        # Request/parse failures this run. A failed date is left as stored, not wiped.
+        self.errors = 0
         os.makedirs(data_dir, exist_ok=True)
 
     # ------------------------------------------------------------------
     # Public API
     # ------------------------------------------------------------------
 
-    def scrape_date(self, date: str) -> List[Dict[str, Any]]:
-        """Fetch and parse reports for a single date string (YYYY-MM-DD)."""
+    def scrape_date(self, date: str) -> Optional[List[Dict[str, Any]]]:
+        """Fetch and parse reports for a single date string (YYYY-MM-DD).
+
+        Returns None when the site hasn't posted that date (it served another day's
+        page), and [] when the request or parse failed.
+        """
         url = f"{self.site.dock_totals_url}?date={date}"
         logger.info("Fetching %s", url)
 
@@ -198,15 +211,22 @@ class FishReportsScraper:
             response.raise_for_status()
         except requests.RequestException as exc:
             logger.error("Request failed for %s: %s", url, exc)
+            self.errors += 1
             return []
         finally:
             self._last_request = time.monotonic()
 
         try:
             soup = BeautifulSoup(response.content, "html.parser")
+            page_date = self._page_date(soup)
+            if page_date is not None and page_date != date:
+                logger.warning("%s hasn't posted %s %s yet — page shows %s",
+                               self.site.base_url, self.site.region, date, page_date)
+                return None
             reports = self._parse_page(soup, date, url)
         except Exception as exc:  # noqa: BLE001
             logger.error("Parse error for %s %s: %s", self.site.region, date, exc)
+            self.errors += 1
             return []
 
         logger.info("Extracted %d report rows for %s %s", len(reports), self.site.region, date)
@@ -223,38 +243,64 @@ class FishReportsScraper:
 
         collected_any = False
         chunk: List[Dict[str, Any]] = []
+        unposted: set = set()
         days_in_chunk = 0
         current = start
         while current <= end:
-            chunk.extend(self.scrape_date(current.strftime("%Y-%m-%d")))
+            date = current.strftime("%Y-%m-%d")
+            reports = self.scrape_date(date)
+            if reports is None:
+                unposted.add(date)
+            else:
+                chunk.extend(reports)
             days_in_chunk += 1
             current += timedelta(days=1)
             if days_in_chunk == SAVE_EVERY_DAYS or current > end:
-                if chunk:
-                    self.save_reports(chunk, dry_run=dry_run)
-                    collected_any = True
-                chunk, days_in_chunk = [], 0
+                if chunk or unposted:
+                    self.save_reports(chunk, unposted_dates=unposted, dry_run=dry_run)
+                    collected_any = collected_any or bool(chunk)
+                chunk, unposted, days_in_chunk = [], set(), 0
 
         if not collected_any:
             logger.warning("No %s reports collected for range %s – %s",
                            self.site.region, start_date, end_date)
 
-    def save_reports(self, new_reports: List[Dict[str, Any]], dry_run: bool = False) -> None:
-        """Merge new_reports with existing data, deduplicate, trim, and write."""
-        if dry_run:
-            logger.info("DRY RUN — would save %d new %s report rows (sample below)",
-                        len(new_reports), self.site.region)
-            print(json.dumps(new_reports[:5], indent=2))
-            return
+    def save_reports(
+        self,
+        new_reports: List[Dict[str, Any]],
+        unposted_dates: Optional[set] = None,
+        dry_run: bool = False,
+    ) -> None:
+        """Merge new_reports with existing data, deduplicate, trim, and write.
 
+        Stored records for unposted_dates are removed: the site itself says it has
+        nothing for those dates, so anything stored is a copy of another day's page
+        that slipped past the identical-to-prior-day check before this one existed.
+        """
+        unposted_dates = unposted_dates or set()
         existing = self._load_existing()
         existing_reports: List[Dict[str, Any]] = existing.get("reports", [])
 
+        stale = [r for r in existing_reports if r["date"] in unposted_dates]
+        if stale:
+            for date in sorted({r["date"] for r in stale}):
+                logger.warning("Removing %d stored %s records for %s — the site hasn't posted "
+                               "that date, so they were copied from another day",
+                               sum(r["date"] == date for r in stale), self.site.region, date)
+            existing_reports = [r for r in existing_reports if r["date"] not in unposted_dates]
+
+        if dry_run:
+            logger.info("DRY RUN — would save %d new %s report rows and remove %d stale ones "
+                        "(sample below)", len(new_reports), self.site.region, len(stale))
+            print(json.dumps(new_reports[:5], indent=2))
+            return
+
         self._warn_possible_six_packs(new_reports, existing_reports)
 
-        # Drop any dates whose content is identical to the previous day — this happens when
-        # the site hasn't posted a date's data yet and serves the prior day's page instead.
-        # last_updated still advances, which triggers the frontend warning banner.
+        # Backstop for pages whose heading date can't be read (see _page_date): drop any
+        # date whose content is identical to the previous day — the site serves its latest
+        # posted day for dates it hasn't posted. last_updated still advances, which
+        # triggers the frontend warning banner.
         new_reports = self._filter_duplicate_dates(new_reports, existing_reports)
 
         # Replace all records for dates present in the new batch
@@ -287,6 +333,19 @@ class FishReportsScraper:
     # ------------------------------------------------------------------
     # Parsing helpers
     # ------------------------------------------------------------------
+
+    @staticmethod
+    def _page_date(soup: BeautifulSoup) -> Optional[str]:
+        """The date the page actually shows (YYYY-MM-DD), from its <h1>; None if unreadable."""
+        h1 = soup.find("h1")
+        match = PAGE_DATE_PATTERN.search(h1.get_text(" ", strip=True)) if h1 else None
+        if not match:
+            logger.debug("No date in page heading — falling back to the duplicate-day check")
+            return None
+        try:
+            return datetime.strptime(match.group(1), "%B %d, %Y").strftime("%Y-%m-%d")
+        except ValueError:
+            return None
 
     def _parse_page(self, soup: BeautifulSoup, report_date: str, source_url: str) -> List[Dict[str, Any]]:
         trips: List[Dict[str, Any]] = []
@@ -606,8 +665,9 @@ Examples:
     parser.add_argument("--date", help="Scrape a single date (YYYY-MM-DD)")
     parser.add_argument("--start_date", help="Range start date (YYYY-MM-DD)")
     parser.add_argument("--end_date", help="Range end date (YYYY-MM-DD)")
-    parser.add_argument("--days", type=int, default=2,
-                        help="Default lookback window in days when no date args are given (default: 2)")
+    parser.add_argument("--days", type=int, default=DEFAULT_LOOKBACK_DAYS,
+                        help="Lookback window in days when no date args are given "
+                             f"(default: {DEFAULT_LOOKBACK_DAYS})")
     parser.add_argument("--data_dir", default=DEFAULT_DATA_DIR,
                         help=f"Directory for the region JSON files (default: {DEFAULT_DATA_DIR})")
     parser.add_argument("--dry_run", action="store_true", help="Parse without writing to disk")
@@ -635,15 +695,23 @@ def main() -> None:
         end = today.strftime("%Y-%m-%d")
         start = (today - timedelta(days=args.days)).strftime("%Y-%m-%d")
 
+    errors = 0
     try:
         for region in args.site or list(SITES):
             scraper = FishReportsScraper(SITES[region], data_dir=args.data_dir)
             scraper.scrape_date_range(start, end, dry_run=args.dry_run)
+            errors += scraper.errors
     except KeyboardInterrupt:
         logger.info("Interrupted by user")
     except Exception as exc:  # noqa: BLE001
         logger.error("Unexpected error: %s", exc, exc_info=True)
         sys.exit(1)
+
+    # Data that did scrape is saved either way; this only reports the run as degraded.
+    if errors:
+        logger.error("%d request/parse error(s) this run — affected dates were left as stored",
+                     errors)
+        sys.exit(EXIT_PARTIAL)
 
 
 if __name__ == "__main__":

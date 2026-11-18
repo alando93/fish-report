@@ -23,7 +23,7 @@ SCRAPER="$REPO/automated_scraping/scripts/fish_reports_scraper.py"
 STAGING="$HOME/git/fish-report"
 LOG="$HOME/.local/state/fish-scrape.log"
 ENV_FILE="$HOME/.config/fish-scrape.env"   # HEALTHCHECKS_URL (ping URL)
-DAYS="${SCRAPE_DAYS:-2}"
+DAYS="${SCRAPE_DAYS:-7}"   # wide enough to pick up days the sites post late
 ATTEMPTS=3
 
 mkdir -p "$(dirname "$LOG")"
@@ -56,6 +56,24 @@ step() {
     fi
 }
 
+# Runs the scraper and copies its WARNING/ERROR lines into the run log, so skipped
+# (unposted) dates and fetch errors are visible here, not only in scraper_v3.log.
+# Exit 3 (EXIT_PARTIAL) means some dates failed but the rest were saved: keep going,
+# commit what we have, and report the run as failed at the end.
+partial=0
+scrape() {
+    local out rc
+    out="$("$PY" "$SCRAPER" --days "$DAYS" 2>&1)"
+    rc=$?
+    printf '%s\n' "$out" | grep -E ' - (WARNING|ERROR) - ' \
+        | sed -E 's/^([0-9-]+ [0-9:]+),[0-9]+ - (WARNING|ERROR) - /\1 SCRP \2 /' >>"$LOG"
+    case $rc in
+        0) log "OK   scrape" ;;
+        3) log "WARN scrape partial — some dates failed, the rest were saved"; partial=1 ;;
+        *) fail "scrape (exit $rc): $(printf '%s' "$out" | tail -n 1)" ;;
+    esac
+}
+
 cd "$REPO" || fail "repo dir missing"
 log "RUN  start (last $DAYS days)"
 hc_ping /start
@@ -64,7 +82,8 @@ pushed=0
 for attempt in $(seq 1 "$ATTEMPTS"); do
     step fetch git fetch --quiet origin main
     step sync git reset --quiet --hard origin/main
-    step scrape "$PY" "$SCRAPER" --days "$DAYS"
+    partial=0
+    scrape
 
     if git diff --quiet -- data/; then
         log "OK   no new data"
@@ -101,6 +120,11 @@ if [ -d "$STAGING/.git" ]; then
     fi
 fi
 
+if [ "$partial" -eq 1 ]; then
+    log "RUN  complete with scrape errors (see SCRP ERROR lines above)"
+    hc_ping /fail
+    exit 1
+fi
 log "RUN  complete"
 hc_ping
 exit 0
