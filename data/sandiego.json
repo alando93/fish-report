@@ -2,7 +2,7 @@
   "region": "sandiego",
   "source": "San Diego Fish Reports",
   "site_url": "https://www.sandiegofishreports.com",
-  "last_updated": "2026-11-19 02:33:00 PST",
+  "last_updated": "2026-11-19 06:30:51 PST",
   "reports": [
     {
       "region": "sandiego",
@@ -210,6 +210,34 @@
       "species": "Spiny Lobster",
       "count": 254,
       "released": true,
+      "date": "2026-11-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-11-18"
+    },
+    {
+      "region": "sandiego",
+      "location": "San Diego, CA",
+      "landing": "H&M Landing",
+      "boat": "Patriot (SD)",
+      "trip": "3/4 Day",
+      "anglers": "11 Anglers",
+      "species": "Skipjack Tuna",
+      "count": 6,
+      "released": false,
+      "date": "2026-11-18",
+      "source": "San Diego Fish Reports",
+      "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-11-18"
+    },
+    {
+      "region": "sandiego",
+      "location": "San Diego, CA",
+      "landing": "H&M Landing",
+      "boat": "Patriot (SD)",
+      "trip": "3/4 Day",
+      "anglers": "11 Anglers",
+      "species": "Yellowfin Tuna",
+      "count": 32,
+      "released": false,
       "date": "2026-11-18",
       "source": "San Diego Fish Reports",
       "source_url": "https://www.sandiegofishreports.com/dock_totals/boats.php?date=2026-11-18"
