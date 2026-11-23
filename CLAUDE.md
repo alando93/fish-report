@@ -29,7 +29,7 @@ Scraper logs go to `scraper_v3.log` in the working directory. See `README.md` fo
 | `static/js/dashboard.js` | **Daily Reports** view controller. Owns `_rt` state. |
 | `static/js/trends.js` | **Trends** chart controller. Owns `_tr` state. Uses Chart.js. |
 | `static/js/tripDuration.js` | Trip string parser + multi-day allocation. Reuse for any per-day math. |
-| `static/js/landings.js` | Landing name → website map for the "Book" link in Daily Reports (`window.landingUrl`). Add a landing here when a new one shows up in the data. |
+| `static/js/landings.js` | Landing name → website map for the "Website" link in Daily Reports (`window.landingUrl`). Add a landing here when a new one shows up in the data. |
 | `static/js/moon.js` | Moon phase util (`moonPhase`, `daysToNearestNewOrFull`). |
 | `static/js/ui.js` | Shared primitives (multi-select, segmented control) on `window.UI`. Reuse before building new widgets. |
 | `static/css/style.css` | Design tokens in `:root` (colors, spacing, type scale, chart palette). Edit the token, not the rule. |
