@@ -568,6 +568,12 @@ function _rtBuildTable(trips) {
                     </span>`;
             }).join('');
 
+            const totalFish = r.catch.reduce((sum, c) => sum + c.cnt, 0);
+            const perAngler = r.anglers > 0 && totalFish > 0
+                ? `<div class="rt-trip-total" title="${totalFish} fish \u00F7 ${r.anglers} anglers, whole trip">`
+                  + `${(totalFish / r.anglers).toFixed(1)} fish/angler</div>`
+                : '';
+
             return `
                 <tr class="rt-trip-row${isMultiTrip ? ' rt-multi-trip' : ''}">
                     <td class="rt-col-boat">
@@ -578,6 +584,7 @@ function _rtBuildTable(trips) {
                     <td class="rt-col-trip">
                         <div class="rt-trip-anglers">${r.anglers ? `${r.anglers} Anglers` : '\u2014'}</div>
                         <div class="rt-trip-name">${r.trip}</div>
+                        ${perAngler}
                     </td>
                     <td class="rt-col-catch">
                         <div class="rt-catch-list">${pills}</div>

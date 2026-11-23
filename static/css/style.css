@@ -511,6 +511,12 @@
     color: var(--fg-muted);
     margin-top: 2px;
 }
+.rt-trip-total {
+    font-size: var(--font-sm);
+    font-weight: 600;
+    color: var(--fg);
+    margin-top: 4px;
+}
 
 .rt-multi-trip td:first-child {
     border-left: 2px solid var(--border);
