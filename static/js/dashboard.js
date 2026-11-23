@@ -588,8 +588,8 @@ function _rtBuildTable(trips) {
         const url = window.landingUrl(landing);
         const link = url ? `
                     <a class="rt-landing-link" href="${url}" target="_blank" rel="noopener noreferrer"
-                       title="Open ${landing}'s website to book">
-                        Book
+                       title="Open ${landing}'s website">
+                        Website
                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
                             <path d="M4 1.5H1.5v7h7V6M6 1.5h2.5V4M8.5 1.5 4.5 5.5" stroke="currentColor" stroke-width="1.1"/>
                         </svg>
