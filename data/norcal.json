@@ -2,8 +2,36 @@
   "region": "norcal",
   "source": "NorCal Fish Reports",
   "site_url": "https://www.norcalfishreports.com",
-  "last_updated": "2026-11-22 18:32:38 PST",
+  "last_updated": "2026-11-22 22:31:55 PST",
   "reports": [
+    {
+      "region": "norcal",
+      "location": "Berkeley, CA",
+      "landing": "California Dawn Sportfishing",
+      "boat": "California Dawn",
+      "trip": "Full Day",
+      "anglers": "24 Anglers",
+      "species": "Dungeness Crab",
+      "count": 240,
+      "released": false,
+      "date": "2026-11-22",
+      "source": "NorCal Fish Reports",
+      "source_url": "https://www.norcalfishreports.com/dock_totals/boats.php?date=2026-11-22"
+    },
+    {
+      "region": "norcal",
+      "location": "Berkeley, CA",
+      "landing": "California Dawn Sportfishing",
+      "boat": "California Dawn",
+      "trip": "Full Day",
+      "anglers": "24 Anglers",
+      "species": "Rockfish",
+      "count": 240,
+      "released": false,
+      "date": "2026-11-22",
+      "source": "NorCal Fish Reports",
+      "source_url": "https://www.norcalfishreports.com/dock_totals/boats.php?date=2026-11-22"
+    },
     {
       "region": "norcal",
       "location": "Berkeley, CA",
