@@ -25,10 +25,11 @@ Scraper logs go to `scraper_v3.log` in the working directory. See `README.md` fo
 
 | Path | Role |
 |---|---|
-| `index.html` | Single entry point. DOM mounts: `#reportsSection`, `#trendsSection`. Script load order (lines 46–51) is load-bearing — see below. |
+| `index.html` | Single entry point. DOM mounts: `#reportsSection`, `#trendsSection`. Script load order (lines 59–66) is load-bearing — see below. |
 | `static/js/dashboard.js` | **Daily Reports** view controller. Owns `_rt` state. |
 | `static/js/trends.js` | **Trends** chart controller. Owns `_tr` state. Uses Chart.js. |
 | `static/js/tripDuration.js` | Trip string parser + multi-day allocation. Reuse for any per-day math. |
+| `static/js/landings.js` | Landing name → website map for the "Book" link in Daily Reports (`window.landingUrl`). Add a landing here when a new one shows up in the data. |
 | `static/js/moon.js` | Moon phase util (`moonPhase`, `daysToNearestNewOrFull`). |
 | `static/js/ui.js` | Shared primitives (multi-select, segmented control) on `window.UI`. Reuse before building new widgets. |
 | `static/css/style.css` | Design tokens in `:root` (colors, spacing, type scale, chart palette). Edit the token, not the rule. |
@@ -39,7 +40,7 @@ Scraper logs go to `scraper_v3.log` in the working directory. See `README.md` fo
 
 ## Frontend architecture
 
-- **Script load order matters.** `index.html` loads `moon.js` → `ui.js` → `tripDuration.js` → `trends.js` → `dashboard.js`. Later files depend on globals defined earlier. Don't reorder without tracing dependencies.
+- **Script load order matters.** `index.html` loads `moon.js` → `ui.js` → `tripDuration.js` → `trends.js` → `moonCalendar.js` → `landings.js` → `dashboard.js`. Later files depend on globals defined earlier. Don't reorder without tracing dependencies.
 - **No modules, no bundler.** Each JS file is a `<script>` tag; module scope is achieved with IIFEs / file-level closures.
 - **State lives in one object per view.** `_rt` in `dashboard.js`, `_tr` in `trends.js`. No Redux, no observers — just module-scoped objects mutated by event handlers.
 - **Public vs. private.** Underscore-prefixed helpers (`_rtChangeDate`, `_trRender`) are file-internal. Anything callable from another file or from HTML is attached to `window`.

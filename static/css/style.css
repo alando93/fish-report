@@ -444,6 +444,18 @@
     color: var(--fg-subtle);
 }
 
+.rt-landing-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: var(--font-sm);
+    color: var(--accent);
+    text-decoration: none;
+}
+.rt-landing-link:hover {
+    text-decoration: underline;
+}
+
 .rt-landing-icon {
     opacity: 0.35;
     flex-shrink: 0;

@@ -585,6 +585,16 @@ function _rtBuildTable(trips) {
                 </tr>`;
         }).join('');
 
+        const url = window.landingUrl(landing);
+        const link = url ? `
+                    <a class="rt-landing-link" href="${url}" target="_blank" rel="noopener noreferrer"
+                       title="Open ${landing}'s website to book">
+                        Book
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                            <path d="M4 1.5H1.5v7h7V6M6 1.5h2.5V4M8.5 1.5 4.5 5.5" stroke="currentColor" stroke-width="1.1"/>
+                        </svg>
+                    </a>` : '';
+
         return `
             <div class="rt-landing-block">
                 <div class="rt-landing-header">
@@ -593,6 +603,7 @@ function _rtBuildTable(trips) {
                         <path d="M3 8 Q6 4 9 8" stroke="currentColor" stroke-width="1.2" fill="none"/>
                     </svg>
                     <span class="rt-landing-name">${landing}</span>
+                    ${link}
                     <span class="rt-landing-count">
                         ${uniqueBoatCount} boat${uniqueBoatCount !== 1 ? 's' : ''}
                     </span>
