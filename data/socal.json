@@ -2,8 +2,36 @@
   "region": "socal",
   "source": "SoCal Fish Reports",
   "site_url": "https://www.socalfishreports.com",
-  "last_updated": "2026-11-27 10:34:27 PST",
+  "last_updated": "2026-11-27 14:31:40 PST",
   "reports": [
+    {
+      "region": "socal",
+      "location": "Morro Bay, CA",
+      "landing": "Morro Bay Landing",
+      "boat": "Endeavor (MB)",
+      "trip": "1/2 Day AM",
+      "anglers": "23 Anglers",
+      "species": "Rockfish",
+      "count": 220,
+      "released": false,
+      "date": "2026-11-27",
+      "source": "SoCal Fish Reports",
+      "source_url": "https://www.socalfishreports.com/dock_totals/boats.php?date=2026-11-27"
+    },
+    {
+      "region": "socal",
+      "location": "Morro Bay, CA",
+      "landing": "Morro Bay Landing",
+      "boat": "Endeavor (MB)",
+      "trip": "1/2 Day AM",
+      "anglers": "23 Anglers",
+      "species": "Red Rockfish",
+      "count": 2,
+      "released": false,
+      "date": "2026-11-27",
+      "source": "SoCal Fish Reports",
+      "source_url": "https://www.socalfishreports.com/dock_totals/boats.php?date=2026-11-27"
+    },
     {
       "region": "socal",
       "location": "Oxnard, CA",
